@@ -1,0 +1,29 @@
+<%= form_with(model: video) do |form| %>
+<div id="errors">
+<%= render "errors" %>
+</div>
+<div class="column col-6 col-xs-12 pt-2 p-centered" style="padding-left:30px;padding-right:30px;">
+  <div class="form-group">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-input", placeholder: "Title" %>
+  </div>
+
+  <div class= "form-group tooltip tooltip-right" data-tooltip="Please upload small sized file (<150MB), as its a&#10;&#13;portfolio and i dont have infinite space.">
+    <%= form.label :Video, class: "form-label" %>
+    <%= form.file_field :clip, class: "form-input" %>
+  </div>
+  <div class= "form-group tooltip tooltip-right" data-tooltip="We recommend your custom thumbnails: &#10;&#13; • Have a resolution of 1280x720. &#10;&#13; • Be uploaded in JPG or PNG formats. &#10;&#13; • Remain under the 2MB limit. &#10;&#13; • Try to use a 16:9 aspect ratio.">
+    <%= form.label :thumbnail, class: "form-label" %>
+    <%= form.file_field :thumbnail, class: "form-input" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_area :description, class: "form-input", placeholder:"Description about the video (optional)", rows: "3" %>
+  </div>
+  
+  <div class= "form-group">
+    <%= form.submit class: "btn btn-primary input-group-btn", "data-turbo-frame": "_top" %>
+  </div>
+</div>
+<% end %>

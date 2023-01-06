@@ -1,0 +1,37 @@
+<% if notice %>
+  <div class="toast toast-success"><button class="btn btn-clear float-right" onclick="document.body.removeChild(this.parentNode)"></button><%= notice %></div>
+<% end %>
+<%= render "navbar" %>
+<div class= "container" style="padding-top:14px;">
+  <%= render "grid" %>
+</div>
+<%= turbo_frame_tag "add" do %>
+  <div class="container text-bold" style="width:fit-content;font-size:24px;color: rgb(87, 85, 217);padding-top:22px;padding-bottom:22px;"><%= link_to content_tag(:i,'',class:"icon icon-plus", id:"plus"), new_video_path, class: "btn btn-primary btn-action btn-lg s-circle", id: "gradient" %> Add Video</div>
+<% end %>
+<div class="hero hero-sm bg-primary text-light text-center" style="margin-bottom:30px;">
+  <div class="container grid-lg">
+      <h2> Introduction </h2>
+    <div class="columns">
+      <div class="column col-10 col-sm-12 col-mx-auto text-left">
+        <p class="text-secondary">
+          <strong>Repoclip</strong> is a lightweight, responsive and modern web application designed as a repository to store and share all your videos.
+        </p>
+        <p class="text-secondary">
+          It was made with the purpose of showing my skills in web development, especially back-end. This is my portfolio
+          built with Ruby on Rails.
+        </p>
+      </div>
+      <div class="colum col-10 col-sm-12 col-mx-auto">
+        <a class="btn btn-lg" href="">Hire me</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="copyright" class= "docs-footer container grid-lg">
+  <p>
+    <%= link_to "GitHub","", style:"color:rgb(102, 117, 140);" %> · Version 1.0
+  </p>
+  <p>
+    Designed and built by rbsanto.
+  </p>
+</div>

@@ -1,0 +1,34 @@
+<div class="container grid-lg" style="margin-left:initial;" >
+<video
+    id="my-video"
+    class="video-js vjs-fluid vjs-big-play-centered"
+    controls
+    preload="auto"
+    width="640"
+    height="264"
+    poster="<%= url_for(@video.thumbnail) %>"
+    data-setup='{ "playbackRates" : [0.25,0.5,0.75,1,1.25,1.5,1.75,2] }'
+  >
+    <source src=<%= url_for(@video.clip) %> type="video/mp4" />
+    <source src=<%= url_for(@video.clip) %> type="video/webm" />
+    <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a
+      web browser that
+      <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+    </p>
+  </video>
+  
+  <div class="my-2" style="margin-left:1px;">
+    <strong><%= video.title %></strong>
+  </div>
+  <div class="mb-2" style="font-size:14px;margin-left:1px;">Published on <%= video.created_at.strftime("%b %d, %Y") %></div>
+  <div>
+    <p class="bg-gray" style="border-radius:12px;padding:12px;">
+      <%= video.description %>
+    </p>
+    </div>
+      <div style="border-style:solid;display:inline-block;border-width:1px;border-radius:16px;border-color:red;box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;"><%= link_to content_tag(:i,'',class:"icon icon-cross"), video_path(@video), data: { turbo_method: :delete, turbo_confirm: "Are you sure ?"} , class: "btn btn-primary btn-action btn-sm s-circle", id:"deleteit", style:"background-color:red;border-color:black;box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;" %><%= link_to " Delete this video", video_path(@video), data: { turbo_method: :delete, turbo_confirm: "Are you sure ?"}, id: :deletea, style:"color:red;text-decoration-line:none;padding-right:4px;" %></div>
+      <%= turbo_frame_tag "edit" do %>
+        <div style="border-style:solid;display:inline-block;border-width:1px;border-radius:16px;border-color:#5755d9;box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;"><%= link_to content_tag(:i,'',class:"icon icon-edit"), edit_video_path(@video), class: "btn btn-primary btn-action btn-sm s-circle", style: "box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;" %><%= link_to " Edit this video", edit_video_path(@video),style:"text-decoration-line:none;padding-right:4px;border: none;" %></div>
+      <% end %>
+  </div>

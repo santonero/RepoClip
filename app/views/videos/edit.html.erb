@@ -1,0 +1,6 @@
+<%= turbo_frame_tag "edit" do %>
+  <div class=" container bg-gray p-relative mt-2 pb-2" id="editf" style="border-radius:2px;border-left:3px solid #a8b3bd;">
+    <%= render "form", video: @video %>
+    <%= link_to "", video_path, class:"btn btn-clear btn-lg p-absolute tooltip tooltip-left", "data-tooltip": "Close Edit", style:"top:5px;right:5px;" %>
+  </div>
+<% end %>
