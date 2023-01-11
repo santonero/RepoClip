@@ -1,12 +1,18 @@
+<% content_for :head do %>
+  <meta name="turbo-visit-control" content="reload">
+  <%= javascript_import_module_tag "videojs" %>
+<% end %>
+
 <% if notice %>
   <div class="toast toast-success"><button class="btn btn-clear float-right" onclick="document.body.removeChild(this.parentNode)"></button><%= notice %></div>
 <% end %>
 <% if alert %>
   <div class="toast toast-error"><button class="btn btn-clear float-right" onclick="document.body.removeChild(this.parentNode)"></button><%= alert %></div>
 <% end %>
-<link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
 <%= render "navbar" %>
+
 <%= render @video %>
+<div data-controller="play"></div>
 <div style="margin-top:16px;margin-bottom:16px;"><%= link_to content_tag(:i,'',class:"icon icon-back"), videos_path, class: "btn btn-primary btn-action btn-sm tooltip tooltip-right", "data-tooltip": "Go Back" %></div>
 <div class="container">
   <%= render 'comments/ccount' %>
@@ -16,9 +22,4 @@
 </div>
 <h5 class="container">Add a comment:</h5>
 <%= render 'comments/form' %>
-
-<script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
-<script>
-  var media = document.querySelector('video');
-  media.addEventListener('canplaythrough', (event) => { media.play();});
-</script>
+</div>

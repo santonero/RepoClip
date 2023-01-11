@@ -9,7 +9,9 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "spectre.min", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "spectre-icons.min", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "//vjs.zencdn.net/7.20.3/video-js.min.css", "data-turbo-track": "reload"%>
     <%= javascript_importmap_tags %>
+    <%= yield(:head) %>
   </head>
 
   <body>

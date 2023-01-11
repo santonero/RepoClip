@@ -26,9 +26,9 @@
     <p class="bg-gray" style="border-radius:12px;padding:12px;">
       <%= video.description %>
     </p>
-    </div>
-      <div style="border-style:solid;display:inline-block;border-width:1px;border-radius:16px;border-color:red;box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;"><%= link_to content_tag(:i,'',class:"icon icon-cross"), video_path(@video), data: { turbo_method: :delete, turbo_confirm: "Are you sure ?"} , class: "btn btn-primary btn-action btn-sm s-circle", id:"deleteit", style:"background-color:red;border-color:black;box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;" %><%= link_to " Delete this video", video_path(@video), data: { turbo_method: :delete, turbo_confirm: "Are you sure ?"}, id: :deletea, style:"color:red;text-decoration-line:none;padding-right:4px;" %></div>
-      <%= turbo_frame_tag "edit" do %>
-        <div style="border-style:solid;display:inline-block;border-width:1px;border-radius:16px;border-color:#5755d9;box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;"><%= link_to content_tag(:i,'',class:"icon icon-edit"), edit_video_path(@video), class: "btn btn-primary btn-action btn-sm s-circle", style: "box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;" %><%= link_to " Edit this video", edit_video_path(@video),style:"text-decoration-line:none;padding-right:4px;border: none;" %></div>
-      <% end %>
   </div>
+    <div style="border-style:solid;display:inline-block;border-width:1px;border-radius:16px;border-color:red;box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;"><%= link_to content_tag(:i,'',class:"icon icon-cross"), video_path(@video), data: { turbo_method: :delete, turbo_confirm: "Are you sure ?"} , class: "btn btn-primary btn-action btn-sm s-circle", id:"deleteit", style:"background-color:red;border-color:black;box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;" %><%= link_to " Delete this video", video_path(@video), data: { turbo_method: :delete, turbo_confirm: "Are you sure ?"}, id: :deletea, style:"color:red;text-decoration-line:none;padding-right:4px;" %></div>
+    <%= turbo_frame_tag "edit" do %>
+      <div style="border-style:solid;display:inline-block;border-width:1px;border-radius:16px;border-color:#5755d9;box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;"><%= link_to content_tag(:i,'',class:"icon icon-edit"), edit_video_path(@video), class: "btn btn-primary btn-action btn-sm s-circle", style: "box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;" %><%= link_to " Edit this video", edit_video_path(@video),style:"text-decoration-line:none;padding-right:4px;border: none;" %></div>
+    <% end %>
+</div>
