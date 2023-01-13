@@ -32,6 +32,10 @@
   border:none !important;
 }
 
+#video_thumb:active, #video_thumb:focus { 
+    box-shadow: none;
+}
+
 .video-js.video-js .vjs-big-play-button {
   top: 50%;
     left: 50%;
