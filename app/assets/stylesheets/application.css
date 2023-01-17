@@ -59,6 +59,24 @@
   width:48px !important;
 }
 
+.navbar-section {
+  z-index:2;
+}
+
+.navbar-center {
+  z-index:2;
+}
+
+.loader-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: white;
+}
+
 .docs-footer {
   color: #bcc3ce;
   margin-top: 1.5rem;
@@ -150,8 +168,3 @@
 #plus:hover {
   transform: rotate(90deg);
 }
-
-/* turbo-frame {
-  display:block;
-  border: 1px solid blue;*/
-

@@ -10,16 +10,27 @@
   <div class="toast toast-error"><button class="btn btn-clear float-right" onclick="document.body.removeChild(this.parentNode)"></button><%= alert %></div>
 <% end %>
 <%= render "navbar" %>
-
+<div class="loader-container container grid-lg" style="margin-left:initial;display:flex;align-items:center;justify-content: center;">
+  <div class="loading loading-lg"></div>
+</div>
 <%= render @video %>
 <div data-controller="play"></div>
 <div style="margin-top:16px;margin-bottom:16px;"><%= link_to content_tag(:i,'',class:"icon icon-back"), videos_path, class: "btn btn-primary btn-action btn-sm tooltip tooltip-right", "data-tooltip": "Go Back" %></div>
 <div class="container">
-  <%= render 'comments/ccount' %>
+  <div class="divider" style="visibility:hidden;"></div>
+  <div class="container">
+    <%= render 'comments/ccount' %>
+  </div>
+  <div id="comments">
+    <%= render @video.comments %>
+  </div>
+  <h5 class="container">Add a comment:</h5>
+  <%= render 'comments/form' %>
+  </div>
 </div>
-<div id="comments">
-  <%= render @video.comments %>
-</div>
-<h5 class="container">Add a comment:</h5>
-<%= render 'comments/form' %>
-</div>
+<script>
+window.addEventListener('load', () => {
+  document.querySelector('.loader-container').style.display ="none";
+  document.querySelector('.divider').style.visibility ="visible";
+})
+</script>
