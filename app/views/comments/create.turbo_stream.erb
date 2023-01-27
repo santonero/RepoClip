@@ -1,2 +1,3 @@
 <%= turbo_stream.append "comments", @comment %>
 <%= turbo_stream.replace "ccount", partial: "comments/ccount"  %>
+<%= turbo_stream.replace "commform", partial: "comments/form" %>
