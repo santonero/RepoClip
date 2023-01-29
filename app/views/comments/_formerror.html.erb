@@ -1,6 +1,6 @@
 <div id="commform">
 <%= form_with(model: [@video, @video.comments.build ], data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }) do |form| %>
-  <div class="column col-6 col-xs-12 p-2">
+  <div class="column col-6 col-xs-12 p-2" style="margin-bottom:16px;">
     <div class="form-group">
      <%= form.label :author, class: "form-label" %><br>
      <%= form.text_field :commenter, class: "form-input", placeholder: :"Your name (mandatory)" %>

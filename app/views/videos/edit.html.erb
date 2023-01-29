@@ -1,6 +1,6 @@
 <%= turbo_frame_tag "edit" do %>
-  <div class=" container bg-gray p-relative mt-2 pb-2" id="editf" style="border-radius:2px;border-left:3px solid #a8b3bd;">
+  <div class=" container bg-gray p-relative mt-2 pb-2" id="editf" style="border-radius:6px;box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;">
     <%= render "form", video: @video %>
-    <%= link_to "", video_path, class:"btn btn-clear btn-lg p-absolute tooltip tooltip-left", "data-tooltip": "Close Edit", style:"top:5px;right:5px;" %>
+    <%= link_to "", video_path, class:"btn btn-clear btn-lg p-absolute tooltip tooltip-left", "data-tooltip": "Cancel Edit", style:"top:5px;right:5px;" %>
   </div>
 <% end %>
