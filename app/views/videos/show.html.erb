@@ -15,8 +15,8 @@
 </div>
 <%= render @video %>
 <div data-controller="play"></div>
-<div style="margin-top:16px;margin-bottom:16px;"><%= link_to content_tag(:i,'',class:"icon icon-back"), videos_path, class: "btn btn-primary btn-action btn-sm tooltip tooltip-right", "data-tooltip": "Go Back" %></div>
 <div class="container">
+<div class="container" id="comcont">
   <div class="divider" style="visibility:hidden;"></div>
   <div class="container">
     <%= render 'comments/ccount' %>

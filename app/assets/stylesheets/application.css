@@ -59,6 +59,17 @@
   width:48px !important;
 }
 
+#vidcont { 
+  margin-left: 1.1%;
+  margin-right: 1.1%;
+  margin-top: 14px;
+}
+
+#comcont {
+  margin-left: 1.1%;
+  margin-right: 1.1%;
+ }
+
 .navbar-section {
   z-index:2;
 }
@@ -70,7 +81,7 @@
 .loader-container {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 1.1%;
   right: 0;
   bottom: 0;
   z-index: 1;
