@@ -1,9 +1,8 @@
 <% if @videos.empty? %>
   <%= render "navbar" %>
   <div class ="hero hero-sm bg-primary"><div class="hero-body"><h1>Sorry, Nothing found</h1></div></div>
-  <div class="container m-2">
-    <%= image_tag("nothin.svg") %>
-  </div>
+  <div class ="container" style="padding-top:20px;padding-bottom:20px;">
+    <div class="m-2"><%= image_tag("nothin.svg") %></div>
 <% else %>
   <%= render "navbar" %>
   <div class ="hero hero-sm bg-primary"><div class="hero-body"><h1>Search Results</h1></div></div>
@@ -12,3 +11,4 @@
   <h6 class="p-2"style="color:#bcc3ce;"><%= pluralize(@videos.count, "result") %></h6>
 <% end %>
   <div style="margin-top:16px;margin-bottom:16px;"><%= link_to content_tag(:i,'',class:"icon icon-back"), videos_path, class: "btn btn-primary btn-action btn-sm tooltip tooltip-right", "data-tooltip": "Go Back" %></div>
+  </div>

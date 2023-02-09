@@ -7,7 +7,7 @@ class VideosController < ApplicationController
   end
 
   def search
-    @videos = Video.with_attached_thumbnail.where("title LIKE ?", "%"+ params[:query] + "%")
+    @videos = Video.with_attached_thumbnail.where("title ILIKE ?", "%"+ Video.sanitize_sql_like(params[:query]) +"%")
   end
 
   # GET /videos/1 or /videos/1.json
