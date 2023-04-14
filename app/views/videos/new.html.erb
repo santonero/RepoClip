@@ -1,7 +1,7 @@
 <%= turbo_frame_tag "add" do %>
   <div class="p-relative" style="margin-top:12px;" id="uploadf">
     <div class="hero hero-sm bg-dark p-relative text-center">
-      <%= link_to "", videos_path, class:"btn btn-clear btn-lg p-absolute tooltip tooltip-left", "data-tooltip": "Close", style:"top:5px;right:5px;" %><h3 style="padding-left:25px;padding-right:25px;"> Upload your Clip <i class="icon icon-arrow-down pt-1" id="arrow"></i></h4>
+      <%= link_to "", videos_path, class:"btn btn-clear btn-lg p-absolute tooltip tooltip-left", "data-tooltip": "Close", style:"top:5px;right:5px;" %><h2 style="padding-left:25px;padding-right:25px;"> Upload your Clip <i class="icon icon-arrow-down pt-1" id="arrow"></i></h2>
     </div>
     <%= render "form", video: @video %>
     <br>

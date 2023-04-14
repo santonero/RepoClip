@@ -52,7 +52,31 @@
 }
 
 .video-js.video-js:hover .vjs-big-play-button{
-  background-color : #5755d9;
+  background-image:linear-gradient(to right,#9933ff,#5755d9);
+}
+
+.video-js .vjs-play-progress {
+  background-image:linear-gradient(to right,#9933ff,#5755d9);
+}
+
+.vjs-volume-panel.vjs-control.vjs-volume-panel-horizontal:hover {
+  background-image:linear-gradient(to right,#9933ff,#5755d9);
+}
+
+.video-js .vjs-play-control:hover { 
+  background-image:linear-gradient(to right,#9933ff,#5755d9);
+}
+
+.vjs-menu-item.vjs-selected { 
+  background-image:linear-gradient(to right,#9933ff,#5755d9);
+}
+
+.video-js .vjs-fullscreen-control.vjs-control {
+  background-image:linear-gradient(to right,#9933ff,#5755d9);
+}
+
+.vjs-menu-item-text {
+  color: white;
 }
 
 .video-js.video-js .vjs-menu-content {
@@ -63,6 +87,12 @@
   margin-left: 1.1%;
   margin-right: 1.1%;
   margin-top: 14px;
+}
+
+.placeholder { 
+  background-color: #bcc3ce !important;
+  color: #0000;
+  border-radius: 20px;
 }
 
 #comcont {
@@ -93,15 +123,6 @@
   margin-top: 1.5rem;
   padding: .5rem;
   text-align: center;
-}
-
-#deleteit:hover {
-  background-color: #e60000 !important;
-
-}
-
-#deletea:hover {
-  color: #e60000 !important;
 }
 
 #uploadf {

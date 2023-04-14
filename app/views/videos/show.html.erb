@@ -1,5 +1,6 @@
 <% content_for :head do %>
   <meta name="turbo-visit-control" content="reload">
+  <%= stylesheet_link_tag "https://vjs.zencdn.net/8.0.4/video-js.css" %>
   <%= javascript_import_module_tag "videojs" %>
 <% end %>
 
@@ -10,7 +11,7 @@
   <div class="toast toast-error"><button class="btn btn-clear float-right" onclick="document.body.removeChild(this.parentNode)"></button><%= alert %></div>
 <% end %>
 <%= render "navbar" %>
-<div class="loader-container container grid-lg" style="margin-left:initial;display:flex;align-items:center;justify-content: center;">
+<div class="loader-container container grid-xl" style="margin-left:initial;display:flex;align-items:center;justify-content: center;">
   <div class="loading loading-lg"></div>
 </div>
 <%= render @video %>
@@ -25,12 +26,19 @@
     <%= render @video.comments %>
   </div>
   <h5 class="container">Add a comment:</h5>
-  <%= render 'comments/form' %>
+  <%= turbo_frame_tag "new_comment", src: new_video_comment_path(@video), loading: "lazy", target: "_top" %>
   </div>
 </div>
 <script>
 window.addEventListener('load', () => {
   document.querySelector('.loader-container').style.display ="none";
   document.querySelector('.divider').style.visibility ="visible";
+  const ph = document.querySelectorAll(".placeholder");
+  window.setTimeout(removePlaceholder, 1100);
+  function removePlaceholder() {
+  ph.forEach((element) => {
+    element.classList.remove("placeholder");
+  });
+  }
 })
 </script>
