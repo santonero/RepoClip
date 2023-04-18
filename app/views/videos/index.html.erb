@@ -5,13 +5,13 @@
   <div class="toast toast-error"><button class="btn btn-clear float-right" onclick="document.body.removeChild(this.parentNode)"></button><%= alert %></div>
 <% end %>
 <%= render "navbar" %>
-<div class= "container" style="padding-top:14px;">
+<div class= "container" style="padding-top:2.8%;">
   <%= render "grid" %>
 </div>
 <%= turbo_frame_tag "add" do %>
   <div><div class=" text-bold" style="display:table;margin: 0 auto;font-size:24px;color:rgb(87, 85, 217);padding-top:22px;padding-bottom:22px;"><%= link_to content_tag(:i,'',class:"icon icon-plus", id:"plus"), new_video_path, class: "btn btn-primary btn-action btn-lg s-circle", id: "gradient" %> Add Video</div></div>
 <% end %>
-<div class="hero hero-sm bg-primary text-light text-center" style="margin-bottom:30px;">
+<div class="hero hero-sm bg-primary text-light text-center" style="margin-bottom:2.4%;">
   <div class="container grid-lg">
       <h2> Introduction </h2>
     <div class="columns">

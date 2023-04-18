@@ -1,19 +1,35 @@
-<%= turbo_frame_tag "new_comment" do %>
-<div id="commform">
-<%= form_with(model: [@video, @video.comments.build], data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }) do |form| %>
+<%= form_with(model: [@video, @video.comments.build], id: "comform_frame") do |form| %>
   <div class="column col-6 col-xs-12 p-2" style="margin-bottom:16px;">
-    <div class="form-group">
-     <%= form.label :author, class: "form-label" %><br>
-     <%= form.text_field :commenter, class: "form-input", placeholder: :"Your name (mandatory)" %>
-    </div>
-    <div class="form-group">
-     <%= form.label :comment, class: "form-label" %><br>
-     <%= form.text_area :body, class: "form-input", placeholder: :"Your comment" %>
-    </div>
-    <div class="form-group">
-     <%= form.submit class: "btn btn-primary input-group-btn" %>
-    </div>
+    <% if comment.errors.full_messages_for(:commenter).any? %>
+      <div class="form-group has-error">
+        <%= form.label :author, class: "form-label" %><br>
+        <%= form.text_field :commenter, class: "form-input", placeholder: :"Your name (mandatory)" %>
+        <% comment.errors.full_messages_for(:commenter).each do |message| %>
+          <p class="form-input-hint"><%= message %></p>
+        <% end %>
+    <% else %>
+      <div class="form-group">
+        <%= form.label :author, class: "form-label" %><br>
+        <%= form.text_field :commenter, class: "form-input", placeholder: :"Your name (mandatory)" %>
+    <% end %>
+      </div>
+
+    <% if comment.errors.full_messages_for(:body).any? %>
+      <div class="form-group has-error">
+        <%= form.label :comment, class: "form-label" %><br>
+        <%= form.text_area :body, class: "form-input", placeholder: :"Your comment" %>
+        <% comment.errors.full_messages_for(:body).each do |message| %>
+          <p class="form-input-hint"><%= message %></p>
+        <% end %>
+    <% else %>
+      <div class="form-group">
+        <%= form.label :comment, class: "form-label" %><br>
+        <%= form.text_area :body, class: "form-input", placeholder: :"Your comment" %>
+    <% end %>
+      </div>
+      
+      <div class="form-group">
+        <%= form.submit class: "btn btn-primary input-group-btn" %>
+      </div>
   </div>
-<% end %>
-</div>
 <% end %>

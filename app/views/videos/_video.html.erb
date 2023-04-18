@@ -22,10 +22,23 @@
     </p>
   </div>
   <div id="vidact" style="display: flex; justify-content: flex-end">
-    <%= link_to content_tag(:i,'',class:"icon icon-cross"), video_path(@video), data: { turbo_method: :delete, turbo_confirm: "Are you sure ?"} , class: "btn btn-primary btn-action btn-lg s-circle mx-1 tooltip tooltip-left", "data-tooltip":"Delete" %>
-    <%= turbo_frame_tag "edit" do %>
-      <%= link_to content_tag(:i,'',class:"icon icon-edit"), edit_video_path(@video), class: "btn btn-primary btn-action btn-lg s-circle tooltip", "data-turbo-frame": "editing", "data-tooltip":"Edit" %>
-    <% end %>
+    <%= link_to content_tag(:i,'',class:"icon icon-cross"), video_path(@video), data: { turbo_method: :delete, turbo_confirm: "Are you sure ?"} , class: "btn btn-primary btn-action btn-lg s-circle mx-1 tooltip tooltip-left", "data-tooltip":"Delete Video" %>
+    <%= link_to content_tag(:i,'',class:"icon icon-edit"), edit_video_path(@video),onclick:"const e=document.getElementById('editm');const media=document.querySelector('video');media.pause();e.classList.add('active');return false;", class: "btn btn-primary btn-action btn-lg s-circle tooltip",style: "background-image:linear-gradient(to right,#9933ff,#5755d9);", "data-tooltip":"Edit" %>
   </div>
-  <turbo-frame id="editing"></turbo-frame>
+  <div class="modal" id="editm">
+    <%= link_to "",video_path, onclick:"const media=document.querySelector('video');const e=document.getElementById('editm');e.classList.remove('active');media.play();return false;", class:"modal-overlay" %>
+    <div class="modal-container">
+    <div class="modal-header">
+      <%= link_to "",video_path, onclick:"const media=document.querySelector('video');const e=document.getElementById('editm');e.classList.remove('active');media.play();return false;", class:"btn btn-clear float-right" %>
+      <div class="modal-title h5">Edit</div>
+    </div>
+    <div class="modal-body">
+      <div class="content" style="overflow-x:hidden;">
+      <%= turbo_frame_tag "add", src: edit_video_path, loading: "lazy" %>
+      </div>
+    </div>
+    <div class="modal-footer">
+    </div>
+    </div>
+  </div>
 </div>

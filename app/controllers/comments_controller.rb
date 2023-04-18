@@ -3,18 +3,18 @@ http_basic_authenticate_with name: "dhh", password: "secret", only: :destroy
 
   def new
     @video = Video.find(params[:video_id])
+    @comment = @video.comments.new
   end
  
   def create
     @video = Video.find(params[:video_id])
-    @comment = @video.comments.create(comment_params)
+    @comment = @video.comments.new(comment_params)
     respond_to do |format|
       if @comment.save
         format.turbo_stream
         format.html { redirect_to video_path(@video), notice: "Comment was successfully added." }
       else
-        format.turbo_stream { render :errorform }
-        format.html { redirect_to video_path(@video), alert: "Comment must have between 2 and 300 characters." }
+        format.html { render :new, status: :unprocessable_entity }
       end
     end
   end

@@ -16,7 +16,7 @@ class Video < ApplicationRecord
 
     def correct_video_type
         if clip.attached? && !clip.content_type.in?(%w(video/mp4 video/webm))
-            errors.add(:Video, "must be a MP4 or WEBM")
+            errors.add(:clip, "must be a MP4 or WEBM")
         end
     end
 
@@ -28,7 +28,7 @@ class Video < ApplicationRecord
 
     def correct_clip_size
         if clip.attached? && clip.byte_size > 150.megabytes
-            errors.add(:Video, "should be less than 150MB")
+            errors.add(:clip, "should be less than 150MB")
         end
     end
 
