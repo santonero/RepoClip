@@ -11,7 +11,7 @@
   <div class="toast toast-error"><button class="btn btn-clear float-right" onclick="document.body.removeChild(this.parentNode)"></button><%= alert %></div>
 <% end %>
 <%= render "navbar" %>
-<div class="loader-container container grid-xl" style="margin-left:initial;display:flex;align-items:center;justify-content: center;">
+<div class="container grid-xl" id="loader-container" style="margin-left:initial;display:flex;align-items:center;justify-content: center;">
   <div class="loading loading-lg"></div>
 </div>
 <%= render @video %>
@@ -33,14 +33,14 @@
 </div>
 <script>
 window.addEventListener('load', () => {
-  document.querySelector('.loader-container').style.display ="none";
+  document.getElementById('loader-container').style.display ="none";
   document.querySelector('.divider').style.visibility ="visible";
-  const ph = document.querySelectorAll(".placeholder");
-  window.setTimeout(removePlaceholder, 1010);
+  const ph = document.getElementsByClassName("placeholder");
+  window.setTimeout(removePlaceholder, 900);
   function removePlaceholder() {
-  ph.forEach((element) => {
-    element.classList.remove("placeholder");
-  });
+    while(ph.length){
+      ph[0].classList.remove("placeholder");
+    }
   }
 })
 </script>

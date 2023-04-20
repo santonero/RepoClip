@@ -38,6 +38,10 @@
   box-shadow: none;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 .video-js.video-js .vjs-big-play-button {
   top: 50%;
     left: 50%;
@@ -92,7 +96,7 @@
 
 .placeholder { 
   background-color: #bcc3ce !important;
-  color: #0000;
+  color: #0000 !important;
   border-radius: 20px;
 }
 
@@ -109,8 +113,8 @@
   z-index:2;
 }
 
-.loader-container {
-  position: absolute;
+#loader-container {
+  position: fixed;
   top: 0;
   left: 1.1%;
   right: 0;
