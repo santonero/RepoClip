@@ -42,6 +42,31 @@
   visibility: hidden;
 }
 
+.placeholder { 
+  background-color: #bcc3ce !important;
+  color: #0000 !important;
+  border-radius: 20px;
+}
+
+#new_video:hover {
+  background: #4240d4 !important;
+  box-shadow: 0 0 0 .1rem rgba(87,85,217,.2);
+  transition: box-shadow .2s;
+}
+
+.icon-3x {
+  transition: transform .3s;
+  transform: scale(1.40,1.40); 
+}
+
+.modal-container {
+  box-shadow: 0 .2rem .5rem rgba(48,55,66,.3) !important;
+}
+
+.modal-overlay { 
+  background: rgba(247,248,249,.75) !important;
+}
+
 .video-js.video-js .vjs-big-play-button {
   top: 50%;
     left: 50%;
@@ -94,12 +119,6 @@
   margin-top: 14px;
 }
 
-.placeholder { 
-  background-color: #bcc3ce !important;
-  color: #0000 !important;
-  border-radius: 20px;
-}
-
 #comcont {
   margin-left: 1.1%;
   margin-right: 1.1%;
@@ -128,71 +147,4 @@
   margin-top: 1.5rem;
   padding: .5rem;
   text-align: center;
-}
-
-#uploadf {
-  animation: comein 0.4s;
-}
-
-@keyframes comein {
-  from {top: -245px; opacity: 0}
-  to {top: 0; opacity: 1}
-}
-
-#arrow {
-  -webkit-animation: pointing 3.5s ease infinite;
-  -moz-animation: poiting 3.5s ease infinite;
-  animation: pointing 3.5s ease infinite;
-}
-
-@keyframes pointing {
-  0% {top:0px;color:#69c6ed;}
-  25% {color:#8a68ed;}
-  50% {top:24px;color:#b569ed;}
-  75% {color:#e469ed}
-  100% {top:0px;color:#69c6ed}
-}
-
-#gradient {
-  --border-width: 4px;
-  position: relative;
-}
-
-#gradient::after {
-    position: absolute;
-    content: "";
-    top: calc(-1 * var(--border-width));
-    left: calc(-1 * var(--border-width));
-    z-index: -1;
-    width: calc(100% + var(--border-width) * 2);
-    height: calc(100% + var(--border-width) * 2);
-    background: linear-gradient(
-      60deg,
-      hsl(224, 85%, 66%),
-      hsl(269, 85%, 66%),
-      hsl(314, 85%, 66%),
-      hsl(359, 85%, 66%),
-      hsl(44, 85%, 66%),
-      hsl(89, 85%, 66%),
-      hsl(134, 85%, 66%),
-      hsl(179, 85%, 66%)
-    );
-    background-size: 300% 300%;
-    background-position: 0 50%;
-    border-radius: calc(6 * var(--border-width));
-    animation: moveGradient 4s alternate infinite;
-  }
-
-@keyframes moveGradient {
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-#plus {
-  transition: transform .4s;
-}
-
-#plus:hover {
-  transform: rotate(90deg);
 }

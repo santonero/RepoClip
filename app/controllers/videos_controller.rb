@@ -3,11 +3,11 @@ class VideosController < ApplicationController
 
   # GET /videos or /videos.json
   def index
-    @videos = Video.with_attached_thumbnail.all
+    @videos = Video.with_attached_thumbnail.all.order(created_at: :desc)
   end
 
   def search
-    @videos = Video.with_attached_thumbnail.where("title ILIKE ?", "%"+ Video.sanitize_sql_like(params[:query]) +"%")
+    @videos = Video.with_attached_thumbnail.where("title ILIKE ?", "%"+ Video.sanitize_sql_like(params[:query]) +"%").order(created_at: :desc)
   end
 
   # GET /videos/1 or /videos/1.json

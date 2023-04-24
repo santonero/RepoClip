@@ -1,8 +1,3 @@
 <%= turbo_frame_tag "add" do %>
-<%= render "form", video: @video %>
-<script>
-tt=document.getElementsByClassName('tooltip-right');
-for(i=0;i<tt.length;i++){
-  tt[i].classList.remove('tooltip');}
-</script>
+  <%= render "form", video: @video %>
 <% end %>

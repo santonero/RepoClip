@@ -8,6 +8,12 @@
         <%= link_to(time_ago_in_words(video.created_at)+" ago", video, class: "no-shadow placeholder", style: "width:100%;text_align:left;font-size:14px;font-weight:500;color:#97a2b4;padding-left:2px;text-decoration-line:none;") %>
     </div>
   <% end %>
+  <% unless controller_name == "videos" && action_name == "search"%>
+    <div class ="card">
+    <%= turbo_frame_tag "add" do %>
+      <div class="card-image placeholder bg-primary" id="new_video" onclick="const e=document.getElementById('uploadm');e.classList.add('active');" onmouseover="document.getElementById('plus').classList.replace('icon-2x','icon-3x');" onmouseleave="document.getElementById('plus').classList.replace('icon-3x','icon-2x');" style="display:flex;aspect-ratio:16/9;border-radius:12px;align-items:center;justify-content:center;cursor: pointer;"><i class="icon icon-2x icon-plus" id="plus"></i></div></div>
+    <% end %>
+  <% end %>
 </div>
 <script>
 document.addEventListener("turbo:load", () => {

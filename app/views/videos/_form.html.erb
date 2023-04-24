@@ -15,28 +15,28 @@
       </div>
 
     <% if video.errors.full_messages_for(:clip).any? %>
-      <div class= "form-group has-error tooltip tooltip-right" data-tooltip="Please upload small sized file (<150MB), as its a&#10;&#13;portfolio and i dont have infinite space.">
+      <div class= "form-group has-error tooltip" data-tooltip="Please upload small sized file (<150MB), as its a&#10;&#13;portfolio and i dont have infinite space.">
         <%= form.label :clip, class: "form-label" %>
         <%= form.file_field :clip, class: "form-input" %>
         <% video.errors.full_messages_for(:clip).each do |message| %>
           <p class="form-input-hint"><%= message %></p>
         <% end %>
     <% else %>
-      <div class= "form-group tooltip tooltip-right" data-tooltip="Please upload small sized file (<150MB), as its a&#10;&#13;portfolio and i dont have infinite space.">
+      <div class= "form-group tooltip" data-tooltip="Please upload small sized file (<150MB), as its a&#10;&#13;portfolio and i dont have infinite space.">
         <%= form.label :clip, class: "form-label" %>
         <%= form.file_field :clip, class: "form-input" %>
     <% end %>
       </div>
 
     <% if video.errors.full_messages_for(:thumbnail).any? %>
-      <div class= "form-group has-error tooltip tooltip-right" data-tooltip="We recommend your custom thumbnails: &#10;&#13; • Have a resolution of 1280x720. &#10;&#13; • Be uploaded in JPG or PNG formats. &#10;&#13; • Remain under the 2MB limit. &#10;&#13; • Try to use a 16:9 aspect ratio.">
+      <div class= "form-group has-error tooltip" data-tooltip="We recommend your custom thumbnails: &#10;&#13; • Have a resolution of 1280x720. &#10;&#13; • Be uploaded in JPG or PNG formats. &#10;&#13; • Remain under the 2MB limit. &#10;&#13; • Try to use a 16:9 aspect ratio.">
         <%= form.label :thumbnail, class: "form-label" %>
         <%= form.file_field :thumbnail, class: "form-input" %>
         <% video.errors.full_messages_for(:thumbnail).each do |message| %>
           <p class="form-input-hint"><%= message %></p>
         <% end %>
     <% else %>
-      <div class= "form-group tooltip tooltip-right" data-tooltip="We recommend your custom thumbnails: &#10;&#13; • Have a resolution of 1280x720. &#10;&#13; • Be uploaded in JPG or PNG formats. &#10;&#13; • Remain under the 2MB limit. &#10;&#13; • Try to use a 16:9 aspect ratio.">
+      <div class= "form-group tooltip" data-tooltip="We recommend your custom thumbnails: &#10;&#13; • Have a resolution of 1280x720. &#10;&#13; • Be uploaded in JPG or PNG formats. &#10;&#13; • Remain under the 2MB limit. &#10;&#13; • Try to use a 16:9 aspect ratio.">
         <%= form.label :thumbnail, class: "form-label" %>
         <%= form.file_field :thumbnail, class: "form-input" %>
     <% end %>
