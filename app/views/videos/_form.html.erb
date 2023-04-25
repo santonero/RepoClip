@@ -1,63 +1,66 @@
-<%= form_with(model: video) do |form| %>
-  <div class="column col-6 col-xs-12 pt-2 p-centered">
-    <% if video.errors.full_messages_for(:title).any? %>
-      <div class="form-group has-error">
-        <%= form.label :title, class: "form-label" %>
-        <%= form.text_field :title, class: "form-input", placeholder: "Title" %>
-        <% video.errors.full_messages_for(:title).each do |message| %>
-          <p class="form-input-hint"><%= message %></p>
-        <% end %>
-    <% else %>
-      <div class="form-group">
-        <%= form.label :title, class: "form-label" %>
-        <%= form.text_field :title, class: "form-input", placeholder: "Title" %>
-    <% end %>
-      </div>
+<%= form_with(model: video, data: {controller: "form-load", action:"turbo:submit-start->form-load#showload"}, id: "vidform") do |form| %>
+  <% if video.errors.full_messages_for(:title).any? %>  
+    <div class="form-group has-error">
+      <%= form.label :title, class: "form-label" %>
+      <%= form.text_field :title, class: "form-input", placeholder: "Title" %>
+      <% video.errors.full_messages_for(:title).each do |message| %>
+        <p class="form-input-hint"><%= message %></p>
+      <% end %>
+  <% elsif video.errors.full_messages_for(:title).empty? && response.status == 422 %>
+    <div class="form-group has-success">
+      <%= form.label :title, class: "form-label" %>
+      <%= form.text_field :title, class: "form-input", placeholder: "Title" %>
+      <p class="form-input-hint">The title is valid.</p>
+  <% else %>
+    <div class="form-group">
+      <%= form.label :title, class: "form-label" %>
+      <%= form.text_field :title, class: "form-input", placeholder: "Title" %>
+  <% end %>
+    </div>
 
-    <% if video.errors.full_messages_for(:clip).any? %>
-      <div class= "form-group has-error tooltip" data-tooltip="Please upload small sized file (<150MB), as its a&#10;&#13;portfolio and i dont have infinite space.">
-        <%= form.label :clip, class: "form-label" %>
-        <%= form.file_field :clip, class: "form-input" %>
-        <% video.errors.full_messages_for(:clip).each do |message| %>
-          <p class="form-input-hint"><%= message %></p>
-        <% end %>
-    <% else %>
-      <div class= "form-group tooltip" data-tooltip="Please upload small sized file (<150MB), as its a&#10;&#13;portfolio and i dont have infinite space.">
-        <%= form.label :clip, class: "form-label" %>
-        <%= form.file_field :clip, class: "form-input" %>
-    <% end %>
-      </div>
+  <% if video.errors.full_messages_for(:clip).any? %>
+    <div class= "form-group has-error tooltip" data-tooltip="Please upload small sized file (<150MB), as its a&#10;&#13;portfolio and i dont have infinite space.">
+      <%= form.label :clip, class: "form-label" %>
+      <%= form.file_field :clip, class: "form-input" %>
+      <% video.errors.full_messages_for(:clip).each do |message| %>
+        <p class="form-input-hint"><%= message %></p>
+      <% end %>
+  <% else %>
+    <div class= "form-group tooltip" data-tooltip="Please upload small sized file (<150MB), as its a&#10;&#13;portfolio and i dont have infinite space.">
+      <%= form.label :clip, class: "form-label" %>
+      <%= form.file_field :clip, class: "form-input" %>
+  <% end %>
+    </div>
 
-    <% if video.errors.full_messages_for(:thumbnail).any? %>
-      <div class= "form-group has-error tooltip" data-tooltip="We recommend your custom thumbnails: &#10;&#13; • Have a resolution of 1280x720. &#10;&#13; • Be uploaded in JPG or PNG formats. &#10;&#13; • Remain under the 2MB limit. &#10;&#13; • Try to use a 16:9 aspect ratio.">
-        <%= form.label :thumbnail, class: "form-label" %>
-        <%= form.file_field :thumbnail, class: "form-input" %>
-        <% video.errors.full_messages_for(:thumbnail).each do |message| %>
-          <p class="form-input-hint"><%= message %></p>
-        <% end %>
-    <% else %>
-      <div class= "form-group tooltip" data-tooltip="We recommend your custom thumbnails: &#10;&#13; • Have a resolution of 1280x720. &#10;&#13; • Be uploaded in JPG or PNG formats. &#10;&#13; • Remain under the 2MB limit. &#10;&#13; • Try to use a 16:9 aspect ratio.">
-        <%= form.label :thumbnail, class: "form-label" %>
-        <%= form.file_field :thumbnail, class: "form-input" %>
-    <% end %>
-      </div>
+  <% if video.errors.full_messages_for(:thumbnail).any? %>
+    <div class= "form-group has-error tooltip" data-tooltip="We recommend your custom thumbnails: &#10;&#13; • Have a resolution of 1280x720. &#10;&#13; • Be uploaded in JPG or PNG formats. &#10;&#13; • Remain under the 2MB limit. &#10;&#13; • Try to use a 16:9 aspect ratio.">
+      <%= form.label :thumbnail, class: "form-label" %>
+      <%= form.file_field :thumbnail, class: "form-input" %>
+      <% video.errors.full_messages_for(:thumbnail).each do |message| %>
+        <p class="form-input-hint"><%= message %></p>
+      <% end %>
+  <% else %>
+    <div class= "form-group tooltip" data-tooltip="We recommend your custom thumbnails: &#10;&#13; • Have a resolution of 1280x720. &#10;&#13; • Be uploaded in JPG or PNG formats. &#10;&#13; • Remain under the 2MB limit. &#10;&#13; • Try to use a 16:9 aspect ratio.">
+      <%= form.label :thumbnail, class: "form-label" %>
+      <%= form.file_field :thumbnail, class: "form-input" %>
+  <% end %>
+    </div>
 
-    <% if video.errors.full_messages_for(:description).any? %>
-      <div class="form-group has-error">
-        <%= form.label :description, class: "form-label" %>
-        <%= form.text_area :description, class: "form-input", placeholder:"Description about the video (optional)", rows: "3" %>
-        <% video.errors.full_messages_for(:description).each do |message| %>
-          <p class="form-input-hint"><%= message %></p>
-        <% end %>
-    <% else %>
-      <div class="form-group">
-        <%= form.label :description, class: "form-label" %>
-        <%= form.text_area :description, class: "form-input", placeholder:"Description about the video (optional)", rows: "3" %>
-    <% end %>
-      </div>
+  <% if video.errors.full_messages_for(:description).any? %>
+    <div class="form-group has-error">
+      <%= form.label :description, class: "form-label" %>
+      <%= form.text_area :description, class: "form-input", placeholder:"Description about the video (optional)", rows: "3" %>
+      <% video.errors.full_messages_for(:description).each do |message| %>
+        <p class="form-input-hint"><%= message %></p>
+      <% end %>
+  <% else %>
+    <div class="form-group">
+      <%= form.label :description, class: "form-label" %>
+      <%= form.text_area :description, class: "form-input", placeholder:"Description about the video (optional)", rows: "3" %>
+  <% end %>
+    </div>
 
-      <div class= "form-group">
-        <%= form.submit class: "btn btn-primary input-group-btn" %>
-      </div>
-  </div>
+    <div class= "form-group">
+      <%= form.submit class: "btn btn-primary input-group-btn", style: "float:left;" %><div id="formload" style="float:left;position:relative;left:14px;top:9px;"></div>
+    </div>
 <% end %>

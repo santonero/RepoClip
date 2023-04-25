@@ -6,7 +6,7 @@ pin "@hotwired/stimulus", to: "stimulus.min.js", preload: true
 pin "@hotwired/stimulus-loading", to: "stimulus-loading.js", preload: true
 pin_all_from "app/javascript/controllers", under: "controllers"
 pin "videojs"
-pin "video.js", to: "https://ga.jspm.io/npm:video.js@8.0.4/dist/video.es.js"
+pin "video.js", to: "https://ga.jspm.io/npm:video.js@8.3.0/dist/video.es.js"
 pin "@babel/runtime/helpers/assertThisInitialized", to: "https://ga.jspm.io/npm:@babel/runtime@7.21.0/helpers/esm/assertThisInitialized.js"
 pin "@babel/runtime/helpers/construct", to: "https://ga.jspm.io/npm:@babel/runtime@7.21.0/helpers/esm/construct.js"
 pin "@babel/runtime/helpers/extends", to: "https://ga.jspm.io/npm:@babel/runtime@7.21.0/helpers/esm/extends.js"

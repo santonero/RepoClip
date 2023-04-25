@@ -16,7 +16,7 @@
   <% end %>
 </div>
 <script>
-document.addEventListener("turbo:load", () => {
+document.documentElement.addEventListener("turbo:load", () => {
   const ph = document.getElementsByClassName('placeholder');
   const hid = document.getElementsByClassName('hidden');
   while(ph.length){
