@@ -1,6 +1,6 @@
 <% content_for :head do %>
   <meta name="turbo-visit-control" content="reload">
-  <%= stylesheet_link_tag "https://vjs.zencdn.net/8.0.4/video-js.css" %>
+  <%= stylesheet_link_tag "https://vjs.zencdn.net/8.3.0/video-js.css" %>
   <%= javascript_import_module_tag "videojs" %>
 <% end %>
 
@@ -16,30 +16,29 @@
 </div>
 <%= render @video %>
 <div data-controller="play"></div>
-<div class="container">
 <div class="container" id="comcont">
-  <div class="divider" style="visibility:hidden;"></div>
+  <div class="divider hidden"></div>
   <div class="container">
     <%= render 'comments/ccount' %>
   </div>
-  <div id="comments">
+  <div id="comments" class="column col-12 hidden" style="width:99.3%;">
     <%= render @video.comments %>
   </div>
   <h5 class="container">Add a comment:</h5>
-  <div id="commform">
-  <%= turbo_frame_tag "new_comment", src: new_video_comment_path(@video) %>
-  </div>
+  <div class="column col-9 col-xs-12 col-sm-12 col-md-11 col-lg-9 p-2" style="margin-bottom:16px;">
+    <%= turbo_frame_tag "new_comment", src: new_video_comment_path(@video) %>
   </div>
 </div>
 <script>
 window.addEventListener('load', () => {
   document.getElementById('loader-container').style.display ="none";
-  document.querySelector('.divider').style.visibility ="visible";
-  const ph = document.getElementsByClassName("placeholder");
+  document.querySelector('.divider').classList.remove('hidden');
+  document.getElementById('comments').classList.remove('hidden');
+  const ph = document.getElementsByClassName('placeholder');
   window.setTimeout(removePlaceholder, 800);
   function removePlaceholder() {
     while(ph.length){
-      ph[0].classList.remove("placeholder");
+      ph[0].classList.remove('placeholder');
     }
   }
 })

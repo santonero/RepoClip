@@ -67,6 +67,10 @@
   background: rgba(247,248,249,.75) !important;
 }
 
+.name-field {
+  padding-left: 0;
+}
+
 .video-js.video-js .vjs-big-play-button {
   top: 50%;
     left: 50%;
@@ -123,6 +127,12 @@
   margin-left: 1.1%;
   margin-right: 1.1%;
  }
+
+.label {
+  display: inline;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
 
 .navbar-section {
   z-index:2;

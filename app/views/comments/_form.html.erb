@@ -1,14 +1,13 @@
 <%= form_with(model: [@video, @video.comments.build], id: "comform_frame") do |form| %>
-  <div class="column col-6 col-xs-12 p-2" style="margin-bottom:16px;">
     <% if comment.errors.full_messages_for(:commenter).any? %>
-      <div class="form-group has-error">
+      <div class="form-group column col-9 col-xs-12 col-sm-12 col-md-10 col-lg-10 name-field has-error">
         <%= form.label :author, class: "form-label" %><br>
         <%= form.text_field :commenter, class: "form-input", placeholder: :"Your name (mandatory)" %>
         <% comment.errors.full_messages_for(:commenter).each do |message| %>
           <p class="form-input-hint"><%= message %></p>
         <% end %>
     <% else %>
-      <div class="form-group">
+      <div class="form-group column col-8 col-xs-12 col-sm-12 col-md-9 col-lg-9 name-field">
         <%= form.label :author, class: "form-label" %><br>
         <%= form.text_field :commenter, class: "form-input", placeholder: :"Your name (mandatory)" %>
     <% end %>
@@ -31,5 +30,4 @@
       <div class="form-group">
         <%= form.submit class: "btn btn-primary input-group-btn" %>
       </div>
-  </div>
 <% end %>

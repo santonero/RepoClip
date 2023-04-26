@@ -1,9 +1,9 @@
 <div class="container" style="margin-left:20px;">
-  <p>
+  <p style="word-wrap:break-word;">
     <span class="label label-rounded"><%= comment.commenter %></span>
   </p>
   <p>
-    <span style="margin-left:6px;"><%= comment.body %></span>
+    <span style="margin-left:6px;word-wrap: break-word;"><%= comment.body %></span>
   </p>
   <p style="font-size:11px;">
     <%= link_to "Delete comment", [comment.video, comment], data: { turbo_method: :delete, turbo_confirm: "Are you sure ?" } %>
