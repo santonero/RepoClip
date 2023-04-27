@@ -5,10 +5,9 @@
   <div class="toast toast-error"><button class="btn btn-clear float-right" onclick="document.body.removeChild(this.parentNode)"></button><%= alert %></div>
 <% end %>
 <%= render "navbar" %>
-<div class= "container" style="padding-top:2.8%;">
+<div class= "container" style="padding-top:2.8%;padding-bottom:2.7em;">
   <%= render "grid" %>
 </div>
-  <div style="padding-top:26px;padding-bottom:26px"></div>
 <div class="modal modal-lg" id="uploadm">
   <%= link_to "",root_path, onclick:"const e=document.getElementById('uploadm');e.classList.remove('active');return false;", class:"modal-overlay" %>
   <div class="modal-container">

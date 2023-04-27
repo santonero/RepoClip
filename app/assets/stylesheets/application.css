@@ -61,6 +61,7 @@
 
 .modal-container {
   box-shadow: 0 .2rem .5rem rgba(48,55,66,.3) !important;
+  max-height: 78vh;
 }
 
 .modal-overlay { 
@@ -140,6 +141,23 @@
 
 .navbar-center {
   z-index:2;
+}
+
+@media only screen and (max-width: 460px) {
+  .navbar-center {
+    width: 53%;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  #navlogo {
+    display: none;
+  }
+
+  .navbar-center {
+    -ms-flex:1 0 0 !important;
+    flex:1 0 0 !important;
+  }
 }
 
 #loader-container {
