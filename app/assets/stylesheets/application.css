@@ -13,6 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+ html { 
+  scroll-behavior: smooth;
+ }
+ 
 #grid {
     display: flex;
     flex-direction: row;
@@ -168,6 +173,16 @@
   bottom: 0;
   z-index: 1;
   background: white;
+}
+
+.decor:hover {
+  text-decoration: none;
+  height: fit-content;
+}
+.decor:active, .decor:focus {
+  text-decoration: none;
+  height: fit-content;
+  border-radius:12px;
 }
 
 .docs-footer {

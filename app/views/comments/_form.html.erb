@@ -1,27 +1,27 @@
 <%= form_with(model: [@video, @video.comments.build], id: "comform_frame") do |form| %>
     <% if comment.errors.full_messages_for(:commenter).any? %>
-      <div class="form-group column col-9 col-xs-12 col-sm-12 col-md-10 col-lg-10 name-field has-error">
+      <div class="form-group column col-9 col-xs-12 col-sm-12 col-md-10 col-lg-10 name-field has-error" style="max-width:520px;">
         <%= form.label :author, class: "form-label" %><br>
         <%= form.text_field :commenter, class: "form-input", placeholder: :"Your name (mandatory)" %>
         <% comment.errors.full_messages_for(:commenter).each do |message| %>
           <p class="form-input-hint"><%= message %></p>
         <% end %>
     <% else %>
-      <div class="form-group column col-8 col-xs-12 col-sm-12 col-md-9 col-lg-9 name-field">
+      <div class="form-group column col-8 col-xs-12 col-sm-12 col-md-9 col-lg-9 name-field" style="max-width:520px;">
         <%= form.label :author, class: "form-label" %><br>
         <%= form.text_field :commenter, class: "form-input", placeholder: :"Your name (mandatory)" %>
     <% end %>
       </div>
 
     <% if comment.errors.full_messages_for(:body).any? %>
-      <div class="form-group has-error">
+      <div class="form-group has-error" style="max-width:820px;">
         <%= form.label :comment, class: "form-label" %><br>
         <%= form.text_area :body, class: "form-input", placeholder: :"Your comment" %>
         <% comment.errors.full_messages_for(:body).each do |message| %>
           <p class="form-input-hint"><%= message %></p>
         <% end %>
     <% else %>
-      <div class="form-group">
+      <div class="form-group" style="max-width:820px;">
         <%= form.label :comment, class: "form-label" %><br>
         <%= form.text_area :body, class: "form-input", placeholder: :"Your comment" %>
     <% end %>

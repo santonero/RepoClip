@@ -15,25 +15,17 @@
   <div class="loading loading-lg"></div>
 </div>
 <%= render @video %>
-<div data-controller="play"></div>
+<template data-controller="play"></template>
 <div class="container" id="comcont">
-  <div class="divider hidden"></div>
-  <div class="container">
-    <%= render 'comments/ccount' %>
-  </div>
-  <div id="comments" class="column col-12 hidden" style="width:99.3%;">
-    <%= render @video.comments %>
-  </div>
-  <h5 class="container">Add a comment:</h5>
-  <div class="column col-9 col-xs-12 col-sm-12 col-md-11 col-lg-9 p-2" style="margin-bottom:16px;">
+<%= turbo_frame_tag "comzone", src: video_comment_path(@video) %>
+  <h5 class="container" style="margin-left:1.1%;">Add a comment: </h5>
+  <div class="column col-9 col-xs-12 col-sm-12 col-md-11 col-lg-9 p-2" style="margin-left:1.1%;margin-bottom:16px;">
     <%= turbo_frame_tag "new_comment", src: new_video_comment_path(@video) %>
   </div>
 </div>
 <script>
 window.addEventListener('load', () => {
   document.getElementById('loader-container').style.display ="none";
-  document.querySelector('.divider').classList.remove('hidden');
-  document.getElementById('comments').classList.remove('hidden');
   const ph = document.getElementsByClassName('placeholder');
   window.setTimeout(removePlaceholder, 800);
   function removePlaceholder() {
