@@ -1,11 +1,12 @@
-<div class="container" style="margin-left:20px;">
+<div class="container popover popover-right" style="display:block;margin-left:0;width:fit-content;">
+  <div class="popover-container">
+    <%= link_to content_tag(:i,'',class: "icon icon-cross"), [comment.video, comment], data: { turbo_method: :delete, turbo_confirm: "Are you sure ?" }, "data-turbo-frame": "_top", class: "no-shadow tooltip tooltip-bottom", "data-tooltip": "Delete" %>
+  </div>
   <p style="word-wrap:break-word;">
     <span class="label label-rounded"><%= comment.commenter %></span>
   </p>
   <p>
     <span style="margin-left:6px;word-wrap: break-word;"><%= comment.body %></span>
   </p>
-  <p style="font-size:11px;">
-    <%= link_to "Delete comment", [comment.video, comment], data: { turbo_method: :delete, turbo_confirm: "Are you sure ?" }, "data-turbo-frame": "_top" %>
-  </p>
+  <div style="height:16px;"></div>
 </div>

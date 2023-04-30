@@ -3,10 +3,10 @@
   <div class="container">
     <%= render 'comments/ccount' %>
   </div>
-  <div id="comments" class="column col-12" style="width:99.3%;">
+  <div id="comments" class="column col-12" style="width:96.4%;">
     <%= render @comments %>
   </div>
-  <% unless @pagination.total_pages == 1 %>
+  <% if @pagination.total_pages > 1 %>
     <div class="container" style="display:flex;">
       <% if @pagination.previous_page? %>
         <%= link_to "First", video_comment_path(page: 1),onclick: "scrollc();", class: "p-2 decor" %>
