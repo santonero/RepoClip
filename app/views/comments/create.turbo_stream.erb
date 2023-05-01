@@ -2,5 +2,5 @@
 <%= turbo_stream.replace "ccount", partial: "comments/ccount"  %>
 <%= turbo_stream.replace "comform_frame", partial: "comments/form", locals: { comment: @comment } %>
 <%= turbo_stream.append_all "body" do %>
-    <template data-controller="comscroll"></template>
+    <template data-controller="comjump"></template>
 <% end %>

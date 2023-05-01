@@ -13,16 +13,16 @@
     <source src=<%= url_for(@video.clip) %> type="video/mp4" />
     <source src=<%= url_for(@video.clip) %> type="video/webm" />
   </video>
-  <div class="vidtitle my-2 placeholder" style="margin-left:1px;display:inline-block">
+  <div class="vidtitle my-2 placeholder">
     <strong><%= video.title %></strong>
   </div>
-  <div class="vidate mb-2 placeholder" style="font-size:14px;margin-left:1px;display:table">Published on <%= video.created_at.strftime("%b %d, %Y") %></div>
+  <div class="vidate mb-2 placeholder">Published on <%= video.created_at.strftime("%b %d, %Y") %></div>
   <div>
-    <p class="videscr placeholder" style="border-radius:12px;padding:12px;background-color:#f7f8f9;">
+    <p class="videscr placeholder">
       <%= video.description %>
     </p>
   </div>
-  <div id="vidact" style="display: flex; justify-content: flex-end">
+  <div id="vidact">
     <%= link_to content_tag(:i,'',class:"icon icon-cross"), video_path(@video), data: { turbo_method: :delete, turbo_confirm: "Are you sure ?"} , class: "btn btn-primary btn-action btn-lg s-circle mx-1 tooltip tooltip-left", "data-tooltip":"Delete Video" %>
     <%= link_to content_tag(:i,'',class:"icon icon-share"),'',onclick:"const sh=document.getElementById('share');navigator.clipboard.writeText('#{video_url(@video)}');sh.dataset.tooltip='Link copied to clipboard';sh.classList.add('clicked');return false;",onmouseleave:"const sh=document.getElementById('share');if(sh.classList.contains('clicked')){setTimeout(blurIt,4000);sh.classList.remove('clicked');}function blurIt(){sh.blur();setTimeout(() => {sh.dataset.tooltip='Share';},200);}", class: "btn btn-primary btn-action btn-lg s-circle tooltip tooltip-left",id:"share", "data-tooltip":"Share" %>
     <%= link_to content_tag(:i,'',class:"icon icon-edit"), edit_video_path(@video),onclick:"const e=document.getElementById('editm');const media=document.querySelector('video');media.pause();e.classList.add('active');return false;", class: "btn btn-primary btn-action btn-lg s-circle mx-1 tooltip",style: "background-image:linear-gradient(to right,#9933ff,#5755d9);", "data-tooltip":"Edit" %>
