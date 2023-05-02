@@ -17,8 +17,7 @@
 <%= render @video %>
 <template data-controller="play"></template>
 <div class="container" id="comcont">
-<%= turbo_frame_tag "comzone", src: video_comment_path(@video) %>
-  <h5 class="container" style="margin-left:1.1%;">Add a comment: </h5>
+<%= turbo_frame_tag "comframe", src: video_comment_path(@video) %>
   <div class="column col-9 col-xs-12 col-sm-12 col-md-11 col-lg-9 p-2" style="margin-left:1.1%;margin-bottom:16px;">
     <%= turbo_frame_tag "new_comment", src: new_video_comment_path(@video) %>
   </div>
