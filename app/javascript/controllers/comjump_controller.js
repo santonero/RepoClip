@@ -4,6 +4,7 @@ export default class extends Controller {
   connect() {
     const c = document.getElementById('comframe');
     c.addEventListener('turbo:before-frame-render', () => {
-    Turbo.visit('#ccount');})
+      const cc = document.getElementById('ccount');
+      if(cc) cc.scrollIntoView();})
   }
 }

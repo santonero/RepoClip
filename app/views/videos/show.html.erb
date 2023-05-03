@@ -16,6 +16,7 @@
 </div>
 <%= render @video %>
 <template data-controller="play"></template>
+<template data-controller="comjump"></template>
 <div class="container" id="comcont">
 <%= turbo_frame_tag "comframe", src: video_comment_path(@video) %>
   <div class="column col-9 col-xs-12 col-sm-12 col-md-11 col-lg-9 p-2" style="margin-left:1.1%;margin-bottom:16px;">
