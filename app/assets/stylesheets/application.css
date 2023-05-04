@@ -116,12 +116,16 @@
 
 .icon-3x {
   transition: transform .3s;
-  transform: scale(1.40,1.40); 
+  transform: scale(1.40,1.40);
 }
 
 .modal-container {
   box-shadow: 0 .2rem .5rem rgba(48,55,66,.3) !important;
   max-height: 78vh;
+}
+
+.modal-body { 
+  overflow-x: hidden;
 }
 
 .modal-overlay { 
@@ -237,7 +241,6 @@
 .navbar-section {
   z-index:2;
 }
-
 .navbar-center {
   z-index:2;
 }
@@ -257,6 +260,15 @@
     -ms-flex:1 0 0 !important;
     flex:1 0 0 !important;
   }
+}
+
+.fieldicon {
+  position: relative;
+  top: 3px;
+}
+
+.field_with_errors {
+  display:inline;
 }
 
 #loader-container {
