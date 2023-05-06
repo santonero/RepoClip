@@ -267,6 +267,17 @@
   top: 3px;
 }
 
+.form-input-hint {
+  position: relative;
+  -webkit-animation: slidev 0.5s;
+  animation: slidev 0.5s;
+}
+
+@keyframes slidev {
+  from {left: -20px; opacity: 0;}
+  to {left: 0; opacity: 1;}
+}
+
 .field_with_errors {
   display:inline;
 }
@@ -286,6 +297,7 @@
 }
 
 #comzone {
+  -webkit-animation: slidein 0.5s;
   animation: slidein 0.5s;
 }
 
@@ -293,6 +305,17 @@
   from {left: -35px; opacity: 0;}
   to {left: 0; opacity: 1;}
 }
+
+.shakeit {
+  -webkit-animation: shake 0.3s ease-in-out;
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100%{ margin-left: 0;}
+  20%, 80%{ margin-left: -12px;}
+  40%, 60%{ margin-left: 12px;}
+ }
 
 .decor:hover {
   text-decoration: none;

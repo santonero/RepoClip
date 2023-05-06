@@ -1,4 +1,4 @@
 <%= turbo_stream.replace "comform_frame", partial: "comments/form", locals: { comment: @comment } %>
 <%= turbo_stream.append_all "body" do %>
-    <template data-controller="comreload"></template>
+  <template data-controller="comreload"></template>
 <% end %>
