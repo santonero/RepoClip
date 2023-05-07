@@ -21,7 +21,7 @@
   <% if video.errors.full_messages_for(:clip).any? %>
     <div class= "form-group has-error">
       <%= form.label :clip, class: "form-label d-inline-block" %>
-      <div class="d-inline-block tooltip tooltip-right" data-tooltip="Please upload small sized file (<150MB), as its a&#10;&#13;portfolio and i dont have infinite space.">
+      <div class="d-inline-block tooltip tooltip-right" data-tooltip="Please upload small sized file (<150MB), as it's a&#10;&#13;portfolio and i dont have infinite space.">
         <%= image_tag("help.svg", class:"fieldicon") %>
       </div>
       <%= form.file_field :clip, class: "form-input", onchange:"validateSize(this,150,'video_clip')" %>
@@ -31,7 +31,7 @@
   <% else %>
     <div class="form-group">
       <%= form.label :clip, class: "form-label d-inline-block" %>
-      <div class="d-inline-block tooltip tooltip-right" data-tooltip="Please upload small sized file (<150MB), as its a&#10;&#13;portfolio and i dont have infinite space.">
+      <div class="d-inline-block tooltip tooltip-right" data-tooltip="Please upload small sized file (<150MB), as it's a&#10;&#13;portfolio and i dont have infinite space.">
         <%= image_tag("help.svg", class:"fieldicon") %>
       </div>
       <div><%= form.file_field :clip, class: "form-input", onchange:"validateSize(this,150,'video_clip')" %></div>

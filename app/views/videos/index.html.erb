@@ -8,22 +8,7 @@
 <div class= "container" style="padding-top:2.8%;padding-bottom:2.7em;">
   <%= render "grid" %>
 </div>
-<div class="modal modal-lg" id="uploadm">
-  <%= link_to "",root_path, onclick:"const e=document.getElementById('uploadm');e.classList.remove('active');return false;", class:"modal-overlay" %>
-  <div class="modal-container">
-  <div class="modal-header">
-    <%= link_to "",root_path, onclick:"const e=document.getElementById('uploadm');e.classList.remove('active');return false;", class:"btn btn-clear float-right" %>
-    <div class="modal-title h5">Upload</div>
-  </div>
-  <div class="modal-body">
-    <div class="content">
-    <%= turbo_frame_tag "add", src: new_video_path %>
-    </div>
-  </div>
-  <div class="modal-footer">
-  </div>
-  </div>
-</div>
+<%= render "modal", path: new_video_path %>
 <div class="hero hero-sm bg-primary text-light text-center" style="margin-bottom:2.4%;">
   <div class="container grid-lg">
       <h2> Introduction </h2>
