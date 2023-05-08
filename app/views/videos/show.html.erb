@@ -3,7 +3,6 @@
   <%= stylesheet_link_tag "https://vjs.zencdn.net/8.3.0/video-js.css" %>
   <%= javascript_import_module_tag "videojs" %>
 <% end %>
-
 <% if notice %>
   <div class="toast toast-success"><button class="btn btn-clear float-right" onclick="document.body.removeChild(this.parentNode)"></button><%= notice %></div>
 <% end %>
@@ -19,9 +18,9 @@
 <template data-controller="comjump"></template>
 <div class="container" id="comcont">
 <%= turbo_frame_tag "comframe", src: video_comment_path(@video) %>
-  <div class="column col-9 col-xs-12 col-sm-12 col-md-11 col-lg-9 p-2" style="margin-left:1.1%;margin-bottom:16px;">
-    <%= turbo_frame_tag "new_comment", src: new_video_comment_path(@video) %>
-  </div>
+<div class="column col-9 col-xs-12 col-sm-12 col-md-11 col-lg-9 p-2" style="margin-left:1.1%;margin-bottom:16px;">
+  <%= turbo_frame_tag "new_comment", src: new_video_comment_path(@video) %>
+</div>
 </div>
 <script>
 window.addEventListener('load', () => {
