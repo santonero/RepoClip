@@ -27,6 +27,6 @@
     <%= link_to content_tag(:i,'',class:"icon icon-share"),'',onclick:"const sh=document.getElementById('share');navigator.clipboard.writeText('#{video_url(@video)}');sh.dataset.tooltip='Link copied to clipboard';sh.classList.add('clicked');return false;",onmouseleave:"const sh=document.getElementById('share');if(sh.classList.contains('clicked')){setTimeout(blurIt,4000);sh.classList.remove('clicked');}function blurIt(){sh.blur();setTimeout(() => {sh.dataset.tooltip='Share';},200);}", class: "btn btn-primary btn-action btn-lg s-circle tooltip tooltip-left",id:"share", "data-tooltip":"Share" %>
     <%= link_to content_tag(:i,'',class:"icon icon-cross"), video_path(@video), data: { turbo_method: :delete, turbo_confirm: "Are you sure ?"} , class: "btn btn-primary btn-action btn-lg s-circle mx-1 tooltip tooltip-left", "data-tooltip":"Delete Video" %>
   </div>
-  <%= render "modal", path: edit_video_path %>
+  <%= render "modal", path: edit_video_path, title: "Edit" %>
 </div>
 </div>
