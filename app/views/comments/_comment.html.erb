@@ -1,5 +1,5 @@
-<div class="container popover popover-right">
-  <div class="popover-container">
+<div class="container popover popover-right fullh">
+  <div class="popover-container fullh">
     <%= link_to content_tag(:i,'',class: "icon icon-cross"), [comment.video, comment], data: { turbo_method: :delete, turbo_confirm: "Are you sure ?" }, "data-turbo-frame": "_top", class: "no-shadow tooltip tooltip-bottom", "data-tooltip": "Delete" %>
   </div>
   <p class="wordbreak">

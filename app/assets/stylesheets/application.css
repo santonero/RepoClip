@@ -48,6 +48,10 @@
   height:100%;
 }
 
+.fullh {
+  height:100%;
+}
+
 .card-image {
   aspect-ratio:16/9;
   border-radius:12px;
@@ -294,6 +298,10 @@
   bottom: 0;
   z-index: 1;
   background: white;
+}
+
+.loading-lg {
+  scale: 1.75;
 }
 
 #comzone {
