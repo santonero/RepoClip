@@ -1,7 +1,6 @@
 class VideosController < ApplicationController
   before_action :set_video, only: %i[ show edit update destroy ]
 
-  # GET /videos or /videos.json
   def index
     @videos = Video.with_attached_thumbnail.all.order(created_at: :desc)
   end
@@ -10,26 +9,21 @@ class VideosController < ApplicationController
     @videos = Video.with_attached_thumbnail.where("title ILIKE ?", "%"+ Video.sanitize_sql_like(params[:query]) +"%").order(created_at: :desc)
   end
 
-  # GET /videos/1 or /videos/1.json
   def show
   end
 
-  # GET /videos/new
   def new
     @video = Video.new
   end
 
-  # GET /videos/1/edit
   def edit
   end
 
-  # POST /videos or /videos.json
   def create
     @video = Video.new(video_params)
-
     respond_to do |format|
       if @video.save
-        format.html { redirect_to video_url(@video), notice: "Video was successfully created." }
+        format.html { flash[:notice] = "Video was successfully created." }
         format.json { render :show, status: :created, location: @video }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,11 +32,10 @@ class VideosController < ApplicationController
     end
   end
 
-  # PATCH/PUT /videos/1 or /videos/1.json
   def update
     respond_to do |format|
       if @video.update(video_params)
-        format.html { redirect_to video_url(@video), notice: "Video was successfully updated." }
+        format.html { flash[:notice] = "Video was successfully updated." }
         format.json { render :show, status: :ok, location: @video }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,7 +44,6 @@ class VideosController < ApplicationController
     end
   end
 
-  # DELETE /videos/1 or /videos/1.json
   def destroy
     @video.destroy
 
@@ -62,14 +54,12 @@ class VideosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_video
       @video = Video.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       redirect_to root_path, alert: "Video doesn't exist."
     end
 
-    # Only allow a list of trusted parameters through.
     def video_params
       params.require(:video).permit(:title, :description, :clip, :thumbnail)
     end
