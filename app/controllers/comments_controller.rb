@@ -31,7 +31,10 @@ class CommentsController < ApplicationController
     @video = Video.find(params[:video_id])
     @comment = @video.comments.find(params[:id])
     @comment.destroy
-    redirect_to video_path(@video), status: :see_other
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to video_path(@video), status: :see_other }
+    end
   end
   
   private
