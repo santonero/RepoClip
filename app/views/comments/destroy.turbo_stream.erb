@@ -1,2 +1,3 @@
-<%= turbo_stream.remove @comment %>
-<%= turbo_stream.update "ccount", partial: "comments/ccount" %>
+<%= turbo_stream.append_all "body" do %>
+  <template data-controller="comreload"></template>
+<% end %>
