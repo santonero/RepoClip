@@ -23,7 +23,7 @@
  @supports (display: grid) {
     #grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     grid-auto-rows: minmax(150px, auto);
     grid-gap: 1em;
     row-gap: 2em;
@@ -46,6 +46,10 @@
 .full {
   width:100%;
   height:100%;
+}
+
+.fullw {
+  width: 100%;
 }
 
 .fullh {
@@ -242,23 +246,22 @@
   width:fit-content;
 }
 
+.popover.popover-right .popover-container {
+  left: 95%;
+}
+
 .navbar-section {
   z-index:2;
 }
-.navbar-center {
+.navbar .navbar-center {
+  flex: 0.3 0 auto;
   z-index:2;
 }
 .navbar-brand { 
   border-radius: 2px;
 }
 
-@media only screen and (max-width: 460px) {
-  .navbar-center {
-    width: 53%;
-  }
-}
-
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 468px) {
   #navlogo {
     display: none;
   }
@@ -275,6 +278,10 @@
   animation: slidein 0.3s;
 }
 
+.toast.toast-success:hover {
+  background-color: #2ca03b; 
+}
+
 .fieldicon {
   position: relative;
   top: 3px;
@@ -289,6 +296,17 @@
 @keyframes slidev {
   from {left: -20px; opacity: 0;}
   to {left: 0; opacity: 1;}
+}
+
+.slidey {
+  -webkit-animation: slidey 0.6s;
+  animation: slidey 0.6s;
+}
+
+@keyframes slidey {
+  0% {top: -30px; opacity: 0;}
+  20% {opacity:0;}
+  100% {top: 0px; opacity: 1;}
 }
 
 .field_with_errors {

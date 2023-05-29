@@ -3,9 +3,9 @@
     <a href="/videos" class="navbar-brand mr-2"><b>REPOCLIP</b></a>
     <a href="https://github.com/Santonero/repoclip" target= "_blank" class="btn btn-link">GitHub</a>
   </section>
-  <section class="navbar-center">
-    <%= form_with url: "/search", method: :get do |form| %>
-      <div class="input-group input-inline">
+  <section class="navbar-center m-1">
+    <%= form_with url: "/search", method: :get, class: "fullw"  do |form| %>
+      <div class="input-group input-inline fullw">
         <%= form.text_field :query, class: "form-input searchboxl", placeholder: "search" %>
         <%= button_tag(:class => "btn searchboxr") do %>
           <i class="icon icon-search"></i>

@@ -3,12 +3,6 @@
   <%= stylesheet_link_tag "https://vjs.zencdn.net/8.3.0/video-js.css" %>
   <%= javascript_import_module_tag "videojs" %>
 <% end %>
-<% if notice %>
-  <div class="toast toast-success"><button class="btn btn-clear float-right" onclick="document.body.removeChild(this.parentNode)"></button><%= notice %></div>
-<% end %>
-<% if alert %>
-  <div class="toast toast-error"><button class="btn btn-clear float-right" onclick="document.body.removeChild(this.parentNode)"></button><%= alert %></div>
-<% end %>
 <%= render "navbar" %>
 <div class="container grid-xl" id="loader-container">
   <div class="loading loading-lg"></div>

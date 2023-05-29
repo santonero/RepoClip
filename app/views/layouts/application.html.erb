@@ -12,6 +12,13 @@
   </head>
 
   <body>
+    <% if notice %>
+    <div class="toast toast-success c-hand" onclick="rmflash(this)"><button class="btn btn-clear float-right" onclick="rmflash(this.parentNode)"></button><%= notice %></div>
+    <% end %>
+    <% if alert %>
+      <div class="toast toast-error c-hand" onclick="rmflash(this)"><button class="btn btn-clear float-right" onclick="rmflash(this.parentNode)"></button><%= alert %></div>
+    <% end %>
     <%= yield %>
+    <script>function rmflash(x){document.body.removeChild(x);}</script>
   </body>
 </html>
