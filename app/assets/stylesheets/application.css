@@ -122,9 +122,8 @@
   transition: box-shadow .2s;
 }
 
-.icon-3x {
+#plus {
   transition: transform .3s;
-  transform: scale(1.40,1.40);
 }
 
 .modal-container {
@@ -153,45 +152,60 @@
 
 .video-js.video-js .vjs-big-play-button {
   top: 50%;
-    left: 50%;
-    margin-left: -1em;
-    margin-top: -1em;
-    width: 2em;
-    height: 2em;
-    line-height: 2em;
-    border: none;
-    border-radius: 50%;
-    font-size: 3.5em;
-    background-color: rgba(0,0,0,.45);
-    color: #fff;
+  left: 50%;
+  margin-left: -1em;
+  margin-top: -1em;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  border: none;
+  border-radius: 50%;
+  font-size: 3.5em;
+  background-color: rgba(0,0,0,.45);
+  color: #fff;
 }
 
-.video-js.video-js:hover .vjs-big-play-button{
-  background-image:linear-gradient(to right,#9933ff,#5755d9);
+ .video-js.vjs-has-started .vjs-big-play-button {
+  display: block;
+  opacity: 0;
+  transform: translateX(200px) rotateY(360deg);
+  pointer-events: none;
+  transition: opacity 0.8s, transform 1s !important;
+}
+
+.video-js.vjs-paused .vjs-big-play-button {
+  opacity: 1;
+  transform: translateX(0px);
+  pointer-events: all;
+  transition: opacity 0.5s, transform 1s;
+} 
+
+.video-js.video-js:hover .vjs-big-play-button {
+  background-color: rgba(0,0,0,.75);
+}
+
+.video-js .vjs-icon-placeholder {
+  color: #f1f1fc;
 }
 
 .video-js .vjs-play-progress {
-  background-image:linear-gradient(to right,#9933ff,#5755d9);
+  background-color:#f1f1fc !important;
+}
+.video-js .vjs-play-progress {
+  color:#f1f1fc;
 }
 
-.vjs-volume-panel.vjs-control.vjs-volume-panel-horizontal:hover {
-  background-image:linear-gradient(to right,#9933ff,#5755d9);
+.video-js.video-js .vjs-time-control {
+  display: block;
 }
 
-.video-js .vjs-play-control:hover { 
-  background-image:linear-gradient(to right,#9933ff,#5755d9);
+.video-js.video-js .vjs-volume-level{
+  background-color: #f1f1fc;
+  color: #f1f1fc;
 }
 
 .vjs-menu-item.vjs-selected { 
-  background-image:linear-gradient(to right,#9933ff,#5755d9);
-}
-
-.video-js .vjs-fullscreen-control.vjs-control {
-  background-image:linear-gradient(to right,#9933ff,#5755d9);
-}
-
-.vjs-menu-item-text {
-  color: white;
+  background-color:#f1f1fc !important;
 }
 
 .video-js.video-js .vjs-menu-content {
@@ -251,11 +265,11 @@
 }
 
 .navbar-section {
-  z-index:2;
+  z-index:3;
 }
 .navbar .navbar-center {
   flex: 0.3 0 auto;
-  z-index:2;
+  z-index:3;
 }
 .navbar-brand { 
   border-radius: 2px;
@@ -323,7 +337,7 @@
   left: 1.1%;
   right: 0;
   bottom: 0;
-  z-index: 1;
+  z-index: 2;
   background: white;
 }
 

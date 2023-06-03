@@ -1,6 +1,6 @@
 <div id="<%= dom_id comment %>" class="container popover popover-right fullh">
   <div class="popover-container fullh">
-    <%= button_to content_tag(:i,'',class: "icon icon-cross"), [comment.video, comment], method: :delete, "data-turbo-confirm": "Delete this comment ?", "data-turbo-frame": "_top", class: " btn btn-sm s-circle mx-1" %>
+    <%= button_to content_tag(:i,'',class: "icon icon-cross"), [comment.video, comment], method: :delete, "data-turbo-confirm": "Delete Comment ?", "data-turbo-frame": "_top", class: " btn btn-sm s-circle mx-1" %>
   </div>
   <p class="wordbreak">
     <span class="label label-rounded"><%= comment.commenter %></span>

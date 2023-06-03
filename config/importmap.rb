@@ -20,7 +20,7 @@ pin "@videojs/vhs-utils/es/id3-helpers", to: "https://ga.jspm.io/npm:@videojs/vh
 pin "@videojs/vhs-utils/es/media-groups", to: "https://ga.jspm.io/npm:@videojs/vhs-utils@4.0.0/es/media-groups.js"
 pin "@videojs/vhs-utils/es/resolve-url", to: "https://ga.jspm.io/npm:@videojs/vhs-utils@4.0.0/es/resolve-url.js"
 pin "@videojs/xhr", to: "https://ga.jspm.io/npm:@videojs/xhr@2.6.0/lib/index.js"
-pin "@xmldom/xmldom", to: "https://ga.jspm.io/npm:@xmldom/xmldom@0.8.7/lib/index.js"
+pin "@xmldom/xmldom", to: "https://ga.jspm.io/npm:@xmldom/xmldom@0.8.8/lib/index.js"
 pin "dom-walk", to: "https://ga.jspm.io/npm:dom-walk@0.1.2/index.js"
 pin "global/document", to: "https://ga.jspm.io/npm:global@4.4.0/document.js"
 pin "global/window", to: "https://ga.jspm.io/npm:global@4.4.0/window.js"
