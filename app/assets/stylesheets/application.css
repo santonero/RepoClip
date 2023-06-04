@@ -59,6 +59,7 @@
 .card-image {
   aspect-ratio:16/9;
   border-radius:12px;
+  user-select: none;
 }
 
 .img-responsive {
@@ -212,6 +213,10 @@
   width:48px !important;
 }
 
+.vjs-playback-rate > .vjs-menu-button, .vjs-playback-rate .vjs-playback-rate-value {
+  user-select: none;
+}
+
 #vidcont { 
   margin-left: 1.1%;
   margin-top: 14px;
@@ -273,6 +278,10 @@
 }
 .navbar-brand { 
   border-radius: 2px;
+}
+
+#navlogo {
+  user-select: none;
 }
 
 @media only screen and (max-width: 468px) {
@@ -421,6 +430,5 @@
 .docs-footer {
   color: #bcc3ce;
   margin-top: 1.5rem;
-  padding: .5rem;
   text-align: center;
 }
