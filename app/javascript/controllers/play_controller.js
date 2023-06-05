@@ -3,6 +3,11 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   connect() {
     const media = document.querySelector('video');
-    media.addEventListener('canplaythrough', () => { media.play();});
+    function mutePlay() { media.muted = true;media.play();}
+    media.addEventListener('loadstart', () => {
+      const promise = media.play();
+      if (promise !== undefined) {
+        promise.catch(mutePlay);}
+      })
+    }
   }
-}
