@@ -1,4 +1,4 @@
-<%= form_with(model: video, data: {controller: "form-redirect form-load", action:"turbo:submit-end->form-redirect#next turbo:submit-start->form-load#showload"}, id: "vidform") do |form| %>
+<%= form_with(model: video, data: {controller: "form-redir form-load", action:"turbo:submit-end->form-redir#next turbo:submit-start->form-load#showload"}, id: "vidform") do |form| %>
   <% if video.errors.full_messages_for(:title).any? %>  
     <div class="form-group column col-6 col-xs-12 col-sm-12 col-md-9 col-lg-7 name-field has-error">
       <%= form.label :title, class: "form-label" %>

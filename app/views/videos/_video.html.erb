@@ -25,7 +25,7 @@
   <div id="vidact">
     <%= link_to content_tag(:i,'',class:"pen"), edit_video_path(@video),onclick:"const e=document.getElementById('mod');const media=document.querySelector('video');media.pause();e.classList.add('active');return false;", class: "btn btn-primary btn-action btn-lg s-circle mx-1 tooltip tooltip-left",style: "background-image:linear-gradient(to right,#7e2df3,#5755d9);", "data-tooltip":"Edit" %>
     <%= link_to content_tag(:i,'',class:"icon icon-share"),'',onclick:"const sh=document.getElementById('share');navigator.clipboard.writeText('#{video_url(@video)}');sh.dataset.tooltip='Link copied to clipboard';sh.classList.add('clicked');return false;",onmouseleave:"const sh=document.getElementById('share');if(sh.classList.contains('clicked')){setTimeout(blurIt,4000);sh.classList.remove('clicked');}function blurIt(){sh.blur();setTimeout(() => {sh.dataset.tooltip='Share';},200);}", class: "btn btn-primary btn-action btn-lg s-circle tooltip tooltip-left",id:"share", "data-tooltip":"Share" %>
-    <%= button_to content_tag(:i,'',class:"icon icon-cross"), video_path(@video), method: :delete, "data-turbo-confirm": "Are you sure ?", class: "btn btn-primary btn-action btn-lg s-circle mx-1 tooltip tooltip-left", "data-tooltip":"Delete Video" %>
+    <%= button_to content_tag(:i,'',class:"icon icon-cross"), video_path(@video), method: :delete, "data-turbo-confirm": "Are you sure ?", form: {"data-controller":"del-redir", "data-action":"turbo:submit-end->del-redir#next"}, class: "btn btn-primary btn-action btn-lg s-circle mx-1 tooltip tooltip-left", "data-tooltip":"Delete Video" %>
   </div>
   <%= render "modal", path: edit_video_path, title: "Edit" %>
 </div>

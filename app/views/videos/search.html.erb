@@ -5,9 +5,14 @@
     <div class="m-2"><%= image_tag("nothin.svg") %></div>
 <% else %>
   <%= render "navbar" %>
-  <div class ="hero hero-sm bg-primary"><div class="hero-body"><h1 style="padding-left:7px;">Search Results</h1></div></div>
-  <div class ="container" style="padding-top:2%;padding-bottom:2%;">
-  <%= render "grid" %>
+  <div class ="hero hero-sm bg-primary slidex"><div class="hero-body"><h1 style="padding-left:7px;">Search Results</h1></div></div>
+  <div class ="container slidex" style="padding-top:2%;padding-bottom:2%;">
+  <div id="grid" class="p-2">
+    <%= render "grid" %>
+  </div>
+  <% if @pagination.next_page? %>
+    <%= turbo_frame_tag :pagination, loading: :lazy, src: search_path(format: :turbo_stream, query: params[:query], page: @pagination.next_page)%>
+  <% end %>
   <h6 class="p-2" style="color:#bcc3ce;"><%= pluralize(@videos.count, "result") %></h6>
 <% end %>
   <div style="margin-top:16px;margin-bottom:9.05%;"><%= link_to content_tag(:i,'',class:"icon icon-back"), videos_path, class: "btn btn-primary btn-action btn-sm tooltip tooltip-right", "data-tooltip": "Go Back" %></div>

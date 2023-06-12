@@ -1,12 +1,25 @@
 class VideosController < ApplicationController
+  include Pagination
   before_action :set_video, only: %i[ show edit update destroy ]
 
+  VIDS_PER_PAGE = 17
+
   def index
-    @videos = Video.with_attached_thumbnail.all.order(created_at: :desc)
+    @pagination, @videos = paginate(collection: Video.with_attached_thumbnail.all.order(created_at: :desc), params: page_params)
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   def search
-    @videos = Video.with_attached_thumbnail.where("title ILIKE ?", "%"+ Video.sanitize_sql_like(params[:query]) +"%").order(created_at: :desc)
+    @pagination, @videos = paginate(collection: Video.with_attached_thumbnail.where("title ILIKE ?", "%"+ Video.sanitize_sql_like(params[:query]) +"%").order(created_at: :desc), params: page_params)
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   def show
@@ -47,7 +60,7 @@ class VideosController < ApplicationController
   def destroy
     @video.destroy
     respond_to do |format|
-      format.html { redirect_to videos_url, notice: "Video was successfully destroyed." }
+      format.html { flash[:notice] = "Video was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -61,5 +74,9 @@ class VideosController < ApplicationController
 
     def video_params
       params.require(:video).permit(:title, :description, :clip, :thumbnail)
+    end
+
+    def page_params
+      params.permit(:page).merge(per_page: VIDS_PER_PAGE)
     end
 end

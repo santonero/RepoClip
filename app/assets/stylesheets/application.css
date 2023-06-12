@@ -301,6 +301,11 @@
   animation: slidein 0.3s;
 }
 
+.slidex {
+  position: relative;
+  animation: slidein 0.3s;
+}
+
 .toast.toast-success:hover {
   background-color: #2ca03b; 
 }

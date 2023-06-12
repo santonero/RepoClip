@@ -1,0 +1,15 @@
+<%= turbo_stream.append "grid" do %>
+  <%= render "grid" %>
+<% end %>
+
+<%= turbo_stream.append_all "body" do %>
+  <template data-controller="rmPh"></template>
+<% end %>
+
+<%= turbo_stream.replace :pagination do %>
+  <% if @pagination.next_page? %>
+  <%= turbo_frame_tag :pagination,
+    loading: :lazy,
+    src: videos_path(format: :turbo_stream, page: @pagination.next_page) %>
+  <% end %>
+<% end %>
