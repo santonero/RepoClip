@@ -68,7 +68,7 @@
   border-radius:12px !important;
 }
 
-.boxbreak { 
+.boxbreak {
   box-decoration-break:clone;
   -webkit-box-decoration-break:clone;
 }
@@ -102,7 +102,7 @@
   visibility: hidden;
 }
 
-.placeholder { 
+.placeholder {
   background-color: #bcc3ce !important;
   color: #0000 !important;
   border-radius: 20px;
@@ -132,11 +132,11 @@
   max-height: 78vh;
 }
 
-.modal-body { 
+.modal-body {
   overflow-x: hidden;
 }
 
-.modal-overlay { 
+.modal-overlay {
   background: rgba(247,248,249,.75) !important;
 }
 
@@ -144,7 +144,7 @@
   padding-left: 0;
 }
 
-#formload { 
+#formload {
   float:left;
   position:relative;
   left:14px;
@@ -179,7 +179,7 @@
   transform: translateX(0px);
   pointer-events: all;
   transition: opacity 0.5s, transform 1s;
-} 
+}
 
 .video-js.video-js:hover .vjs-big-play-button {
   background-color: rgba(0,0,0,.75);
@@ -205,7 +205,7 @@
   color: #f1f1fc;
 }
 
-.vjs-menu-item.vjs-selected { 
+.vjs-menu-item.vjs-selected {
   background-color:#f1f1fc !important;
 }
 
@@ -217,12 +217,12 @@
   user-select: none;
 }
 
-#vidcont { 
+#vidcont {
   margin-left: 1.1%;
   margin-top: 14px;
 }
 
-.vidtitle { 
+.vidtitle {
   margin-left:1px;
   display:inline-block;
 }
@@ -276,7 +276,7 @@
   flex: 0.3 0 auto;
   z-index:3;
 }
-.navbar-brand { 
+.navbar-brand {
   border-radius: 2px;
 }
 
@@ -295,7 +295,7 @@
   }
 }
 
-.toast { 
+.toast {
   position: relative;
   z-index:3;
   animation: slidein 0.3s;
@@ -307,7 +307,7 @@
 }
 
 .toast.toast-success:hover {
-  background-color: #2ca03b; 
+  background-color: #2ca03b;
 }
 
 .fieldicon {

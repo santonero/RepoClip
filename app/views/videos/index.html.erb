@@ -2,10 +2,10 @@
 <div class= "container" style="padding-top:2.9%;padding-bottom:2.7em;">
 <div id="grid" class="p-2">
   <%= render "grid" %>
-</div>
 <% if @pagination.next_page? %>
   <%= turbo_frame_tag :pagination, loading: :lazy, src: videos_path(format: :turbo_stream, page: @pagination.next_page)%>
 <% end %>
+</div>
 </div>
 <%= render "modal", path: new_video_path, title: "Upload" %>
 <div class="hero hero-sm bg-primary text-light text-center" style="margin-bottom:3%;">

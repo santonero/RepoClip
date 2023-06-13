@@ -5,6 +5,6 @@ export default class extends Controller {
     const c = document.getElementById('comframe');
     c.addEventListener('turbo:before-frame-render', () => {
       const cc = document.getElementById('ccount');
-      if(cc) cc.scrollIntoView();})
+      if(cc) cc.scrollIntoView();});
   }
 }

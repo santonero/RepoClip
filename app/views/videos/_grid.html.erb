@@ -3,7 +3,7 @@
     <div class="card-image placeholder bg-primary" id="new_video" onclick="const e=document.getElementById('mod');e.classList.add('active');" onmouseover="document.getElementById('plus').style.transform='scale(2)';" onmouseleave="document.getElementById('plus').style.transform='scale(1)';"><i class="icon icon-2x icon-plus" id="plus"></i></div>
   </div>
 <% end %>
- <% @videos.each do |video| %>
+<% @videos.each do |video| %>
   <div class ="card">
     <div class="card-image placeholder">
       <div class="hidden full"><%= link_to(image_tag(video.thumbnail, class: "img-responsive mb-1"), video, class: "no-shadow", "data-turbo":"false") %></div>
@@ -22,5 +22,5 @@ while(ph.length){
 while(hid.length){
   hid[0].classList.remove('hidden');
 }
-})
+});
 </script>

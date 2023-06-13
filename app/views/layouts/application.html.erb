@@ -5,15 +5,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>  
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= yield(:head) %>
   </head>
 
   <body>
     <% if notice %>
-    <div class="toast toast-success c-hand" onclick="rmflash(this)"><button class="btn btn-clear float-right"></button><%= notice %></div>
+      <div class="toast toast-success c-hand" onclick="rmflash(this)"><button class="btn btn-clear float-right"></button><%= notice %></div>
     <% end %>
     <% if alert %>
       <div class="toast toast-error c-hand" onclick="rmflash(this)"><button class="btn btn-clear float-right"></button><%= alert %></div>

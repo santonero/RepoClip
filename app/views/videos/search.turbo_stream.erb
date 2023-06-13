@@ -1,4 +1,4 @@
-<%= turbo_stream.append "grid" do %>
+<%= turbo_stream.replace :pagination do %>
   <%= render "grid" %>
 <% end %>
 
@@ -6,7 +6,7 @@
   <template data-controller="rmPh"></template>
 <% end %>
 
-<%= turbo_stream.replace :pagination do %>
+<%= turbo_stream.append "grid" do %>
   <% if @pagination.next_page? %>
   <%= turbo_frame_tag :pagination,
     loading: :lazy,
