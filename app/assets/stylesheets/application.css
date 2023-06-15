@@ -432,6 +432,13 @@
   border-radius:12px;
 }
 
+#up {
+  display: none;
+  position:fixed;
+  bottom: 25px;
+  left: 2.5%;
+}
+
 .docs-footer {
   color: #bcc3ce;
   margin-top: 1.5rem;
