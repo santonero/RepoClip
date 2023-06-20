@@ -277,6 +277,7 @@
   z-index:3;
 }
 .navbar-brand {
+  padding : 5px;
   border-radius: 2px;
 }
 
@@ -284,7 +285,7 @@
   user-select: none;
 }
 
-@media only screen and (max-width: 468px) {
+@media only screen and (max-width: 495px) {
   #navlogo {
     display: none;
   }
@@ -292,6 +293,12 @@
   .navbar-center {
     -ms-flex:1 0 0 !important;
     flex:1 0 0 !important;
+  }
+}
+
+@media only screen and (max-width: 430px ) {
+  .d-inline-block.tooltip.tooltip-right::after {
+    content: attr(data-tooltipm);
   }
 }
 

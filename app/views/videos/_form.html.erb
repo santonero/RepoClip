@@ -21,7 +21,7 @@
   <% if video.errors.full_messages_for(:clip).any? %>
     <div class= "form-group has-error">
       <%= form.label :clip, class: "form-label d-inline-block" %>
-      <div class="d-inline-block tooltip tooltip-right" data-tooltip="Please upload small sized file (<150MB), as it's a&#10;&#13;portfolio and i dont have infinite space.">
+      <div class="d-inline-block tooltip tooltip-right" data-tooltip="Please upload small sized file (<150MB), as it's a&#10;&#13;portfolio and i dont have infinite space." data-tooltipm="Please upload small sized file &#10;&#13;(<150MB)">
         <%= image_tag("help.svg", class:"fieldicon") %>
       </div>
       <%= form.file_field :clip, class: "form-input", onchange:"validateSize(this,150,'video_clip')" %>
@@ -31,7 +31,7 @@
   <% else %>
     <div class="form-group">
       <%= form.label :clip, class: "form-label d-inline-block" %>
-      <div class="d-inline-block tooltip tooltip-right" data-tooltip="Please upload small sized file (<150MB), as it's a&#10;&#13;portfolio and i dont have infinite space.">
+      <div class="d-inline-block tooltip tooltip-right" data-tooltip="Please upload small sized file (<150MB), as it's a&#10;&#13;portfolio and i dont have infinite space." data-tooltipm="Please upload small sized file&#10;&#13; (<150MB)">
         <%= image_tag("help.svg", class:"fieldicon") %>
       </div>
       <div><%= form.file_field :clip, class: "form-input", onchange:"validateSize(this,150,'video_clip')" %></div>
@@ -41,7 +41,7 @@
   <% if video.errors.full_messages_for(:thumbnail).any? %>
     <div class="form-group has-error">
       <%= form.label :thumbnail, class: "form-label d-inline-block" %>
-      <div class="d-inline-block tooltip tooltip-right" data-tooltip="We recommend your custom thumbnails: &#10;&#13; • Have a resolution of 1280x720. &#10;&#13; • Be uploaded in JPG or PNG formats. &#10;&#13; • Remain under the 2MB limit. &#10;&#13; • Try to use a 16:9 aspect ratio.">
+      <div class="d-inline-block tooltip tooltip-right" data-tooltip="We recommend your custom thumbnails: &#10;&#13; • Have a resolution of 1280x720. &#10;&#13; • Be uploaded in JPG or PNG formats. &#10;&#13; • Remain under the 2MB limit. &#10;&#13; • Try to use a 16:9 aspect ratio." data-tooltipm="Recommendations: &#10;&#13; • Have a resolution of &#10;&#13; 1280x720. &#10;&#13; • Be uploaded in JPG /&#10;&#13; PNG formats. &#10;&#13; • Remain under 2MB. &#10;&#13; • Try to use a 16:9 &#10;&#13; aspect ratio.">
         <%= image_tag("help.svg", class:"fieldicon") %>
       </div>
       <%= form.file_field :thumbnail, class: "form-input", onchange:"validateSize(this,2,'video_thumbnail')" %>
@@ -51,7 +51,7 @@
   <% else %>
     <div class="form-group">
       <%= form.label :thumbnail, class: "form-label d-inline-block" %>
-      <div class="d-inline-block tooltip tooltip-right" data-tooltip="We recommend your custom thumbnails: &#10;&#13; • Have a resolution of 1280x720. &#10;&#13; • Be uploaded in JPG or PNG formats. &#10;&#13; • Remain under the 2MB limit. &#10;&#13; • Try to use a 16:9 aspect ratio.">
+      <div class="d-inline-block tooltip tooltip-right" data-tooltip="We recommend your custom thumbnails: &#10;&#13; • Have a resolution of 1280x720. &#10;&#13; • Be uploaded in JPG or PNG formats. &#10;&#13; • Remain under the 2MB limit. &#10;&#13; • Try to use a 16:9 aspect ratio." data-tooltipm="Recommendations: &#10;&#13; • Have a resolution of &#10;&#13; 1280x720. &#10;&#13; • Be uploaded in JPG /&#10;&#13; PNG formats. &#10;&#13; • Remain under 2MB. &#10;&#13; • Try to use a 16:9 &#10;&#13; aspect ratio.">
         <%= image_tag("help.svg", class:"fieldicon") %>
       </div>
       <div><%= form.file_field :thumbnail, class: "form-input", onchange:"validateSize(this,2,'video_thumbnail')" %></div>
