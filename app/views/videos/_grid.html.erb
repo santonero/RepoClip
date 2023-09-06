@@ -12,6 +12,7 @@
       <%= link_to(time_ago_in_words(video.created_at)+" ago", video, class: "card-footer-last no-shadow placeholder", "data-turbo":"false") %>
   </div>
 <% end %>
+<% unless request.format == "text/vnd.turbo-stream.html"%>
 <script>
 document.documentElement.addEventListener("turbo:load", () => {
 const ph = document.getElementsByClassName('placeholder');
@@ -24,3 +25,4 @@ while(hid.length){
 }
 });
 </script>
+<% end %>
