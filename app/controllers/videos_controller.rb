@@ -6,7 +6,6 @@ class VideosController < ApplicationController
 
   def index
     @pagination, @videos = paginate(collection: Video.with_attached_thumbnail.all.order(created_at: :desc), params: page_params)
-
     respond_to do |format|
       format.html
       format.turbo_stream
@@ -15,7 +14,6 @@ class VideosController < ApplicationController
 
   def search
     @pagination, @videos = paginate(collection: Video.with_attached_thumbnail.where("replace(title, ' ','') ILIKE replace(?, ' ','')", "%"+ Video.sanitize_sql_like(params[:query]) +"%").order(created_at: :desc), params: page_params)
-
     respond_to do |format|
       format.html
       format.turbo_stream
@@ -60,7 +58,7 @@ class VideosController < ApplicationController
   def destroy
     @video.destroy
     respond_to do |format|
-      format.html { flash[:notice] = "Video was successfully destroyed." }
+      format.html { redirect_to root_path(format: :html), notice: "Video was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -69,7 +67,7 @@ class VideosController < ApplicationController
     def set_video
       @video = Video.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-      redirect_to root_path, alert: "Video doesn't exist."
+      redirect_to root_path, alert: "Video does not exist."
     end
 
     def video_params

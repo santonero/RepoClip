@@ -171,7 +171,7 @@
   opacity: 0;
   transform: translateX(200px) rotateY(360deg);
   pointer-events: none;
-  transition: opacity 0.8s, transform 1s !important;
+  transition: opacity 0.8s ease 0.11s, transform 1s !important;
 }
 
 .video-js.vjs-paused .vjs-big-play-button {
