@@ -1,7 +1,5 @@
 class CommentsController < ApplicationController
   include Pagination
-  http_basic_authenticate_with name: "dhh", password: "secret", only: :destroy
-
   COMS_PER_PAGE = 6
 
   def show

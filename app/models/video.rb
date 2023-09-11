@@ -4,7 +4,7 @@ class Video < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   validates :title, presence: true, uniqueness: true, length: { maximum: 40 }
-  validates :description, length: { maximum: 550}
+  validates :description, length: { maximum: 550 }
   validates :clip, presence: true
   validates :thumbnail, presence: true
   validate :correct_video_type

@@ -451,6 +451,7 @@
   position:fixed;
   bottom: 25px;
   left: 2.5%;
+  transform: scale(1.2);
 }
 
 .docs-footer {
