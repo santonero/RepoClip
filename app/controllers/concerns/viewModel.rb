@@ -1,6 +1,6 @@
 module ViewModel
   class Pagination
-    DEFAULT = { page: 1, per_page: 6}.freeze
+    DEFAULT = {page: 1, per_page: 6}.freeze
 
     attr_reader :page, :count, :per_page
 
@@ -12,7 +12,6 @@ module ViewModel
 
     def offset
       return 0 if page == 1
-
       per_page * (page.to_i - 1)
     end
 

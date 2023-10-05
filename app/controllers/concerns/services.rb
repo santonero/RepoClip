@@ -12,9 +12,7 @@ module Services
     end
 
     def results
-      collection
-        .limit(metadata.per_page)
-        .offset(metadata.offset)
+      collection.limit(metadata.per_page).offset(metadata.offset)
     end
   end
 end

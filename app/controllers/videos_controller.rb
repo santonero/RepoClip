@@ -1,6 +1,6 @@
 class VideosController < ApplicationController
   include Pagination
-  before_action :set_video, only: %i[ show edit update destroy ]
+  before_action :set_video, only: %i[show edit update destroy]
 
   VIDS_PER_PAGE = 17
 
