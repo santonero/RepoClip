@@ -1,7 +1,6 @@
 class VideosController < ApplicationController
   include Pagination
   before_action :set_video, only: %i[show edit update destroy]
-
   VIDS_PER_PAGE = 17
 
   def index
@@ -27,9 +26,6 @@ class VideosController < ApplicationController
     @video = Video.new
   end
 
-  def edit
-  end
-
   def create
     @video = Video.new(video_params)
     respond_to do |format|
@@ -41,6 +37,9 @@ class VideosController < ApplicationController
         format.json { render json: @video.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def edit
   end
 
   def update
@@ -64,17 +63,18 @@ class VideosController < ApplicationController
   end
 
   private
-    def set_video
-      @video = Video.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      redirect_to root_path, alert: "Video does not exist."
-    end
 
-    def video_params
-      params.require(:video).permit(:title, :description, :clip, :thumbnail)
-    end
+  def set_video
+    @video = Video.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path, alert: "Video does not exist."
+  end
 
-    def page_params
-      params.permit(:page).merge(per_page: VIDS_PER_PAGE)
-    end
+  def video_params
+    params.require(:video).permit(:title, :description, :clip, :thumbnail)
+  end
+
+  def page_params
+    params.permit(:page).merge(per_page: VIDS_PER_PAGE)
+  end
 end

@@ -1,23 +1,20 @@
 <div class="modal modal-lg" id="mod">
-  <%= link_to "",root_path, onclick:"hideModal();return false;", class:"modal-overlay" %>
+  <%= link_to "", root_path, onclick: "hideModal();return false;", class: "modal-overlay" %>
   <div class="modal-container">
-  <div class="modal-header">
-    <%= link_to "",root_path, onclick:"hideModal();return false;", class:"btn btn-clear float-right" %>
-    <div class="modal-title h5"><%= title %></div>
-  </div>
-  <div class="modal-body">
-    <div class="content">
-    <%= turbo_frame_tag "add", src: path %>
+    <div class="modal-header">
+      <%= link_to "", root_path, onclick: "hideModal();return false;", class: "btn btn-clear float-right" %>
+      <div class="modal-title h5"><%= title %></div>
     </div>
-  </div>
-  <div class="modal-footer">
-  </div>
+    <div class="modal-body">
+      <div class="content"><%= turbo_frame_tag "add", src: path %></div>
+    </div>
+    <div class="modal-footer"></div>
   </div>
 </div>
 <script>
-  function hideModal(){
-    const e=document.getElementById('mod');e.classList.remove('active');
-    const s=document.getElementsByClassName('shakeit');while(s.length){s[0].classList.remove('shakeit');}
-    if(media=document.querySelector('video'))media.play();
-  }
+function hideModal(){
+  const e=document.getElementById('mod');e.classList.remove('active');
+  const s=document.getElementsByClassName('shakeit');if(s) while(s.length){s[0].classList.remove('shakeit');};
+  const media=document.querySelector('video');
+  if(media && !media.ended)media.play();}
 </script>

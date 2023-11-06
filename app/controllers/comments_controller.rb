@@ -1,19 +1,17 @@
 class CommentsController < ApplicationController
   include Pagination
+  before_action :set_video
   COMS_PER_PAGE = 6
 
   def show
-    @video = Video.find(params[:video_id])
     @pagination, @comments = paginate(collection: @video.comments, params: page_params)
   end
 
   def new
-    @video = Video.find(params[:video_id])
     @comment = @video.comments.new
   end
 
   def create
-    @video = Video.find(params[:video_id])
     @comment = @video.comments.new(comment_params)
     respond_to do |format|
       if @comment.save
@@ -26,7 +24,6 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @video = Video.find(params[:video_id])
     @comment = @video.comments.find(params[:id])
     @comment.destroy
     respond_to do |format|
@@ -36,11 +33,16 @@ class CommentsController < ApplicationController
   end
 
   private
-    def comment_params
-      params.require(:comment).permit(:commenter, :body)
-    end
 
-    def page_params
-      params.permit(:page).merge(per_page: COMS_PER_PAGE)
-    end
+  def set_video
+    @video = Video.find(params[:video_id])
+  end
+
+  def comment_params
+    params.require(:comment).permit(:commenter, :body)
+  end
+
+  def page_params
+    params.permit(:page).merge(per_page: COMS_PER_PAGE)
+  end
 end

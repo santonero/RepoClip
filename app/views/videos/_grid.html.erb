@@ -1,28 +1,23 @@
 <% unless request.env["HTTP_TURBO_FRAME"].present? || action_name == "search" %>
-  <div class ="card">
+  <div class="card">
     <div class="card-image bg-primary" id="new_video" onclick="const e=document.getElementById('mod');e.classList.add('active');" onmouseover="document.getElementById('plus').style.transform='scale(2)';" onmouseleave="document.getElementById('plus').style.transform='scale(1)';"><i class="icon icon-2x icon-plus" id="plus"></i></div>
   </div>
 <% end %>
 <% @videos.each do |video| %>
-  <div class ="card">
+  <div class="card">
     <div class="card-image placeholder">
-      <div class="hidden full"><%= link_to(image_tag(video.thumbnail, class: "img-responsive mb-1"), video, class: "no-shadow", "data-turbo":"false") %></div>
+      <div class="hidden full"><%= link_to(image_tag(video.thumbnail, class: "img-responsive mb-1"), video, class: "no-shadow", "data-turbo": "false") %></div>
     </div>
-      <div class="mt-2"><%= link_to content_tag(:span,video.title,class:"placeholder boxbreak"), video, class: "card-footer no-shadow", "data-turbo":"false" %></div>
-      <%= link_to(time_ago_in_words(video.created_at)+" ago", video, class: "card-footer-last no-shadow placeholder", "data-turbo":"false") %>
+      <div class="mt-2"><%= link_to content_tag(:span,video.title,class: "placeholder boxbreak"), video, class: "card-footer no-shadow", "data-turbo": "false" %></div>
+      <%= link_to(time_ago_in_words(video.created_at)+" ago", video, class: "card-footer-last no-shadow placeholder", "data-turbo": "false") %>
   </div>
 <% end %>
-<% unless request.format == "text/vnd.turbo-stream.html"%>
+<% unless request.format == "text/vnd.turbo-stream.html" %>
 <script>
 document.documentElement.addEventListener("turbo:load", () => {
 const ph = document.getElementsByClassName('placeholder');
 const hid = document.getElementsByClassName('hidden');
-while(ph.length){
-  ph[0].classList.remove('placeholder');
-}
-while(hid.length){
-  hid[0].classList.remove('hidden');
-}
-});
+while(ph.length){ph[0].classList.remove('placeholder');}
+while(hid.length){hid[0].classList.remove('hidden');}});
 </script>
 <% end %>

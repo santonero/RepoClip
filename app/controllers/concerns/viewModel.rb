@@ -1,7 +1,6 @@
 module ViewModel
   class Pagination
     DEFAULT = {page: 1, per_page: 6}.freeze
-
     attr_reader :page, :count, :per_page
 
     def initialize(params = {})
