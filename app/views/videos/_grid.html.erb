@@ -15,9 +15,9 @@
 <% unless request.format == "text/vnd.turbo-stream.html" %>
 <script>
 document.documentElement.addEventListener("turbo:load", () => {
-const ph = document.getElementsByClassName('placeholder');
-const hid = document.getElementsByClassName('hidden');
-while(ph.length){ph[0].classList.remove('placeholder');}
-while(hid.length){hid[0].classList.remove('hidden');}});
+  const ph = document.getElementsByClassName('placeholder');
+  const hid = document.getElementsByClassName('hidden');
+  while(ph.length){ph[0].classList.remove('placeholder');}
+  while(hid.length){hid[0].classList.remove('hidden');}});
 </script>
 <% end %>
