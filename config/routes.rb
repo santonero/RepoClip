@@ -5,4 +5,9 @@ Rails.application.routes.draw do
   resources :videos do
     resources :comments
   end
+
+  resource :registration
+  resource :session
+  resource :password
+  resource :password_reset
 end

@@ -10,14 +10,19 @@
     <%= yield(:head) %>
   </head>
 
-  <body>
+  <body class="d-flex">
     <% if notice %>
       <div class="toast toast-success c-hand" onclick="rmflash(this)"><button class="btn btn-clear float-right"></button><%= notice %></div>
     <% end %>
     <% if alert %>
       <div class="toast toast-error c-hand" onclick="rmflash(this)"><button class="btn btn-clear float-right"></button><%= alert %></div>
     <% end %>
+    <%= render "videos/navbar" %>
     <%= yield %>
+    <footer class="docs-footer">
+      <p><%= link_to "GitHub","https://github.com/Santonero/repoclip", target: "_blank" %> · Version 1.1</p>
+      <p>Designed and built by Santonero.</p>
+    </footer>
     <script>function rmflash(x){document.body.removeChild(x);}</script>
   </body>
 </html>

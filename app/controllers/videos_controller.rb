@@ -12,7 +12,7 @@ class VideosController < ApplicationController
   end
 
   def search
-    @pagination, @videos = paginate(collection: Video.with_attached_thumbnail.where("replace(title, ' ','') ILIKE replace(?, ' ','')", "%"+ Video.sanitize_sql_like(params[:query]) +"%").order(created_at: :desc), params: page_params)
+    @pagination, @videos = paginate(collection: Video.with_attached_thumbnail.where("replace(title,' ','') ILIKE replace(?,' ','')", "%"+ Video.sanitize_sql_like(params[:query]) +"%").order(created_at: :desc), params: page_params)
     respond_to do |format|
       format.html
       format.turbo_stream

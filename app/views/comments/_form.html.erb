@@ -1,31 +1,37 @@
 <%= form_with(model: [@video, @video.comments.build], id: "comform") do |form| %>
-  <% if comment.errors[:commenter].any? %>
-    <div class="form-group column col-9 col-xs-12 col-sm-12 col-md-10 col-lg-10 name-field has-error" style="max-width:520px;">
-      <%= form.label :commenter, "Author", class: "form-label" %>
-      <%= form.text_field :commenter, class: "form-input", placeholder: "Your name (mandatory)" %>
-      <% comment.errors.full_messages_for(:commenter).each do |message| %>
-        <p class="slidey form-input-hint"><%= message %></p>
-      <% end %>
-  <% else %>
-    <div class="form-group column col-8 col-xs-12 col-sm-12 col-md-9 col-lg-9 name-field" style="max-width:520px;">
-      <%= form.label :commenter, "Author", class: "form-label" %>
-      <%= form.text_field :commenter, class: "form-input", placeholder: "Your name (mandatory)" %>
-  <% end %>
-    </div>
+<% unless logged_in? %>
+  <div class="form-group column col-9 col-xs-12 col-sm-12 col-md-10 col-lg-10 max-52">
+    <% if comment.errors[:commenter].any? %>
+      <div class="has-error">
+        <%= form.label :commenter, "Author", class: "form-label" %>
+        <%= form.text_field :commenter, class: "form-input", placeholder: "Your name (mandatory)" %>
+        <% comment.errors.full_messages_for(:commenter).each do |message| %>
+          <p class="slidey form-input-hint"><%= message %></p>
+        <% end %>
+    <% else %>
+      <div>
+        <%= form.label :commenter, "Author", class: "form-label" %>
+        <%= form.text_field :commenter, class: "form-input", placeholder: "Your name (mandatory)" %>
+    <% end %>
+      </div>
+  </div>
+<% end %>
 
-  <% if comment.errors[:body].any? %>
-    <div class="form-group has-error" style="max-width:820px;">
-      <%= form.label :body, "Comment", class: "form-label" %>
-      <%= form.text_area :body, class: "form-input", placeholder: "Your comment" %>
-      <p class="slidey form-input-hint"><%= comment.errors.full_messages_for(:body)[0] %></p>
-  <% else %>
-    <div class="form-group" style="max-width:820px;">
-      <%= form.label :body, "Comment", class: "form-label" %>
-      <%= form.text_area :body, class: "form-input", placeholder: "Your comment" %>
-  <% end %>
-    </div>
+  <div class="form-group max-82 p-04">
+    <% if comment.errors[:body].any? %>
+      <div class="has-error">
+        <%= form.label :body, "Comment", class: "form-label" %>
+        <%= form.text_area :body, class: "form-input", placeholder: "Your comment" %>
+        <p class="slidey form-input-hint"><%= comment.errors.full_messages_for(:body)[0] %></p>
+    <% else %>
+      <div>
+        <%= form.label :body, "Comment", class: "form-label" %>
+        <%= form.text_area :body, class: "form-input", placeholder: "Your comment" %>
+    <% end %>
+      </div>
+  </div>
 
-  <div class="form-group">
+  <div class="form-group p-04">
     <%= form.submit class: "btn btn-primary input-group-btn" %>
   </div>
 <% end %>

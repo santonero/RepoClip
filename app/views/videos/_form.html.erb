@@ -1,78 +1,86 @@
 <%= form_with(model: video, data: { controller: "form-redir form-load", action: "turbo:submit-end->form-redir#next turbo:submit-start->form-load#showload" }, id: "vidform") do |form| %>
-  <% if video.errors[:title].any? %>
-    <div class="form-group column col-6 col-xs-12 col-sm-12 col-md-9 col-lg-7 name-field has-error">
-      <%= form.label :title, class: "form-label" %>
-      <%= form.text_field :title, class: "form-input", placeholder: "Title" %>
-      <% video.errors.full_messages_for(:title).each do |message| %>
-        <p class="form-input-hint"><%= message %></p>
-      <% end %>
-  <% elsif video.errors[:title].empty? && response.status == 422 %>
-    <div class="form-group column column col-6 col-xs-12 col-sm-12 col-md-9 col-lg-7 name-field has-success">
-      <%= form.label :title, class: "form-label" %>
-      <%= form.text_field :title, class: "form-input", placeholder: "Title" %>
-      <p class="form-input-hint">The title is valid.</p>
-  <% else %>
-    <div class="form-group column col-6 col-xs-12 col-sm-12 col-md-9 col-lg-7 name-field">
-      <%= form.label :title, class: "form-label" %>
-      <%= form.text_field :title, class: "form-input", placeholder: "Title" %>
-  <% end %>
-    </div>
-
-  <% if video.errors[:clip].any? %>
-    <div class="form-group has-error">
-      <%= form.label :clip, class: "form-label d-inline-block" %>
-      <div class="d-inline-block tooltip tooltip-right" data-tooltip="Please upload small file (<150MB), as it's a&#10;&#13;portfolio and i dont have infinite space." data-tooltipm="Please upload small file &#10;&#13;(<150MB)">
-        <%= image_tag("help.svg", class:"fieldicon") %>
+  <div class="form-group column col-6 col-xs-12 col-sm-12 col-md-9 col-lg-7">
+    <% if video.errors[:title].any? %>
+      <div class="has-error">
+        <%= form.label :title, class: "form-label" %>
+        <%= form.text_field :title, class: "form-input", placeholder: "Title" %>
+        <% video.errors.full_messages_for(:title).each do |message| %>
+          <p class="form-input-hint"><%= message %></p>
+        <% end %>
+    <% elsif video.errors[:title].empty? && response.status == 422 %>
+      <div class="has-success">
+        <%= form.label :title, class: "form-label" %>
+        <%= form.text_field :title, class: "form-input", placeholder: "Title" %>
+        <p class="form-input-hint">The title is valid.</p>
+    <% else %>
+      <div>
+        <%= form.label :title, class: "form-label" %>
+        <%= form.text_field :title, class: "form-input", placeholder: "Title" %>
+    <% end %>
       </div>
-      <%= form.file_field :clip, class: "form-input", onchange:"validateSize(this,150,'video_clip')" %>
-      <% video.errors.full_messages_for(:clip).each do |message| %>
-        <p class="form-input-hint"><%= message %></p>
-      <% end %>
-  <% else %>
-    <div class="form-group">
-      <%= form.label :clip, class: "form-label d-inline-block" %>
-      <div class="d-inline-block tooltip tooltip-right" data-tooltip="Please upload small file (<150MB), as it's a&#10;&#13;portfolio and i dont have infinite space." data-tooltipm="Please upload small file &#10;&#13;(<150MB)">
-        <%= image_tag("help.svg", class: "fieldicon") %>
-      </div>
-      <div><%= form.file_field :clip, class: "form-input", onchange:"validateSize(this,150,'video_clip')" %></div>
-  <% end %>
-    </div>
+  </div>
 
-  <% if video.errors[:thumbnail].any? %>
-    <div class="form-group has-error">
-      <%= form.label :thumbnail, class: "form-label d-inline-block" %>
-      <div class="d-inline-block tooltip tooltip-right" data-tooltip="We recommend your custom thumbnails: &#10;&#13; • Have a resolution of 1280x720. &#10;&#13; • Be uploaded in JPG or PNG formats. &#10;&#13; • Remain under the 2MB limit. &#10;&#13; • Try to use a 16:9 aspect ratio." data-tooltipm="Recommendations: &#10;&#13; • Have a resolution of &#10;&#13; 1280x720. &#10;&#13; • Be uploaded in JPG /&#10;&#13; PNG formats. &#10;&#13; • Remain under 2MB. &#10;&#13; • Try to use a 16:9 &#10;&#13; aspect ratio.">
-        <%= image_tag("help.svg", class: "fieldicon") %>
+  <div class="form-group p-04">
+    <% if video.errors[:clip].any? %>
+      <div class="has-error">
+        <%= form.label :clip, class: "form-label d-inline-block" %>
+        <div class="d-inline-block tooltip tooltip-right" data-tooltip="Please upload small file (<150MB), as it's a&#10;&#13;portfolio and i dont have infinite space." data-tooltipm="Please upload small file &#10;&#13;(<150MB)">
+          <%= image_tag("help.svg", class:"fieldicon") %>
+        </div>
+        <%= form.file_field :clip, class: "form-input", onchange:"validateSize(this,150,'video_clip')" %>
+        <% video.errors.full_messages_for(:clip).each do |message| %>
+          <p class="form-input-hint"><%= message %></p>
+        <% end %>
+    <% else %>
+      <div>
+        <%= form.label :clip, class: "form-label d-inline-block" %>
+        <div class="d-inline-block tooltip tooltip-right" data-tooltip="Please upload small file (<150MB), as it's a&#10;&#13;portfolio and i dont have infinite space." data-tooltipm="Please upload small file &#10;&#13;(<150MB)">
+          <%= image_tag("help.svg", class: "fieldicon") %>
+        </div>
+        <%= form.file_field :clip, class: "form-input", onchange:"validateSize(this,150,'video_clip')" %>
+    <% end %>
       </div>
-      <%= form.file_field :thumbnail, class: "form-input", onchange:"validateSize(this,2,'video_thumbnail')" %>
-      <% video.errors.full_messages_for(:thumbnail).each do |message| %>
-        <p class="form-input-hint"><%= message %></p>
-      <% end %>
-  <% else %>
-    <div class="form-group">
-      <%= form.label :thumbnail, class: "form-label d-inline-block" %>
-      <div class="d-inline-block tooltip tooltip-right" data-tooltip="We recommend your custom thumbnails: &#10;&#13; • Have a resolution of 1280x720. &#10;&#13; • Be uploaded in JPG or PNG formats. &#10;&#13; • Remain under the 2MB limit. &#10;&#13; • Try to use a 16:9 aspect ratio." data-tooltipm="Recommendations: &#10;&#13; • Have a resolution of &#10;&#13; 1280x720. &#10;&#13; • Be uploaded in JPG /&#10;&#13; PNG formats. &#10;&#13; • Remain under 2MB. &#10;&#13; • Try to use a 16:9 &#10;&#13; aspect ratio.">
-        <%= image_tag("help.svg", class: "fieldicon") %>
+  </div>
+
+  <div class="form-group p-04">
+    <% if video.errors[:thumbnail].any? %>
+      <div class="has-error">
+        <%= form.label :thumbnail, class: "form-label d-inline-block" %>
+        <div class="d-inline-block tooltip tooltip-right" data-tooltip="We recommend your custom thumbnails: &#10;&#13; • Have a resolution of 1280x720. &#10;&#13; • Be uploaded in JPG or PNG formats. &#10;&#13; • Remain under the 2MB limit. &#10;&#13; • Try to use a 16:9 aspect ratio." data-tooltipm="Recommendations: &#10;&#13; • Have a resolution of &#10;&#13; 1280x720. &#10;&#13; • Be uploaded in JPG /&#10;&#13; PNG formats. &#10;&#13; • Remain under 2MB. &#10;&#13; • Try to use a 16:9 &#10;&#13; aspect ratio.">
+          <%= image_tag("help.svg", class: "fieldicon") %>
+        </div>
+        <%= form.file_field :thumbnail, class: "form-input", onchange:"validateSize(this,2,'video_thumbnail')" %>
+        <% video.errors.full_messages_for(:thumbnail).each do |message| %>
+          <p class="form-input-hint"><%= message %></p>
+        <% end %>
+    <% else %>
+      <div>
+        <%= form.label :thumbnail, class: "form-label d-inline-block" %>
+        <div class="d-inline-block tooltip tooltip-right" data-tooltip="We recommend your custom thumbnails: &#10;&#13; • Have a resolution of 1280x720. &#10;&#13; • Be uploaded in JPG or PNG formats. &#10;&#13; • Remain under the 2MB limit. &#10;&#13; • Try to use a 16:9 aspect ratio." data-tooltipm="Recommendations: &#10;&#13; • Have a resolution of &#10;&#13; 1280x720. &#10;&#13; • Be uploaded in JPG /&#10;&#13; PNG formats. &#10;&#13; • Remain under 2MB. &#10;&#13; • Try to use a 16:9 &#10;&#13; aspect ratio.">
+          <%= image_tag("help.svg", class: "fieldicon") %>
+        </div>
+        <%= form.file_field :thumbnail, class: "form-input", onchange:"validateSize(this,2,'video_thumbnail')" %>
+    <% end %>
       </div>
-      <div><%= form.file_field :thumbnail, class: "form-input", onchange:"validateSize(this,2,'video_thumbnail')" %></div>
-  <% end %>
-    </div>
+  </div>
 
-  <% if video.errors[:description].any? %>
-    <div class="form-group has-error">
-      <%= form.label :description, class: "form-label" %>
-      <%= form.text_area :description, class: "form-input", placeholder: "Description about the video (optional)", rows: "3" %>
-      <% video.errors.full_messages_for(:description).each do |message| %>
-        <p class="form-input-hint"><%= message %></p>
-      <% end %>
-  <% else %>
-    <div class="form-group">
-      <%= form.label :description, class: "form-label" %>
-      <%= form.text_area :description, class: "form-input", placeholder: "Description about the video (optional)", rows: "3" %>
-  <% end %>
-    </div>
+  <div class="form-group p-04">
+    <% if video.errors[:description].any? %>
+      <div class="has-error">
+        <%= form.label :description, class: "form-label" %>
+        <%= form.text_area :description, class: "form-input", placeholder: "Description about the video (optional)", rows: "3" %>
+        <% video.errors.full_messages_for(:description).each do |message| %>
+          <p class="form-input-hint"><%= message %></p>
+        <% end %>
+    <% else %>
+      <div>
+        <%= form.label :description, class: "form-label" %>
+        <%= form.text_area :description, class: "form-input", placeholder: "Description about the video (optional)", rows: "3" %>
+    <% end %>
+      </div>
+  </div>
 
-  <div class="form-group">
+  <div class="form-group p-04">
     <%= form.submit class: "btn btn-primary input-group-btn float-left" %><div id="formload"></div>
   </div>
   <script>

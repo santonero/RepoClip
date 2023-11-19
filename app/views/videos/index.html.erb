@@ -1,15 +1,14 @@
-<%= render "navbar" %>
-<div class="container" style="padding-top:2.9%;padding-bottom:2.7em;">
+<div class="container p-tb">
 <div id="grid" class="p-2">
   <%= render "grid" %>
 <% if @pagination.next_page? %>
-  <%= turbo_frame_tag :pagination, loading: :lazy, src: videos_path(format: :turbo_stream, page: @pagination.next_page)%>
+  <%= turbo_frame_tag :pagination, loading: :lazy, src: videos_path(format: :turbo_stream, page: @pagination.next_page) %>
 <% end %>
 </div>
 </div>
 <%= render "modal", path: new_video_path, title: "Upload" %>
-<button class="btn btn-primary btn-action btn-lg s-circle" id="up" onclick="window.scrollTo({top: 0,left: 0,behavior: 'smooth'});" ><i class="icon icon-upward"></i></button>
-<div class="hero hero-sm bg-primary text-light text-center" style="margin-bottom:3%;">
+<button class="btn btn-primary btn-action btn-lg s-circle" id="up" onclick="window.scrollTo({top: 0,left: 0,behavior: 'smooth'});"><i class="icon icon-upward"></i></button>
+<div class="hero hero-sm bg-primary text-light text-center">
   <div class="container grid-lg">
     <h2> Introduction </h2>
     <div class="columns">
@@ -30,7 +29,3 @@
   </div>
 </div>
 <template data-controller="upward"></template>
-<div id="copyright" class="docs-footer container grid-lg">
-  <p><%= link_to "GitHub","https://github.com/Santonero/repoclip", target: "_blank", style: "color:rgb(102, 117, 140);" %> · Version 1.1</p>
-  <p>Designed and built by Santonero.</p>
-</div>

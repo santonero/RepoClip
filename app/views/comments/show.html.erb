@@ -1,15 +1,13 @@
 <%= turbo_frame_tag "comframe" do %>
   <div class="divider"></div>
-  <div class="container">
-    <%= render "comments/ccount" %>
-  </div>
+  <div><%= render "ccount" %></div>
   <div class="p-relative" id="comzone">
-  <div id="comments" class="column col-12" style="width:96.4%;">
-    <%= render @comments %>
-  </div>
+    <div id="comments" class="column col-12" style="width:96.4%;">
+      <%= render @comments %>
+    </div>
   </div>
   <% if @pagination.total_pages > 1 %>
-    <div class="container" style="display:flex;">
+    <div class="d-flex">
       <% if @pagination.previous_page? %>
         <%= link_to "First", video_comment_path(page: 1), class: "p-2 decor" %>
         <%= link_to video_comment_path(page: @pagination.previous_page), class: "p-2 decor" do %>
@@ -17,8 +15,8 @@
           <span>Previous</span>
         <% end %>
       <% else %>
-      <p class="p-2">First</p>
-      <p class="p-2"><i class="icon icon-arrow-left"></i> Previous</p>
+        <p class="p-2">First</p>
+        <p class="p-2"><i class="icon icon-arrow-left"></i> Previous</p>
       <% end %>
       <p class="p-2"><%= "Page #{@pagination.page} of #{@pagination.total_pages}" %></p>
       <% if @pagination.next_page? %>
@@ -26,7 +24,7 @@
           <span>Next</span>
           <i class="icon icon-arrow-right"></i>
         <% end %>
-        <%= link_to "Last", video_comment_path(page: @pagination.total_pages),class: "p-2 decor" %>
+        <%= link_to "Last", video_comment_path(page: @pagination.total_pages), class: "p-2 decor" %>
       <% else %>
         <p class="p-2">Next <i class="icon icon-arrow-right"></i></p>
         <p class="p-2">Last </p>
