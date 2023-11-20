@@ -1,6 +1,6 @@
 <div class="container mt-16">
-  <h1>Sign Up</h1>
-  <div class="column col-6 col-xs-12 col-sm-12 col-md-9 col-lg-7">
+  <h1 class="text-center">Sign Up</h1>
+  <div class="column col-6 col-xs-12 col-sm-12 col-md-9 col-lg-7 col-mx-auto">
     <%= form_with model: @user, url: registration_path do |form| %>
       <div class="form-group">
         <% if @user.errors[:username].any? %>

@@ -269,17 +269,45 @@ body { min-height: 100vh; margin: 0; flex-direction: column }
 }
 
 .toast {
-  position: relative;
-  z-index: 3;
+  width: auto!important;
+  position: absolute;
+  z-index: 4;
   animation: slidein 0.3s
 }
 
+.lcontainer { padding-top: 2%; padding-bottom: 2%; right:0; z-index:2 }
+
+.cross { right: 3% }
+
+.logslide { animation: logslide 0.5s }
+
+@media only screen and (max-width: 350px) {
+  @keyframes logslide {
+    from {top: -228px; opacity: 0}
+    to {top: 89px; opacity: 1}
+  }
+}
+
+@media only screen and (min-width: 351px) and (max-width: 505px) {
+  @keyframes logslide {
+    from {top: -228px; opacity: 0}
+    to {top: 64px; opacity: 1}
+  }
+}
+
+@media only screen and (min-width: 506px) {
+  @keyframes logslide {
+    from {top: -228px; opacity: 0}
+    to {top: 60px; opacity: 1}
+  }
+}
 .slidex {
   position: relative;
   animation: slidein 0.3s
 }
 
 .toast.toast-success:hover { background-color: #2ca03b }
+.toast.toast-error:hover { background-color: #ff5e00 }
 
 .fieldicon {
   position: relative;
