@@ -258,7 +258,7 @@ body { min-height: 100vh; margin: 0; flex-direction: column }
 
 .navbar-brand { padding: 5px; border-radius: 2px }
 
-#navlogo { user-select: none }
+#navlogo { white-space: nowrap; user-select: none }
 
 @media only screen and (max-width: 635px) {
   .navbar-center { -ms-flex: 1 0 0!important; flex: 1 0 0!important }
@@ -281,21 +281,14 @@ body { min-height: 100vh; margin: 0; flex-direction: column }
 
 .logslide { animation: logslide 0.5s }
 
-@media only screen and (max-width: 350px) {
+@media only screen and (max-width: 392px) {
   @keyframes logslide {
     from {top: -228px; opacity: 0}
     to {top: 89px; opacity: 1}
   }
 }
 
-@media only screen and (min-width: 351px) and (max-width: 505px) {
-  @keyframes logslide {
-    from {top: -228px; opacity: 0}
-    to {top: 64px; opacity: 1}
-  }
-}
-
-@media only screen and (min-width: 506px) {
+@media only screen and (min-width: 393px) {
   @keyframes logslide {
     from {top: -228px; opacity: 0}
     to {top: 60px; opacity: 1}
@@ -309,10 +302,7 @@ body { min-height: 100vh; margin: 0; flex-direction: column }
 .toast.toast-success:hover { background-color: #2ca03b }
 .toast.toast-error:hover { background-color: #ff5e00 }
 
-.fieldicon {
-  position: relative;
-  top: 3px
-}
+.fieldicon { position: relative; top: 3px }
 
 .form-input-hint {
   position: relative;
