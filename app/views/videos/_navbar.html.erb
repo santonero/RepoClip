@@ -17,7 +17,7 @@
       <%= button_to "Log Out", session_path, method: :delete, class: "btn btn-sm mr-2", form: { data: { controller: "login-redir", action: "turbo:submit-end->login-redir#next" } } %>
     <% else %>
       <%= link_to "Sign Up", new_registration_path, class: "mr-2" %>
-      <%= link_to "Log In", new_session_path, class: "mr-2", "data-turbo-frame": "login" %>
+      <%= link_to "Log In", new_session_path, class: "mr-2", "data-turbo-frame": "login", data: { controller: "toggle-login", action: "click->toggle-login#toggle" } %>
     <% end %>
     <%= image_tag("clipico.svg") %>
   </section>
