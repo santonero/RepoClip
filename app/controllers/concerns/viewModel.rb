@@ -7,6 +7,8 @@ module ViewModel
       @page = (params[:page] || DEFAULT[:page]).to_i
       @count = params[:count]
       @per_page = params[:per_page] || DEFAULT[:per_page]
+      @type = params[:type]
+      check if @type == :coms
     end
 
     def offset
@@ -40,6 +42,10 @@ module ViewModel
 
     def total_pages
       (count / per_page.to_f).ceil
+    end
+
+    def check
+      @page = 1 if total_pages < page
     end
   end
 end

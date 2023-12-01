@@ -49,9 +49,7 @@
           <div class="has-error">
             <%= form.label :password, class: "form-label" %>
             <%= form.password_field :password, class: "form-input", placeholder: "Password" %>
-            <% @user.errors.full_messages_for(:password).each do |message| %>
-              <p class="form-input-hint"><%= message %></p>
-            <% end %>
+            <p class="form-input-hint"><%= @user.errors.full_messages_for(:password)[0] %></p>
         <% else %>
           <div>
             <%= form.label :password, class: "form-label" %>

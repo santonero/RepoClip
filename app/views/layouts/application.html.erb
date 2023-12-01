@@ -12,15 +12,15 @@
 
   <body class="d-flex">
     <% if notice %>
-      <div class="toast toast-success c-hand" onclick="rmflash(this)"><button class="btn btn-clear float-right"></button><%= notice %></div>
+      <div class="toast toast-success c-hand" onclick="rmflash(this)"><button class="btn btn-clear float-right"></button><span class="p-flash"><%= notice %></span></div>
     <% end %>
     <% if alert %>
-      <div class="toast toast-error c-hand" onclick="rmflash(this)"><button class="btn btn-clear float-right"></button><%= alert %></div>
+      <div class="toast toast-error c-hand" onclick="rmflash(this)"><button class="btn btn-clear float-right"></button><span class="p-flash"><%= alert %></span></div>
     <% end %>
     <%= render "videos/navbar" %>
     <%= yield %>
     <footer class="docs-footer">
-      <p><%= link_to "GitHub","https://github.com/Santonero/repoclip", target: "_blank" %> · Version 1.1</p>
+      <p><%= link_to "GitHub","https://github.com/Santonero/repoclip", class: "br-2", target: "_blank" %> · Version 1.1</p>
       <p>Designed and built by Santonero.</p>
     </footer>
     <script>function rmflash(x){document.body.removeChild(x);}</script>

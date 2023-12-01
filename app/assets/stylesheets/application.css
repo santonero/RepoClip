@@ -207,8 +207,6 @@ body { min-height: 100vh; margin: 0; flex-direction: column }
   -webkit-box-decoration-break: clone
 }
 
-.wordbreak { word-wrap: anywhere }
-
 .break { margin-left: -0.4rem; margin-right: -0.4rem }
 
 .scontainer { padding-top: 2%; padding-bottom: 2% }
@@ -219,11 +217,15 @@ body { min-height: 100vh; margin: 0; flex-direction: column }
 
 .ml-6 { margin-left: 6px }
 
-.max-42 { max-width:420px; }
+.max-42 { max-width:420px }
 
 .max-52 { max-width: 520px }
 
 .max-82 { max-width: 820px }
+
+.br-2 { border-radius: 2px }
+
+.p-flash { padding-left: 0.8em; padding-right: 1em }
 
 .p-04 { padding-left: 0.4em }
 

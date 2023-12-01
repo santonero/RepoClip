@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :set_video
   COMS_PER_PAGE = 6
 
-  def show
+  def index
     @pagination, @comments = paginate(collection: @video.comments, params: page_params)
   end
 
@@ -47,6 +47,6 @@ class CommentsController < ApplicationController
   end
 
   def page_params
-    params.permit(:page).merge(per_page: COMS_PER_PAGE)
+    params.permit(:page).merge(per_page: COMS_PER_PAGE, type: :coms)
   end
 end
