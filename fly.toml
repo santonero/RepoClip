@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for repoclip on 2023-09-20T18:04:26+02:00
+# fly.toml app configuration file generated for repoclip on 2023-12-01T23:54:06+01:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -9,13 +9,21 @@ console_command = "/rails/bin/rails console"
 
 [build]
 
+[deploy]
+  release_command = "./bin/rails db:prepare"
+
 [http_service]
   internal_port = 3000
   force_https = true
-  auto_stop_machines = false
-  auto_start_machines = false
+  auto_stop_machines = true
+  auto_start_machines = true
   min_machines_running = 0
   processes = ["app"]
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 256
 
 [[statics]]
   guest_path = "/rails/public"

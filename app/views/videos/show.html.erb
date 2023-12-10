@@ -3,28 +3,16 @@
   <%= stylesheet_link_tag "https://vjs.zencdn.net/8.6.1/video-js.css" %>
   <%= javascript_import_module_tag "videojs" %>
 <% end %>
-<div class="container grid-xl" id="loader-container">
+<div class="container grid-xl p-centered" id="loader-container">
   <div class="loading loading-lg"></div>
 </div>
 <%= render @video %>
+<template data-controller="loading"></template>
 <template data-controller="play"></template>
 <template id="cj" data-controller=""></template>
-<div class="hidden" id="comcont">
+<div class="container grid-xl p-centered">
   <%= turbo_frame_tag "comframe", src: video_comments_path(@video) %>
-  <div class="column col-9 col-xs-12 col-sm-12 col-md-11 col-lg-9 p-2" style="margin-left:1.1%;">
+  <div class="column col-9 col-xs-12 col-sm-12 col-md-11 col-lg-9 p-2" style="margin-left:0.5em;">
     <%= turbo_frame_tag "new_comment", src: new_video_comment_path(@video) %>
   </div>
 </div>
-<script>
-window.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('loader-container').style.display ="none";
-  const ph = document.getElementsByClassName('placeholder');
-  document.getElementById('comcont').classList.remove('hidden');
-  window.setTimeout(removePlaceholder, 450);
-  function removePlaceholder() {while(ph.length){ph[0].classList.remove('placeholder');}}
-});
-const c = document.getElementById('comframe');
-const cj = document.getElementById('cj');
-const jump = () => { !cj.dataset.controller ? cj.dataset.controller = "comjump" : c.removeEventListener('turbo:frame-load', jump);};
-c.addEventListener('turbo:frame-load', jump);
-</script>

@@ -1,19 +1,17 @@
-<div class="container grid-xl" id="vidcont">
-<div style="width:99.5%;">
+<div class="container grid-xl p-centered">
 <video
   id="my-video"
   class="video-js vjs-fluid vjs-big-play-centered vjs-show-big-play-button-on-pause"
   controls
   preload="auto"
-  width="640"
-  height="264"
+  width="640" height="264"
   poster="<%= url_for(video.thumbnail) %>"
   data-setup='{"controlBar":{"skipButtons":{"forward": 5}},"playbackRates": [0.25,0.5,0.75,1,1.25,1.5,1.75,2]}'
   >
   <source src=<%= url_for(video.clip) %> type="video/mp4" />
   <source src=<%= url_for(video.clip) %> type="video/webm" />
 </video>
-<div class="vidtitle my-2 placeholder"><strong><%= video.title %></strong></div>
+<div class="vidtitle my-2 placeholder text-bold"><%= video.title %></div>
 <div class="vidate mb-2 placeholder">Published on <%= video.created_at.strftime("%b %d, %Y") %></div>
 <div><p class="videscr placeholder"><%= video.description %></p></div>
 <div id="vidact">
@@ -22,5 +20,4 @@
   <%= button_to content_tag(:i,'',class: "icon icon-cross"), video_path(video), method: :delete, "data-turbo-confirm": "Are you sure you want to delete this video?", class: "btn btn-primary btn-action btn-lg s-circle mx-1 tooltip tooltip-left", "data-tooltip": "Delete Video" %>
 </div>
 <%= render "modal", path: edit_video_path, title: "Edit" %>
-</div>
 </div>

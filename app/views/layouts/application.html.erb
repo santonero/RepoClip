@@ -12,10 +12,10 @@
 
   <body class="d-flex">
     <% if notice %>
-      <div class="toast toast-success c-hand" onclick="rmflash(this)"><button class="btn btn-clear float-right"></button><span class="p-flash"><%= notice %></span></div>
+      <div class="toast toast-success c-hand p-fixed" onclick="rmflash(this)"><button class="btn btn-clear float-right"></button><span class="p-flash"><%= notice %></span></div>
     <% end %>
     <% if alert %>
-      <div class="toast toast-error c-hand" onclick="rmflash(this)"><button class="btn btn-clear float-right"></button><span class="p-flash"><%= alert %></span></div>
+      <div class="toast toast-error c-hand p-fixed" onclick="rmflash(this)"><button class="btn btn-clear float-right"></button><span class="p-flash"><%= alert %></span></div>
     <% end %>
     <%= render "videos/navbar" %>
     <%= yield %>

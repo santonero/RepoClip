@@ -1,6 +1,6 @@
 <%= form_with(model: [@video, @video.comments.build], id: "comform") do |form| %>
 <% unless logged_in? %>
-  <div class="form-group column col-9 col-xs-12 col-sm-12 col-md-10 col-lg-10 max-52">
+  <div class="form-group column col-9 col-xs-12 col-sm-12 col-md-10 col-lg-10 authorf">
     <% if comment.errors[:commenter].any? %>
       <div class="has-error">
         <%= form.label :commenter, "Author", class: "form-label" %>
@@ -19,14 +19,16 @@
 
   <div class="form-group max-82 p-04">
     <% if comment.errors[:body].any? %>
-      <div class="has-error">
+      <div id ="comarea" class="has-error">
         <%= form.label :body, "Comment", class: "form-label" %>
         <%= form.text_area :body, class: "form-input", placeholder: "Your comment" %>
+        <button type="button" class="btn btnemojierr btn-action s-circle" data-controller="emoji" data-action="emoji#show" onclick="setTimeout(() => this.blur(), 50)"><i class="form-icon icon icon-emoji"></i></button>
         <p class="slidey form-input-hint"><%= comment.errors.full_messages_for(:body)[0] %></p>
     <% else %>
-      <div>
+      <div id="comarea">
         <%= form.label :body, "Comment", class: "form-label" %>
         <%= form.text_area :body, class: "form-input", placeholder: "Your comment" %>
+        <button type="button" class="btn btnemoji btn-action s-circle" data-controller="emoji" data-action="emoji#show" onclick="setTimeout(() => this.blur(), 50)"><i class="form-icon icon icon-emoji"></i></button>
     <% end %>
       </div>
   </div>

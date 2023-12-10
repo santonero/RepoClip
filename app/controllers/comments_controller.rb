@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @video.comments.new(comment_params)
     respond_to do |format|
-      if !@comment.username_exist?(current_user) && @comment.save
+      if !@comment.username_taken?(current_user) && @comment.save
         format.turbo_stream
         format.html { redirect_to video_path(@video), notice: "Comment was successfully added." }
       else

@@ -1,5 +1,5 @@
 <div id="<%= dom_id comment %>" class="popcom fullh">
-  <p class="author text-break"><span class="label label-rounded"><%= comment.commenter %></span></p>
+  <p class="author text-break"><span class="label label-secondary label-rounded"><%= comment.commenter %></span></p>
   <div class="delcom">
     <%= button_to content_tag(:i,'',class: "icon icon-cross"), [comment.video, comment], method: :delete, "data-turbo-confirm": "Are you sure you want to delete this comment?", "data-turbo-frame": "_top", class: "btn btn-sm s-circle mx-1" %>
   </div>

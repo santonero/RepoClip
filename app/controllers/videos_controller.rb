@@ -71,7 +71,11 @@ class VideosController < ApplicationController
   end
 
   def video_params
-    params.require(:video).permit(:title, :description, :clip, :thumbnail)
+    if params[:video][:description].blank?
+      params.require(:video).permit(:title, :clip, :thumbnail).with_defaults(description: "No description here")
+    else
+      params.require(:video).permit(:title,:description, :clip, :thumbnail)
+    end
   end
 
   def page_params

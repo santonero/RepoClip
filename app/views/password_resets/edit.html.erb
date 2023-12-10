@@ -1,6 +1,6 @@
 <div class="container mt-16">
   <h1 class="text-center">Reset Password</h1>
-  <div class="column col-6 col-xs-12 col-sm-12 col-md-9 col-lg-7 col-mx-auto">
+  <div class="column col-6 col-xs-12 col-sm-12 col-md-9 col-lg-7 col-mx-auto max-52">
     <%= form_with model: @user, url: password_reset_path(token: params[:token]) do |form| %>
       <div class="form-group">
         <% if form.object.errors[:password].any? %>
