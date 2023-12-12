@@ -8,15 +8,12 @@ export default class extends Controller {
       const loadingTiming = { duration: 1500, easing: "cubic-bezier(.25,.1,.25,1)" };
       const slideFinished = lc.animate(loadingSlide, loadingTiming).finished;
       slideFinished.then(() => lc.style.display = "none")
-      .then(() => { const ph = document.getElementsByClassName("placeholder");
-        setTimeout(removePlaceholder, 25);
-        function removePlaceholder() {while(ph.length){ph[0].classList.remove("placeholder");}}
-      });
+      .then(() => { const ph = document.getElementsByClassName("placeholder");while(ph.length){ph[0].classList.remove("placeholder");} });
       document.querySelector(".loading-lg").style.opacity = 0;
     });
     const c = document.getElementById("comframe");
     const cj = document.getElementById("cj");
-    const jump = () => { !cj.dataset.controller ? cj.dataset.controller = "comjump" : c.removeEventListener("turbo:frame-load", jump);};
+    function jump() { !cj.dataset.controller ? cj.dataset.controller = "comjump" : c.removeEventListener("turbo:frame-load", jump);};
     c.addEventListener("turbo:frame-load", jump);
   }
 }

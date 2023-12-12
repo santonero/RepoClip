@@ -233,7 +233,6 @@ a.card-footer-last {
   padding: .4rem;
   transform: translatey(4em) scale(0);
   transition: transform .2s;
-  z-index: 9
 }
 
 @media only screen and (max-width: 554px) {
@@ -247,7 +246,7 @@ a.card-footer-last {
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 3;
+  z-index: 4;
   background: #fff
 }
 
@@ -270,7 +269,7 @@ a.card-footer-last {
 .toast {
   width: auto!important;
   position: absolute;
-  z-index: 4;
+  z-index: 5;
   animation: slidein 0.3s
 }
 
@@ -278,7 +277,7 @@ a.card-footer-last {
   background: #fff;
   padding-bottom: 2%;
   right: 0;
-  z-index:2;
+  z-index:3;
   border-bottom-left-radius: 5px;
   box-shadow: 0 .2rem .5rem rgba(48,55,66,.3);
   min-width: 256px

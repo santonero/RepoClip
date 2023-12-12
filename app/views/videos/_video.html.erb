@@ -11,9 +11,9 @@
   <source src=<%= url_for(video.clip) %> type="video/mp4" />
   <source src=<%= url_for(video.clip) %> type="video/webm" />
 </video>
-<div class="vidtitle my-2 placeholder text-bold"><%= video.title %></div>
+<div class="vidtitle my-2 text-bold text-break placeholder "><%= video.title %></div>
 <div class="vidate mb-2 placeholder">Published on <%= video.created_at.strftime("%b %d, %Y") %></div>
-<div><p class="videscr placeholder"><%= video.description %></p></div>
+<div><p class="videscr text-break placeholder"><%= video.description %></p></div>
 <div id="vidact">
   <%= link_to content_tag(:i,'',class: "pen"), edit_video_path(video),onclick:"const e=document.getElementById('mod');const media=document.querySelector('video');media.pause();e.classList.add('active');return false;", class: "btn btn-primary btn-action btn-lg s-circle mx-1 tooltip tooltip-left", style: "background-image:linear-gradient(to right,#7e2df3,#5755d9);", "data-tooltip": "Edit" %>
   <%= link_to content_tag(:i,'',class: "icon icon-share"),'',onclick:"const sh=document.getElementById('share');navigator.clipboard.writeText('#{video_url(video)}');sh.dataset.tooltip='Link copied to clipboard!';sh.classList.add('clicked');return false;",onmouseleave:"const sh=document.getElementById('share');if(sh.classList.contains('clicked')){setTimeout(blurIt,4000);sh.classList.remove('clicked');}function blurIt(){sh.blur();setTimeout(() => {sh.dataset.tooltip='Share';},200);}", class: "btn btn-primary btn-action btn-lg s-circle tooltip tooltip-left", id: "share", "data-tooltip": "Share" %>
