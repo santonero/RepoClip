@@ -1,13 +1,11 @@
 <%= form_with(model: [@video, @video.comments.build], id: "comform") do |form| %>
 <% unless logged_in? %>
-  <div class="form-group column col-9 col-xs-12 col-sm-12 col-md-10 col-lg-10 authorf">
+  <div class="form-group authorf">
     <% if comment.errors[:commenter].any? %>
       <div class="has-error">
         <%= form.label :commenter, "Author", class: "form-label" %>
         <%= form.text_field :commenter, class: "form-input", placeholder: "Your name (mandatory)" %>
-        <% comment.errors.full_messages_for(:commenter).each do |message| %>
-          <p class="slidey form-input-hint"><%= message %></p>
-        <% end %>
+        <p class="slidev form-input-hint d-inline"><%= comment.errors.full_messages_for(:commenter)[0] %></p>
     <% else %>
       <div>
         <%= form.label :commenter, "Author", class: "form-label" %>
@@ -17,13 +15,13 @@
   </div>
 <% end %>
 
-  <div class="form-group max-82 p-04">
+  <div class="form-group max-82">
     <% if comment.errors[:body].any? %>
       <div id ="comarea" class="has-error">
         <%= form.label :body, "Comment", class: "form-label" %>
         <%= form.text_area :body, class: "form-input", placeholder: "Your comment" %>
         <button type="button" class="btn btnemojierr btn-action s-circle" data-controller="emoji" data-action="emoji#show" onclick="setTimeout(() => this.blur(), 50)"><i class="form-icon icon icon-emoji"></i></button>
-        <p class="slidey form-input-hint"><%= comment.errors.full_messages_for(:body)[0] %></p>
+        <p class="slidev form-input-hint d-inline"><%= comment.errors.full_messages_for(:body)[0] %></p>
     <% else %>
       <div id="comarea">
         <%= form.label :body, "Comment", class: "form-label" %>
@@ -33,7 +31,7 @@
       </div>
   </div>
 
-  <div class="form-group p-04">
+  <div class="form-group">
     <%= form.submit class: "btn btn-primary input-group-btn" %>
   </div>
 <% end %>

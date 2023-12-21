@@ -5,7 +5,7 @@ export default class extends Controller {
     const cf = document.getElementById("comframe");
     const src = cf.src;
     const form = document.getElementById("comform");
-    const formErrors = form.getElementsByClassName("slidey");
+    const formErrors = form.getElementsByClassName("slidev");
     const hasError = form.getElementsByClassName("has-error");
     let url = new URL(src);
     url.search = "page=1";

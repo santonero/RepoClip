@@ -1,1 +1,2 @@
-import videojs from "video.js"
+import "video.js"
+import "emoji-mart"

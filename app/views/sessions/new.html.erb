@@ -4,16 +4,17 @@
 <% else %>
 <div class="lcontainer col-5 col-xs-7 col-sm-6 col-md-5 col-lg-5 p-fixed logslide max-4">
 <% end %>
-  <div onclick="rmLogin(this);" class= "p-absolute btn btn-clear cross"></div>
+<div class="ldivider"></div>
+  <a onclick="rmLogin(this);return false;" class= "p-absolute btn btn-clear cross" href=""></a>
   <% if response.status == 422 %>
-    <div class="toast toast-error c-hand" onclick="rmErr(this)"><button class="btn btn-clear float-right"></button>Invalid username or password.</div>
+    <div class="toast terr c-hand p-flash" onclick="rmErr(this)">Invalid username or password.</div>
   <% end %>
-  <h2 class="text-center text-primary">Log In</h2>
+  <h2 class="text-center">Log In</h2>
   <div class="column col-7 col-xs-11 col-sm-9 col-md-8 col-lg-8 col-mx-auto">
     <%= form_with url: session_path, data: { controller: "login-redir", action: "turbo:submit-end->login-redir#next" } do |form| %>
       <div class="form-group">
         <%= form.label :account, "Username or email", class: "form-label" %>
-        <%= form.text_field :account, class: "form-input"%>
+        <%= form.text_field :account, class: "form-input" %>
       </div>
 
       <div class="form-group">

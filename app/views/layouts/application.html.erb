@@ -12,14 +12,18 @@
 
   <body class="d-flex">
     <% if notice %>
-      <div class="toast toast-success c-hand p-fixed" onclick="rmflash(this)"><button class="btn btn-clear float-right"></button><span class="p-flash"><%= notice %></span></div>
+      <div class="toast toast-success c-hand text-center p-fixed" onclick="rmflash(this)"><button class="btn btn-clear float-right"></button><span class="p-flash"><%= notice %></span></div>
     <% end %>
     <% if alert %>
-      <div class="toast toast-error c-hand p-fixed" onclick="rmflash(this)"><button class="btn btn-clear float-right"></button><span class="p-flash"><%= alert %></span></div>
+      <div class="toast toast-error c-hand text-center p-fixed" onclick="rmflash(this)"><button class="btn btn-clear float-right"></button><span class="p-flash"><%= alert %></span></div>
     <% end %>
     <%= render "videos/navbar" %>
     <%= yield %>
-    <footer class="docs-footer">
+    <% if params[:action] == "show" %>
+      <footer class="docs-footer" style="display:none;">
+    <% else %>
+      <footer class="docs-footer">
+    <% end %>
       <p><%= link_to "GitHub","https://github.com/Santonero/repoclip", class: "br-2", target: "_blank" %> · Version 1.1</p>
       <p>Designed and built by Santonero.</p>
     </footer>

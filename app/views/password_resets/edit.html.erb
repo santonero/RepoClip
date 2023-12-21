@@ -7,9 +7,7 @@
           <div class="has-error">
             <%= form.label :password, class: "form-label" %>
             <%= form.password_field :password, class: "form-input", placeholder: "Password" %>
-            <% form.object.errors.full_messages_for(:password).each do |message| %>
-              <p class="form-input-hint"><%= message %></p>
-            <% end %>
+            <p class="form-input-hint d-inline"><%= form.object.errors.full_messages_for(:password)[0] %></p>
         <% else %>
           <div>
             <%= form.label :password, "Password", class: "form-label" %>
@@ -23,9 +21,7 @@
           <div class="has-error">
             <%= form.label :password_confirmation, class: "form-label" %>
             <%= form.password_field :password_confirmation, class: "form-input", placeholder: "Confirmation" %>
-            <% form.object.errors.full_messages_for(:password_confirmation).each do |message| %>
-              <p class="form-input-hint"><%= message %></p>
-            <% end %>
+            <p class="form-input-hint d-inline"><%= form.object.errors.full_messages_for(:password_confirmation)[0] %></p>
         <% else %>
           <div>
             <%= form.label :password_confirmation, "Password Confirmation", class: "form-label" %>

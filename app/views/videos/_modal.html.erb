@@ -11,10 +11,3 @@
     <div class="modal-footer"></div>
   </div>
 </div>
-<script>
-function hideModal(){
-  const e=document.getElementById('mod');e.classList.remove('active');
-  const s=document.getElementsByClassName('shakeit');if(s) while(s.length){s[0].classList.remove('shakeit');};
-  const media=document.querySelector('video');
-  if(media && !media.ended)media.play();}
-</script>
