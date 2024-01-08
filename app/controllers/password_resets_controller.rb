@@ -8,8 +8,11 @@ class PasswordResetsController < ApplicationController
     if user = User.find_by(email: params[:email])
       PasswordMailer.with(user: user, token: user.generate_token_for(:password_reset)).password_reset.deliver_later
     end
-
-    redirect_to root_path(format: :html), notice: "We just sent you an email to reset your password."
+    if params[:email].blank?
+      return false
+    else
+      redirect_to root_path(format: :html), notice: "We just sent you an email to reset your password. <i class='icon icon-mail'></i>"
+    end
   end
 
   def edit
@@ -27,7 +30,7 @@ class PasswordResetsController < ApplicationController
 
   def set_user_by_token
     @user = User.find_by_token_for(:password_reset, params[:token])
-    redirect_to new_password_reset_path, alert: "Invalid token, please try again." unless @user.present?
+    redirect_to new_password_reset_path, alert: "Invalid token, please try again. <i class='icon icon-stop'></i>" unless @user.present?
   end
 
   def password_params

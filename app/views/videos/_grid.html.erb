@@ -4,7 +4,7 @@
   </div>
 <% end %>
 <% @videos.each do |video| %>
-  <div class="card">
+  <div class="card vcard">
     <div class="card-image placeholder">
       <div class="hidden full"><%= link_to(image_tag(video.thumbnail, class: "img-responsive mb-1"), video, class: "no-shadow", "data-turbo": "false") %></div>
     </div>

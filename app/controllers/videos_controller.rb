@@ -67,7 +67,7 @@ class VideosController < ApplicationController
   def set_video
     @video = Video.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    redirect_to root_path, alert: "Video does not exist."
+    redirect_to root_path, alert: "Video does not exist. <i class='icon icon-search'></i>"
   end
 
   def video_params

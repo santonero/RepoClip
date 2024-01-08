@@ -13,8 +13,8 @@
   </section>
   <section class="navbar-section" id="navlogo">
     <% if logged_in? %>
-      <%= link_to current_user.username, edit_password_path, class: "mr-2 br-2" %>
-      <%= button_to "Log Out", session_path, method: :delete, class: "btn btn-sm mr-2", form: { data: { controller: "login-redir", action: "turbo:submit-end->login-redir#next" } } %>
+      <%= link_to current_user.username, edit_password_path, class: "ml-2 mr-2 br-2" %>
+      <%= button_to content_tag(:i,"",class: "icon icon-shutdown"), session_path, method: :delete, class: "btn btn-sm btn-action s-circle mr-2 tooltip tooltip-bottom", form: { data: { controller: "login-redir", action: "turbo:submit-end->login-redir#next" } }, "data-tooltip": "Log Out" %>
     <% else %>
       <%= link_to "Sign Up", new_registration_path, class: "mr-2 br-2" %>
       <%= link_to "Log In", new_session_path, class: "mr-2 br-2", "data-turbo-frame": "login", data: { controller: "toggle-login", action: "click->toggle-login#toggle" } %>

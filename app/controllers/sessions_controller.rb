@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
     if user = User.authenticate_by(username: params[:account], password: params[:password]) || user = User.authenticate_by(email: params[:account], password: params[:password])
       login user
-      flash[:notice] = "Logged in."
+      flash[:notice] = "Logged in <i class='icon icon-check'></i>"
     else
       render :new, status: :unprocessable_entity
     end
