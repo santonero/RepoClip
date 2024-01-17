@@ -1,12 +1,14 @@
 <% content_for :head do %>
   <meta name="turbo-visit-control" content="reload">
-  <%= stylesheet_link_tag "https://vjs.zencdn.net/8.9.0/video-js.css" %>
+  <%= stylesheet_link_tag "https://unpkg.com/video.js/dist/video-js.min.css" %>
   <%= javascript_import_module_tag "vjs" %>
-  <%= javascript_include_tag "reveal", defer: true  %>
-  <%= javascript_include_tag "modal", defer: true %>
+  <%= javascript_include_tag "play", defer: true %>
+  <%= javascript_include_tag "modal" %>
 <% end %>
+<div class="container grid-xl" id="loadcont">
+  <div class="loading loading-lg"></div>
+</div>
 <%= render @video %>
-<template data-controller="play"></template>
 <template data-controller="cjsetup"></template>
 <template id="cj" data-controller=""></template>
 <div id ="comcont" class="container grid-xl p-centered">

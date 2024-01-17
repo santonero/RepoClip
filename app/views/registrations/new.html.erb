@@ -67,7 +67,7 @@
         <% end %>
           </div>
       </div>
-
+      <%= link_to "Have an Account?", new_session_path, "data-turbo-frame": "login", data: { controller: "toggle-login", action: "click->toggle-login#toggle" }, class: "text-small" %>
       <div class="form-group">
         <%= form.submit "Sign Up", class: "btn fullw lbtn input-group-btn" %>
       </div>

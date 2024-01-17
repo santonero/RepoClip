@@ -1,25 +1,7 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
  *= require_tree .
  *= require_self
  */
-
-body { min-height: 100vh; margin: 0; flex-direction: column }
-
-.container { flex: 1; padding-top: 2%; padding-bottom: 2% }
-
-.container.grid-xl { max-width: 1440px; padding-top: 1%; padding-bottom: 1% }
-
 .container.p-tb { width: 97% }
 @media only screen and (max-width: 336px) { .container.p-tb { width: 100% } }
 
@@ -39,17 +21,6 @@ body { min-height: 100vh; margin: 0; flex-direction: column }
   }
 }
 
-.searchboxl { border-radius: 20px 0 0 20px }
-
-.searchboxr { border-radius: 0 20px 20px 0 }
-
-.card {
-  display: inline;
-  border: none!important;
-  align-items: center;
-  flex: 1 300px
-}
-
 .vcard:hover>.card-image {
   transform: scale(1.09);
   transition: transform .1s linear;
@@ -64,20 +35,6 @@ body { min-height: 100vh; margin: 0; flex-direction: column }
 .fullw { width: 100% }
 
 .fullh { height: 100% }
-
-.card-image {
-  aspect-ratio: 16/9;
-  border-radius: 12px;
-  user-select: none;
-  position: relative;
-  transition: transform .1s linear
-}
-
-.img-responsive {
-  width: 100%;
-  height: 100%;
-  border-radius: 12px!important
-}
 
 .boxbreak { box-decoration-break: clone; -webkit-box-decoration-break: clone }
 
@@ -123,10 +80,9 @@ a.card-footer-last {
 }
 
 #plus { transition: transform .3s }
+#new_video:hover>#plus { transform: scale(2) }
 
 .p-tb { padding-top:2.9%; padding-bottom:2.7em }
-
-.modal-body { overflow-x: hidden }
 
 .input-group-btn.float-right { width: 30% }
 @media only screen and (max-width: 448px) { .input-group-btn.float-right { width: 45% } }
@@ -140,8 +96,9 @@ a.card-footer-last {
 
 #formload.loading { transform: scale(1.5) }
 
-.vjs-tech{ border-radius: 10px }
-.vjs-control-bar { border-bottom-left-radius: 10px; border-bottom-right-radius: 10px }
+.vjs-poster>img { border-radius: 12px }
+.vjs-tech { border-radius: 12px }
+.vjs-control-bar { border-bottom-left-radius: 12px; border-bottom-right-radius: 12px }
 .video-js { background-color: transparent!important }
 
 .video-js.video-js .vjs-big-play-button {
@@ -161,14 +118,14 @@ a.card-footer-last {
   opacity: 0;
   transform: translateX(200px) rotateY(360deg);
   pointer-events: none;
-  transition: opacity 0.8s ease 0.11s, transform 1s!important
+  transition: opacity .8s ease .11s, transform 1s!important
 }
 
 .video-js.vjs-paused .vjs-big-play-button {
   opacity: 1;
   transform: translateX(0px);
   pointer-events: all;
-  transition: opacity 0.5s, transform 1s
+  transition: opacity .5s, transform 1s
 }
 
 .video-js.video-js:hover .vjs-big-play-button { background-color: rgba(0,0,0,.75) }
@@ -189,8 +146,21 @@ a.card-footer-last {
 
 .vjs-playback-rate > .vjs-menu-button, .vjs-playback-rate .vjs-playback-rate-value { user-select: none }
 
-#vidfoot { display: none }
-#comcont { display: none }
+#loadcont {
+  position: fixed;
+  display: flex;
+  margin-left: initial;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  z-index: 2;
+  background: #fff
+}
+
+.loading-lg { scale: 2 }
 
 .vidtitle {
   margin-left: 1px;
@@ -212,14 +182,12 @@ a.card-footer-last {
 .placeholder {
   background-color: #bcc3ce;
   color: #0000!important;
-  border-radius: 20px
+  border-radius: 12px;
 }
 
 #vidact { display: flex; justify-content: flex-end }
 
-.label { display: inline; box-decoration-break: clone; -webkit-box-decoration-break: clone }
-
-.break { margin-left: -0.4rem; margin-right: -0.4rem }
+.break { margin-left: -.4rem; margin-right: -.4rem }
 
 .scontainer { padding-top: 2%; padding-bottom: 2% }
 
@@ -229,8 +197,6 @@ a.card-footer-last {
 
 .ml-6 { margin-left: 6px }
 
-.max-4 { max-width: 400px }
-
 .max-52 { max-width: 520px }
 
 .max-82 { max-width: 820px }
@@ -238,9 +204,7 @@ a.card-footer-last {
 .br-2 { border-radius: 2px }
 .br-2:hover, .br-2:active, .br-2:focus { text-decoration: none }
 
-.p-flash { padding-left: 1em; padding-right: 1em }
-
-.p-04 { padding-left: 0.4em }
+.p-04 { padding-left: .4em }
 
 .author { display: inline-block }
 
@@ -259,61 +223,51 @@ a.card-footer-last {
 
 .popcom:hover>.delcom { opacity: 1; transform: translatey(0) scale(1) }
 
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 4;
-  background: #fff
-}
-
-.navbar-section { z-index: 3 }
-
-.navbar-brand { padding: 5px; border-radius: 0.1rem }
-
 #navlogo { white-space: nowrap; user-select: none }
-
-.navbar .navbar-center { flex: 0.4 0 auto; z-index: 3 }
 
 @media only screen and (max-width: 591px) { .navbar .navbar-center { flex: 2 0 0 } }
 
 @media only screen and (max-width: 430px) { .d-inline-block.tooltip.tooltip-right::after { content: attr(data-tooltipm) } }
 
-.toast {
-  width: auto!important;
-  min-width: 170px;
-  position: absolute;
-  z-index: 5;
-  animation: slidein 0.3s
-}
+.p-flash { padding-left: 1em; padding-right: 1em }
 
 .terr {
   background-color: #fff;
   border: none;
   color: #ff0000;
-  font-weight: 600
+  font-weight: 600;
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+  animation: fade .2s
 }
 
+@media only screen and (max-width: 706px) { .terr { padding-right: 0.4rem } }
+
+@keyframes fade { from{opacity:0} to{opacitiy:1} }
+
 .ldivider {
-  border-top: 0.05rem solid #f1f3f5;
-  height: 0.05rem;
-  margin-bottom: 0.4rem
+  border-top: .05rem solid #f1f3f5;
+  height: .05rem;
+  margin-bottom: .4rem
 }
 
 .lcontainer {
   background: #fff;
-  padding-bottom: 2%;
+  padding-bottom: 2em;
   right: 0;
-  z-index:3;
   border-bottom-left-radius: 5px;
+  border: .05rem solid #dadee4;
+  border-top: none;
   box-shadow: 0 .2rem .5rem rgba(48,55,66,.3);
-  min-width: 286px
+  min-width: 286px;
+  max-width: 375px;
+  z-index: 101
 }
 
-.lbtn { margin-top: 0.4rem }
+.lbtn { margin-top: .4rem }
 
-.cross { right: 1.1em; font-size: 0.9rem }
+.cross { right: 1.1em; font-size: .9rem }
 
-.logslide { animation: logslide 0.3s }
+.logslide { animation: logslide .3s }
 
 @media only screen and (max-width: 392px) {
   @keyframes logslide {
@@ -329,18 +283,15 @@ a.card-footer-last {
   }
 }
 
-.slidex { position: relative; animation: slidein 0.3s }
+.searchboxl { border-radius: 20px 0 0 20px }
+.searchboxr { border-radius: 0 20px 20px 0 }
+
+.slidex { position: relative; animation: slidein .3s }
 
 .toast.toast-success:hover { background-color: #37c84a }
 .toast.toast-error:hover { background-color: #ff5e00 }
 
 .fieldicon { position: relative; top: 3px }
-
-.form-input-hint {
-  position: relative;
-  -webkit-animation: slidev 0.5s;
-  animation: slidev 0.5s
-}
 
 @keyframes slidev {
   from {left: -20px; opacity: 0}
@@ -349,7 +300,7 @@ a.card-footer-last {
 
 .field_with_errors { display: inline }
 
-#comzone { -webkit-animation: slidein 0.5s; animation: slidein 0.5s }
+#comzone { animation: slidein .5s }
 
 #comframe { margin-left: 1.1% }
 
@@ -359,14 +310,15 @@ a.card-footer-last {
 @media only screen and (max-width: 482px) { .authorf { width: 100% } }
 
 em-emoji-picker {
+  width: 42%;
   position: absolute;
   bottom: 70px;
-  left: 50%
+  left: 57%
 }
 
-@media only screen and (max-width: 690px) { em-emoji-picker { left: 30% } }
-@media only screen and (max-width: 547px) { em-emoji-picker { left: 15% } }
-@media only screen and (max-width: 445px) { em-emoji-picker { left: -43px } }
+@media only screen and (max-width: 600px) { em-emoji-picker { width: 50%; left: 40% } }
+@media only screen and (max-width: 437px) { em-emoji-picker { width: 60%; left: 30% } }
+@media only screen and (max-width: 360px) { em-emoji-picker { width: 70%; left: 20% } }
 
 .btnemoji {
   position: absolute;
@@ -392,8 +344,6 @@ em-emoji-picker {
   }
 }
 
-.icon-emoji { font-size: 1.3rem }
-
 #ccount { margin-top: 1%; margin-bottom: 1% }
 
 @keyframes slidein {
@@ -401,12 +351,7 @@ em-emoji-picker {
   to {left: 0; opacity: 1}
 }
 
-@keyframes slidey {
-  from {top: -15px; opacity: 0}
-  to {top: 9px; opacity: 1}
-}
-
-.shakeit { -webkit-animation: shake 0.3s ease-in-out; animation: shake 0.3s ease-in-out }
+.shakeit { animation: shake .3s ease-in-out }
 
 @keyframes shake {
   0%, 100% {margin-left: 0}
@@ -475,9 +420,9 @@ em-emoji-picker {
   display: none;
   position: fixed;
   bottom: 25px;
-  left: 2.5%;
+  right: 2.5%;
   transform: scale(1.2);
-  z-index: 3
+  z-index: 101
 }
 
 .docs-footer {

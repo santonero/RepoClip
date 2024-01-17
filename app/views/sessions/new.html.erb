@@ -1,16 +1,16 @@
 <%= turbo_frame_tag "login" do %>
 <% if response.status == 422 %>
-<div class="lcontainer col-5 col-xs-7 col-sm-6 col-md-5 col-lg-5 p-fixed max-4">
+<div class="lcontainer col-4 col-xs-7 col-sm-6 col-md-5 col-lg-5 p-fixed">
 <% else %>
-<div class="lcontainer col-5 col-xs-7 col-sm-6 col-md-5 col-lg-5 p-fixed logslide max-4">
+<div class="lcontainer col-4 col-xs-7 col-sm-6 col-md-5 col-lg-5 p-fixed logslide">
 <% end %>
 <div class="ldivider"></div>
   <a onclick="rmLogin(this);return false;" class= "p-absolute btn btn-clear cross" href=""></a>
   <% if response.status == 422 %>
     <div class="toast terr c-hand p-flash" onclick="rmErr(this)">Invalid username or password.</div>
   <% end %>
-  <h2 class="text-center">Log In</h2>
-  <div class="column col-7 col-xs-11 col-sm-9 col-md-8 col-lg-8 col-mx-auto">
+  <h3 class="text-center">Log In</h3>
+  <div class="column col-8 col-xs-11 col-sm-9 col-md-8 col-lg-8 col-mx-auto">
     <%= form_with url: session_path, data: { controller: "login-redir", action: "turbo:submit-end->login-redir#next" } do |form| %>
       <div class="form-group">
         <%= form.label :account, "Username or email", class: "form-label" %>

@@ -1,4 +1,4 @@
-<%= form_with(model: [@video, @video.comments.build], id: "comform") do |form| %>
+<%= form_with model: [@video, @video.comments.build], id: "comform", class: "max-82" do |form| %>
 <% unless logged_in? %>
   <div class="form-group authorf">
     <% if comment.errors[:commenter].any? %>
@@ -15,7 +15,7 @@
   </div>
 <% end %>
 
-  <div class="form-group max-82">
+  <div class="form-group">
     <% if comment.errors[:body].any? %>
       <div id ="comarea" class="has-error">
         <%= form.label :body, "Comment", class: "form-label" %>
@@ -31,7 +31,7 @@
       </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group float-right">
     <%= form.submit class: "btn btn-primary input-group-btn" %>
   </div>
 <% end %>

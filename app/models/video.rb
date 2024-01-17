@@ -3,7 +3,7 @@ class Video < ApplicationRecord
   has_one_attached :thumbnail
   has_many :comments, dependent: :destroy
 
-  validates :title, presence: true, uniqueness: { allow_blank: true }, length: { maximum: 40 }
+  validates :title, presence: true, uniqueness: { allow_blank: true }, length: { maximum: 30 }
   validates :description, length: { maximum: 550 }
   validates :clip, presence: true
   validates :thumbnail, presence: true
