@@ -1,9 +1,1 @@
-const media = document.querySelector("video");
-media.addEventListener("loadedmetadata", () => { document.getElementById("loadcont").style.display = "none";
-  function reveal() {const ph = document.getElementsByClassName("placeholder");while(ph.length){ph[0].classList.remove("placeholder");}}setTimeout(reveal, 400);});
-function autoplay() {
-  function mutePlay() {media.muted = true;media.play();}
-  media.addEventListener("canplay", () => { const promise = media.play();
-    if (promise !== undefined) promise.catch(mutePlay);});
-}
-document.addEventListener("DOMContentLoaded", autoplay);
+function autoplay(){const e=document.querySelector("video");function t(){e.muted=!0,e.play()}e.addEventListener("canplay",(()=>{const n=e.play();void 0!==n&&n.catch(t)})),document.getElementById("loadcont").style.display="none",setTimeout((function(){const e=document.getElementsByClassName("placeholder");for(;e.length;)e[0].classList.remove("placeholder")}),300)}window.addEventListener("load",autoplay);

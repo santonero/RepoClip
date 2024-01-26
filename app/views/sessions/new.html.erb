@@ -7,7 +7,7 @@
 <div class="ldivider"></div>
   <a onclick="rmLogin(this);return false;" class= "p-absolute btn btn-clear cross" href=""></a>
   <% if response.status == 422 %>
-    <div class="toast terr c-hand p-flash" onclick="rmErr(this)">Invalid username or password.</div>
+    <div class="toast terr p-flash">Invalid username or password.</div>
   <% end %>
   <h3 class="text-center">Log In</h3>
   <div class="column col-8 col-xs-11 col-sm-9 col-md-8 col-lg-8 col-mx-auto">
@@ -29,5 +29,5 @@
     <% end %>
   </div>
 </div>
-<script>function rmErr(x){x.remove();};function rmLogin(x){document.querySelector("#login").classList.remove("active");x.parentElement.remove();}</script>
+<script>function rmLogin(x){document.querySelector("#login").classList.remove("active");x.parentElement.remove();}</script>
 <% end %>

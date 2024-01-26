@@ -1,2 +1,1 @@
-import "video.js"
-import "emoji-mart"
+import"video.js";import"emoji-mart";

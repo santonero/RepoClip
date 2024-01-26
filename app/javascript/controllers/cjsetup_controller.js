@@ -1,10 +1,1 @@
-import { Controller } from "@hotwired/stimulus"
-
-export default class extends Controller {
-  connect() {
-    const c = document.getElementById("comframe");
-    const cj = document.getElementById("cj");
-    function jump() { !cj.dataset.controller ? cj.dataset.controller = "comjump" : c.removeEventListener("turbo:frame-load", jump); }
-    c.addEventListener("turbo:frame-load", jump);
-  }
-}
+import{Controller}from"@hotwired/stimulus";export default class extends Controller{connect(){const e=document.getElementById("comframe"),t=document.getElementById("cj");e.addEventListener("turbo:frame-load",(function o(){t.dataset.controller?e.removeEventListener("turbo:frame-load",o):t.dataset.controller="comjump"}))}}

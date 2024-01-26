@@ -1,7 +1,7 @@
 <div class="container mt-16">
   <h1 class="text-center">Forgot your password?</h1>
   <div class="column col-6 col-xs-12 col-sm-12 col-md-9 col-lg-7 col-mx-auto max-52">
-    <%= form_with url: password_reset_path, data: { controller: "validate-passreset", action: "turbo:submit-end->validate-passreset#validate" } do |form| %>
+    <%= form_with url: password_reset_path, data: { controller: "validate-passreset", action: "turbo:submit-end->validate-passreset#validate" }, id: "pr" do |form| %>
       <div class="form-group">
         <%= form.label :email, "Enter your email", class: "form-label" %>
         <%= form.email_field :email, class: "form-input", placeholder: "Email" %>

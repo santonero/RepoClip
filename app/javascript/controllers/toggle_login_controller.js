@@ -1,12 +1,1 @@
-import { Controller } from "@hotwired/stimulus"
-
-export default class extends Controller {
-  toggle(e) {
-    const l = document.querySelector("#login");
-    if (l.classList.contains("active")) {
-      l.firstElementChild.remove();
-      l.classList.remove("active");
-      e.preventDefault(); }
-    else { l.classList.add("active"); }
-  }
-}
+import{Controller}from"@hotwired/stimulus";export default class extends Controller{toggle(e){const t=document.querySelector("#login");t.classList.contains("active")?(t.firstElementChild.remove(),t.classList.remove("active"),e.preventDefault()):t.classList.add("active")}}

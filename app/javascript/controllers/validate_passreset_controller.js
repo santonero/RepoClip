@@ -1,11 +1,1 @@
-import { Controller } from "@hotwired/stimulus"
-
-export default class extends Controller {
-  validate() {
-    const f = document.forms[1][1];
-    const ff = f.closest("div");
-    const o = ff.querySelector("#old");
-    const v = document.forms[1][1].value;
-    if (!v) { f.classList.add("is-error"); if (o) o.remove(); ff.innerHTML += "<p class='form-input-hint d-inline' id='old'>Please enter a valid adress.</p>"; }
-  }
-}
+import{Controller}from"@hotwired/stimulus";export default class extends Controller{validate(){const e=document.getElementById("pr").querySelector("#email"),l=e.closest("div"),r=l.querySelector("#old");e.value||(e.classList.add("is-error"),r&&r.remove(),l.innerHTML+="<p class='form-input-hint d-inline' id='old'>Please enter a valid adress.</p>")}}
