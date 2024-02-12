@@ -1,8 +1,9 @@
 <% content_for :head do %>
   <meta name="turbo-visit-control" content="reload">
-  <%= stylesheet_link_tag "https://unpkg.com/video.js@8.9.0/dist/video-js.min.css" %>
+  <%= stylesheet_link_tag "https://unpkg.com/video.js@8.10.0/dist/video-js.min.css" %>
   <%= javascript_import_module_tag "vjs" %>
-  <%= javascript_include_tag "play", async: true %>
+  <%= javascript_include_tag "loading", defer: true %>
+  <%= javascript_include_tag "play", defer: true %>
   <%= javascript_include_tag "modal", async: true %>
 <% end %>
 <div class="container grid-xl" id="loadcont">

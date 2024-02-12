@@ -1,0 +1,1 @@
+const player=videojs("my-video");player.ready((function(){document.getElementById("loadcont").style.display="none"}));
