@@ -13,8 +13,8 @@
   </div>
   <h6 class="p-2 text-gray"><%= pluralize(@pagination.count, "result") %></h6>
 <% end %>
-  <div class="mt-16"><%= link_to content_tag(:i,'',class: "icon icon-back"), videos_path, class: "btn btn-primary btn-action btn-sm tooltip tooltip-right", "data-turbo": "false", "data-tooltip": "Go Back" %></div>
+  <div class="mt-16"><%= link_to content_tag(:i,'',class: "icon icon-back"), videos_path, class: "btn btn-primary btn-action btn-sm tooltip tooltip-right", data: { turbo: false, tooltip: "Go Back" } %></div>
   </div>
-<button class="btn btn-primary btn-action btn-lg s-circle" id="up" onclick="window.scrollTo({top: 0,left: 0,behavior: 'smooth'});"><i class="icon icon-upward"></i></button>
+<button class="btn btn-primary btn-action btn-lg s-circle" id="up" onclick="window.scrollTo({top:0,left:0,behavior:'smooth'});"><i class="icon icon-upward"></i></button>
 </div>
 <template data-controller="upward"></template>
