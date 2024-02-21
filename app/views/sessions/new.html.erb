@@ -9,7 +9,7 @@
   <% if response.status == 422 %>
     <div class="toast terr p-flash">Invalid username or password.</div>
   <% end %>
-  <h3 class="text-center">Log In</h3>
+  <h3 class="text-center">Sign In</h3>
   <div class="column col-8 col-xs-11 col-sm-9 col-md-8 col-lg-8 col-mx-auto">
     <%= form_with url: session_path, data: { controller: "login-redir", action: "turbo:submit-end->login-redir#next" } do |form| %>
       <div class="form-group">

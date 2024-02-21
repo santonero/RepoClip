@@ -20,13 +20,13 @@
       <div id ="comarea" class="has-error">
         <%= form.label :body, "Comment", class: "form-label" %>
         <%= form.text_area :body, class: "form-input", placeholder: "Your comment" %>
-        <button type="button" class="btn btnemojierr btn-action s-circle" data-controller="emoji" data-action="emoji#show" onclick="setTimeout(() => this.blur(), 50)"><i class="form-icon icon icon-emoji"></i></button>
+        <button type="button" class="btn btnemojierr btn-action s-circle" data-controller="emoji" data-action="emoji#show" onclick="setTimeout((()=>this.blur()),50);"><i class="form-icon icon icon-emoji"></i></button>
         <p class="slidev form-input-hint d-inline"><%= comment.errors.full_messages_for(:body)[0] %></p>
     <% else %>
       <div id="comarea">
         <%= form.label :body, "Comment", class: "form-label" %>
         <%= form.text_area :body, class: "form-input", placeholder: "Your comment" %>
-        <button type="button" class="btn btnemoji btn-action s-circle" data-controller="emoji" data-action="emoji#show" onclick="setTimeout(() => this.blur(), 50)"><i class="form-icon icon icon-emoji"></i></button>
+        <button type="button" class="btn btnemoji btn-action s-circle" data-controller="emoji" data-action="emoji#show" onclick="setTimeout((()=>this.blur()),50);"><i class="form-icon icon icon-emoji"></i></button>
     <% end %>
       </div>
   </div>

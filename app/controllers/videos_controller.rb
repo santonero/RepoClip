@@ -30,7 +30,7 @@ class VideosController < ApplicationController
     @video = Video.new(video_params)
     respond_to do |format|
       if @video.save
-        format.html { flash[:notice] = "Video was successfully created." }
+        format.html { flash[:notice] = "<i class='icon icon-check mx-1'></i> Video was successfully created." }
         format.json { render :show, status: :created, location: @video }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -45,7 +45,7 @@ class VideosController < ApplicationController
   def update
     respond_to do |format|
       if @video.update(video_params)
-        format.html { flash[:notice] = "Video was successfully updated." }
+        format.html { flash[:notice] = "<i class='icon icon-check mx-1'></i> Video was successfully updated." }
         format.json { render :show, status: :ok, location: @video }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -67,7 +67,7 @@ class VideosController < ApplicationController
   def set_video
     @video = Video.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    redirect_to root_path, alert: "Video does not exist. <i class='icon icon-search'></i>"
+    redirect_to root_path, alert: "<i class='icon icon-search mx-1'></i> Video does not exist."
   end
 
   def video_params

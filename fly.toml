@@ -22,8 +22,8 @@ console_command = "/rails/bin/rails console"
 
 [[vm]]
   cpu_kind = "shared"
-  cpus = 1
-  memory_mb = 256
+  cpus = 2
+  memory_mb = 512
 
 [[statics]]
   guest_path = "/rails/public"

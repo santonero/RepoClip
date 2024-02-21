@@ -10,7 +10,7 @@ class RegistrationsController < ApplicationController
     @user = User.new(registration_params)
     if @user.save
       login @user
-      redirect_to root_path(format: :html), notice: "Account successfully created."
+      redirect_to root_path(format: :html), notice: "<i class='icon icon-check mx-1'></i> Account successfully created."
     else
       render :new, status: :unprocessable_entity
     end
