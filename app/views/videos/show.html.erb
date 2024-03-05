@@ -4,14 +4,13 @@
   <%= javascript_import_module_tag "vjs" %>
   <%= javascript_include_tag "loading", defer: true %>
   <%= javascript_include_tag "play", defer: true %>
+  <%= javascript_include_tag "cj", defer: true %>
   <%= javascript_include_tag "modal", async: true %>
 <% end %>
 <div class="container grid-xl" id="loadcont">
   <div class="loading loading-lg"></div>
 </div>
 <%= render @video %>
-<template data-controller="cjsetup"></template>
-<template id="cj" data-controller=""></template>
 <div id ="comcont" class="container grid-xl p-centered">
   <%= turbo_frame_tag "comframe", src: video_comments_path(@video) %>
   <div class="column col-9 col-xs-12 col-sm-12 col-md-11 col-lg-9 p-2" style="margin-left:0.5em;">

@@ -16,8 +16,8 @@
       <%= link_to current_user.username, edit_password_path, class: "ml-2 mr-2 br-2" %>
       <%= button_to content_tag(:i,"",class: "icon icon-shutdown"), session_path, method: :delete, class: "btn btn-sm btn-action s-circle mr-2 tooltip tooltip-bottom", form: { data: { controller: "login-redir", action: "turbo:submit-end->login-redir#next" } }, "data-tooltip": "Log Out" %>
     <% else %>
-      <%= link_to "Sign Up", new_registration_path, class: "mr-2 br-2", "data-turbo-prefetch": false %>
-      <%= link_to "Log In", new_session_path, class: "mr-2 br-2", data: { "turbo-frame": "login", "turbo-prefetch": false, controller: "toggle-login", action: "click->toggle-login#toggle" } %>
+      <%= link_to "Sign Up", new_registration_path, class: "mr-2 br-2", "data-turbo": false %>
+      <%= link_to "Log In", new_session_path, class: "mr-2 br-2", data: { "turbo-frame": "login", controller: "toggle-login", action: "click->toggle-login#toggle" } %>
     <% end %>
     <%= image_tag("clipico.svg") %>
   </section>

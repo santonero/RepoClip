@@ -1,1 +1,0 @@
-import{Controller}from"@hotwired/stimulus";export default class extends Controller{connect(){const e=document.getElementById("comframe"),t=document.getElementById("vidact");e.addEventListener("turbo:before-frame-render",(()=>{t&&t.scrollIntoView()}))}}

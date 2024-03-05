@@ -1,1 +1,0 @@
-import{Controller}from"@hotwired/stimulus";export default class extends Controller{connect(){const e=document.getElementById("comframe"),t=document.getElementById("cj");e.addEventListener("turbo:frame-load",(function o(){t.dataset.controller?e.removeEventListener("turbo:frame-load",o):t.dataset.controller="comjump"}))}}

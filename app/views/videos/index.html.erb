@@ -1,5 +1,8 @@
 <%= content_for :head do %>
+  <%= stylesheet_link_tag "https://unpkg.com/video.js@8.10.0/dist/video-js.min.css" %>
   <%= javascript_include_tag "modal", async: true %>
+  <%= javascript_include_tag "loading", async: true %>
+  <%= javascript_include_tag "play", async: true %>
 <% end %>
 <div class="container p-tb">
 <div id="grid" class="p-2">

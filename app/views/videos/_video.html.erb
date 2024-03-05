@@ -3,13 +3,12 @@
   id="my-video"
   class="video-js vjs-fluid vjs-big-play-centered vjs-show-big-play-button-on-pause"
   controls
-  preload="auto"
+  preload="metadata"
   width="640" height="264"
-  poster="<%= url_for(video.thumbnail) %>"
   data-setup='{"fluid": true,"controlBar":{"skipButtons":{"forward": 5}},"playbackRates": [0.25,0.5,0.75,1,1.25,1.5,1.75,2]}'
   >
-  <source src=<%= url_for(video.clip) %> type="video/mp4" />
-  <source src=<%= url_for(video.clip) %> type="video/webm" />
+  <source src=<%= rails_blob_path(video.clip, anchor: "t=0.1") %> type="video/mp4" />
+  <source src=<%= rails_blob_path(video.clip, anchor: "t=0.1") %> type="video/webm" />
 </video>
 <div id="vidfoot">
   <div class="vidtitle my-2 text-bold text-break placeholder "><%= video.title %></div>
