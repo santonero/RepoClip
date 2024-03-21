@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if !@comment.username_taken?(current_user) && @comment.save
         format.turbo_stream
-        format.html { redirect_to video_path(@video), notice: "Comment was successfully added." }
+        format.html { redirect_to video_url(@video), notice: "Comment was successfully added." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
     @comment.destroy
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_to video_path(@video), status: :see_other }
+      format.html { redirect_to video_url(@video), status: :see_other }
     end
   end
 

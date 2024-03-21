@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate_user!
-    redirect_to root_path, alert: "<i class='icon icon-stop mx-1'></i> You need to be logged in to do that." unless current_user.present?
+    redirect_to root_url, alert: "<i class='icon icon-stop mx-1'></i> You need to be logged in to do that." unless current_user.present?
   end
 
   def current_user
