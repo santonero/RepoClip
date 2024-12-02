@@ -1,1 +1,1 @@
-const c=document.getElementById("comframe"),va=document.getElementById("vidact");function jump(){va&&va.scrollIntoView()}function setup(){c.removeEventListener("turbo:frame-load",setup),c.addEventListener("turbo:before-frame-render",jump)}c.addEventListener("turbo:frame-load",setup);
+function jump(){document.getElementById("vidact")&&document.getElementById("vidact").scrollIntoView()}document.getElementById("comframe")?.addEventListener("turbo:before-frame-render",jump,{once:!0});

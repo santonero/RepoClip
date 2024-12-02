@@ -1,1 +1,0 @@
-if("undefined"!=typeof videojs){videojs("my-video").ready((function(){document.getElementById("loadcont").style.display="none"}))}

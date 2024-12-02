@@ -1,33 +1,22 @@
-<%= turbo_frame_tag "login" do %>
-<% if response.status == 422 %>
-<div class="lcontainer col-4 col-xs-7 col-sm-6 col-md-5 col-lg-5 p-fixed">
-<% else %>
-<div class="lcontainer col-4 col-xs-7 col-sm-6 col-md-5 col-lg-5 p-fixed logslide">
-<% end %>
-<div class="ldivider"></div>
-  <a onclick="rmLogin(this);return false;" class= "p-absolute btn btn-clear cross" href=""></a>
-  <% if response.status == 422 %>
-    <div class="toast terr p-flash">Invalid username or password.</div>
-  <% end %>
-  <h3 class="text-center">Sign In</h3>
-  <div class="column col-8 col-xs-11 col-sm-9 col-md-8 col-lg-8 col-mx-auto">
-    <%= form_with url: session_path, data: { controller: "login-redir", action: "turbo:submit-end->login-redir#next" } do |form| %>
+<%= turbo_frame_tag "add" do %>
+  <%= form_with url: session_path, id: "login" do |form| %>
+    <% if response.status == 422 %>
+      <div class="form-group has-error">
+      <span class="top"></span>
+    <% else %>
       <div class="form-group">
-        <%= form.label :account, "Username or email", class: "form-label" %>
-        <%= form.text_field :account, class: "form-input" %>
-      </div>
-
-      <div class="form-group">
-        <%= form.label :password, class: "form-label" %>
-        <%= form.password_field :password, class: "form-input" %>
-      </div>
-
-      <%= link_to "Forgot your password?", new_password_reset_path, data: { "turbo-frame": "_top", "turbo": false }, class: "text-small" %>
-      <div class="form-group">
-        <%= form.submit "Log In", class: "btn btn-primary input-group-btn lbtn fullw" %>
-      </div>
     <% end %>
-  </div>
-</div>
-<script>function rmLogin(x){document.querySelector("#login").classList.remove("active");x.parentElement.remove();}</script>
+        <%= form.label :account, "Username or email", class: "form-label" %>
+        <%= form.text_field :account, class: "form-input", data: { controller: "clear-login", action: "input->clear-login#clear" } %>
+      </div>
+    <% if response.status == 422 %>
+      <div class="form-group has-error">
+    <% else %>
+      <div class="form-group">
+    <% end %>
+        <%= form.label :password, class: "form-label" %>
+        <%= form.password_field :password, class: "form-input", data: { controller: "clear-login", action: "input->clear-login#clear" } %>
+      </div>
+      <%= link_to "Forgot your password?", new_password_reset_path, "data-turbo-frame": "_top", class: "d-inline-block mt-1 text-small" %>
+  <% end %>
 <% end %>

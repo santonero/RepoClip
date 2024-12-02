@@ -1,16 +1,16 @@
-<div class="modal" id="mod">
-  <div onclick="hideModal()" class="modal-overlay"></div>
+<div class="modal">
+  <div class="modal-overlay" onclick="hide(this)"></div>
   <div class="modal-container">
     <div class="modal-header">
-      <%= link_to "", root_path, onclick: "hideModal();return false;", class: "btn btn-clear float-right", "data-turbo": false %>
-      <div class="modal-title h5"><%= title.html_safe %></div>
+      <%= link_to "", root_path, onclick: "hide(this);return false", class: "btn btn-clear float-right", "data-turbo": false %>
+      <div class="modal-title h5"><%= title %></div>
     </div>
     <div class="modal-body">
       <div class="content"><%= turbo_frame_tag "add", src: path %></div>
     </div>
     <div class="modal-footer">
-      <button class="btn btn-primary vbtn" form="vidform"><%= "#{sb} Video" %></button>
-      <button class="btn btn-link" onclick="hideModal()">Close</button>
+      <button id="s<%= f %>" class="btn btn-primary" form="<%= f %>"><%= "#{sb}" %></button>
+      <button class="btn btn-link" onclick="hide(this)">Close</button>
     </div>
   </div>
 </div>

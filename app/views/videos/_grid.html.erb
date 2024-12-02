@@ -1,11 +1,24 @@
-<% unless request.env["HTTP_TURBO_FRAME"].present? || action_name == "search" %>
-  <div class="card">
-    <div class="card-image bg-primary" id="new_video" onclick="document.getElementById('mod').classList.add('active');"><i class="icon icon-2x icon-plus" id="plus"></i></div>
+<% unless request.format == :turbo_stream || action_name == "search" %>
+  <%= render "modal", path: new_video_path, title: "Upload", f: "vidform", sb: "Create Video" %>
+  <div class="card mb-2">
+    <div id="film" class="card-image c-hand" onclick="show(this)">
+      <div class="fullh" id="new_video">
+<?xml version="1.0" encoding="utf-8"?>
+<svg id="creatb" class="full" width="800px" height="800px" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path id="a" d="M16 6H8C6.89543 6 6 6.89543 6 8V16" stroke="#000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="b" d="M16 42H8C6.89543 42 6 41.1046 6 40V32" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="c" d="M32 42H40C41.1046 42 42 41.1046 42 40V32" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="d" d="M32 6H40C41.1046 6 42 6.89543 42 8V16" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="e" d="M32 24L16 24" stroke="#000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="f" d="M24 32L24 16" stroke="#000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+      </div>
+    </div>
   </div>
 <% end %>
 <% @videos.each do |video| %>
-<% a = link_to "", video, class: "full d-block no-shadow", "data-turbo": "false" %>
-  <div class="card">
+<% a = link_to "", video, class: "full d-block no-shadow" %>
+  <div class="card" data-turbo-prefetch="false">
     <div class="card-image placeholder">
       <div class="parallax fullh">
         <div class="parallax-top-left" tabindex="1"><%= a %></div>
@@ -13,15 +26,15 @@
         <div class="parallax-bottom-left" tabindex="3"><%= a %></div>
         <div class="parallax-bottom-right" tabindex="4"><%= a %></div>
         <div class="parallax-content text-break ">
-          <div class="parallax-front"><h2><%= video.title %></h2></div>
+          <div class="parallax-front"></div>
           <div class="parallax-back fullh">
             <div class="hidden full"><%= image_tag(video.thumbnail, class: "img-responsive mb-1") %></div>
           </div>
         </div>
       </div>
     </div>
-    <div class="mt-2"><%= link_to content_tag(:span,video.title,class: "placeholder boxbreak"), video, class: "card-footer no-shadow", "data-turbo": "false" %></div>
-    <%= link_to(time_ago_in_words(video.created_at)+" ago", video, class: "card-footer-last no-shadow placeholder", "data-turbo": "false") %>
+    <div class="mt-2"><%= link_to content_tag(:span,video.title,class: "placeholder boxbreak"), video, class: "card-footer no-shadow"%></div>
+    <%= link_to(time_ago_in_words(video.created_at)+" ago", video, class: "card-footer-last no-shadow placeholder") %>
   </div>
 <% end %>
 <template data-controller="rmPh"></template>

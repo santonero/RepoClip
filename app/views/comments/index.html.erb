@@ -1,6 +1,7 @@
 <%= turbo_frame_tag "comframe" do %>
+  <%= javascript_include_tag "cj", async: true %>
   <div class="divider"></div>
-  <div><%= render "ccount" %></div>
+  <h6 class="pt-1" id="ccount"><%= pluralize(@video.comments.count, "Comment") %></h6>
   <div class="p-relative" id="comzone">
     <div id="comments" class="column col-12" style="width:96.4%;">
       <%= render @comments %>

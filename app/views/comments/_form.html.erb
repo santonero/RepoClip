@@ -1,36 +1,34 @@
-<%= form_with model: [comment.video, comment], id: "comform", class: "max-82" do |form| %>
+<%= form_with model: [comment.video, comment], id: "comform" do |form| %>
 <% unless logged_in? %>
   <div class="form-group authorf">
     <% if comment.errors[:commenter].any? %>
       <div class="has-error">
         <%= form.label :commenter, "Author", class: "form-label" %>
-        <%= form.text_field :commenter, class: "form-input", placeholder: "Your name (mandatory)" %>
-        <p class="slidev form-input-hint d-inline"><%= comment.errors.full_messages_for(:commenter)[0] %></p>
+        <%= form.text_field :commenter, class: "form-input", placeholder: "Name" %>
+        <p class="form-input-hint d-inline"><%= comment.errors.full_messages_for(:commenter)[0] %></p>
     <% else %>
       <div>
         <%= form.label :commenter, "Author", class: "form-label" %>
-        <%= form.text_field :commenter, class: "form-input", placeholder: "Your name (mandatory)" %>
+        <%= form.text_field :commenter, class: "form-input", placeholder: "Name" %>
     <% end %>
       </div>
   </div>
 <% end %>
-
   <div class="form-group">
     <% if comment.errors[:body].any? %>
       <div id ="comarea" class="has-error">
         <%= form.label :body, "Comment", class: "form-label" %>
-        <%= form.text_area :body, class: "form-input", placeholder: "Your comment" %>
-        <button type="button" class="btn btnemojierr btn-action s-circle" data-controller="emoji" data-action="emoji#show" onclick="setTimeout((()=>this.blur()),50);"><i class="form-icon icon icon-emoji"></i></button>
-        <p class="slidev form-input-hint d-inline"><%= comment.errors.full_messages_for(:body)[0] %></p>
+        <%= form.textarea :body, class: "form-input", placeholder: "Comment" %>
+        <button type="button" id="emojib" class="btn btnemojierr btn-action s-circle" data-controller="emoji" data-action="emoji#show" onclick="setTimeout(()=>this.blur(),50)"><i class="form-icon icon icon-emoji"></i></button>
+        <p class="form-input-hint d-inline"><%= comment.errors.full_messages_for(:body)[0] %></p>
     <% else %>
       <div id="comarea">
         <%= form.label :body, "Comment", class: "form-label" %>
-        <%= form.text_area :body, class: "form-input", placeholder: "Your comment" %>
-        <button type="button" class="btn btnemoji btn-action s-circle" data-controller="emoji" data-action="emoji#show" onclick="setTimeout((()=>this.blur()),50);"><i class="form-icon icon icon-emoji"></i></button>
+        <%= form.textarea :body, class: "form-input", placeholder: "Comment" %>
+        <button type="button" id="emojib" class="btn btnemoji btn-action s-circle" data-controller="emoji" data-action="emoji#show" onclick="setTimeout(()=>this.blur(),50)"><i class="form-icon icon icon-emoji"></i></button>
     <% end %>
       </div>
   </div>
-
   <div class="form-group float-right">
     <%= form.submit class: "btn btn-primary input-group-btn" %>
   </div>

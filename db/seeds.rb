@@ -9,11 +9,11 @@
 # 100.times.with_index do |i|
 #   vid = Video.new(title: "test #{i}", description: "")
 #   vid.clip.attach(
-#     io: File.open("/mnt/c/Users/Santo/Pictures/Big_Buck_Bunny_Trailer(s).mp4"),
+#     io: File.open("/mnt/c/Users/Santonero/Pictures/Big_Buck_Bunny_Trailer(s).mp4"),
 #     filename: "Big_Buck_Bunny_Trailer(s).mp4",
 #     content_type: "video/mp4")
 #   vid.thumbnail.attach(
-#     io: File.open("/mnt/c/Users/Santo/Pictures/eagerload.PNG"),
+#     io: File.open("/mnt/c/Users/Santonero/Pictures/eagerload.PNG"),
 #     filename: "eagerload.PNG",
 #     content_type: "image/png")
 #   vid.save

@@ -1,30 +1,27 @@
 <%= content_for :head do %>
-  <%= stylesheet_link_tag "https://unpkg.com/video.js@8.10.0/dist/video-js.min.css" %>
-  <%= javascript_include_tag "modal", async: true %>
-  <%= javascript_include_tag "loading", async: true %>
-  <%= javascript_include_tag "play", async: true %>
+  <link rel="stylesheet" href="https://cdn.vidstack.io/player/theme.css" />
+  <link rel="stylesheet" href="https://cdn.vidstack.io/player/video.css" />
+  <%= javascript_import_module_tag "vs" %>
 <% end %>
-<div class="container p-tb">
-<div id="grid" class="p-2">
-  <%= render "grid" %>
-<% if @pagination.next_page? %>
-  <%= turbo_frame_tag :pagination, loading: :lazy, src: videos_path(format: :turbo_stream, page: @pagination.next_page) %>
-<% end %>
+<div class="container p-tb mg">
+  <div id="grid" class="p-2">
+    <%= render "grid" %>
+  <% if @pagination.next_page? %>
+    <%= turbo_frame_tag :pagination, loading: :lazy, src: videos_path(format: :turbo_stream, page: @pagination.next_page) %>
+  <% end %>
+  </div>
 </div>
-</div>
-<%= render "modal", path: new_video_path, title: "Upload", sb: "Create" %>
-<button class="btn btn-primary btn-action btn-lg s-circle" id="up" onclick="window.scrollTo({top:0,left:0,behavior:'smooth'});"><i class="icon icon-upward"></i></button>
+<button class="btn btn-primary btn-action btn-lg s-circle" id="up"><i class="icon icon-upward"></i></button>
 <div class="hero hero-sm bg-primary text-light text-center">
   <div class="container grid-lg">
     <h2> Introduction </h2>
     <div class="columns">
       <div class="column col-10 col-sm-12 col-mx-auto text-left">
         <p class="text-secondary">
-          <strong>Repoclip</strong> is a lightweight, responsive and modern web application designed as a repository to store and share all your videos.
+          <strong>Repoclip</strong> is a lightweight, responsive and modern web application designed as a repository to store and share all your videos. No complicated setups, no clunky software – just a clean, intuitive interface for managing your video library. Upload, organize, and share with ease, whether you're a casual creator or a professional filmmaker.
         </p>
         <p class="text-secondary">
-          It was made for the purpose of showing my skills in web development. This is my portfolio
-          built with Ruby on Rails.
+          Repoclip is my personal web development project, showcasing my skills in building robust applications with Ruby on Rails.
         </p>
       </div>
       <div class="colum col-10 col-sm-12 col-mx-auto">

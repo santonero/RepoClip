@@ -1,1 +1,0 @@
-import{Controller}from"@hotwired/stimulus";export default class extends Controller{connect(){const e=document.getElementById("comframe"),t=e.src;let o=new URL(t);o.search="page=1",e.src=o}}

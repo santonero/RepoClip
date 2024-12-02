@@ -1,4 +1,4 @@
 <%= turbo_frame_tag "new_comment" do %>
-  <h5>Add a comment: </h5>
+  <%= javascript_import_module_tag "emoji-mart"%>
   <%= render "form", comment: @comment %>
 <% end %>

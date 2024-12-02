@@ -1,20 +1,45 @@
 <div class="container">
 <% if @videos.empty? %>
-  <div class="hero hero-sm bg-primary break"><div class="hero-body"><h1 class="p-04">Sorry, Nothing found</h1></div></div>
-  <div class="m-2"><%= image_tag("nothin.svg") %></div>
+<div class="empty break">
+  <div class="empty-icon">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="smily" width="200px" height="200px" enable-background="new 0 0 32 32" version="1.1" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs><linearGradient id="b" x1="1" x2="31" y1="16" y2="16" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#7e2df3" offset=".43888"/>
+   <stop stop-color="#d99be1" offset="1"/>
+  </linearGradient></defs>
+ <g id="p" fill="none" stroke="url(#b)" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
+  <line id="q" x1="23.43" x2="21.214" y1="23.401" y2="21.186"/>
+  <path id="r" d="m29.914 27.086-3.5-3.5c-.756-.756-2.072-.756-2.828 0-.378.378-.586.88-.586 1.414s.208 1.036.586 1.414l3.5 3.5c.378.378.88.586 1.414.586s1.036-.208 1.414-.586.586-.88.586-1.414-.208-1.036-.586-1.414z"/>
+  <circle id="s" cx="13" cy="13" r="11.5"/>
+  <path id="t" d="m12 14.521h2c0 .55-.45 1-1 1s-1-.451-1-1z"/>
+  <path id="u" d="m17.5 13c.27 0 .5.23.5.5s-.23.5-.5.5-.5-.23-.5-.5.23-.5.5-.5z"/>
+  <path id="v" d="m8.5 13c.27 0 .5.23.5.5s-.23.5-.5.5-.5-.23-.5-.5.23-.5.5-.5z"/>
+ </g>
+</svg>
+  </div>
+  <p class="empty-title h5"><span>Sorry, we couldn't find any results.</span><span class="d-inline-block"></span></p>
+  <p class="empty-subtitle">Try another search?</p>
+  <div class="empty-action">
+    <%= form_with url: "/search", method: :get, class: "fullw" do |form| %>
+      <div class="input-group input-inline">
+        <%= form.text_field :query, id: "query2", class: "form-input searchbox", placeholder: "search" %>
+        <%= button_tag class: "searchbtn" do %><i class="icon icon-search"></i><% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
 <% else %>
-  <div class="hero hero-sm bg-primary break"><div class="hero-body"><h1 class="p-04">Search Results</h1></div></div>
-  <div class="scontainer slidex">
-  <div id="grid" class="p-2">
+  <div class="hero hero-sm bg-primary break"><div class="hero-body"><h1 class="mx-2 p-04"><%= pluralize(@pagination.count, "result") + " found" %></h1></div></div>
+  <div class="scontainer">
+  <div id="grid" class="p-2 mx-8 slidex">
     <%= render "grid" %>
   <% if @pagination.next_page? %>
     <%= turbo_frame_tag :pagination, loading: :lazy, src: search_path(format: :turbo_stream, query: params[:query], page: @pagination.next_page) %>
   <% end %>
   </div>
-  <h6 class="p-2 text-gray"><%= pluralize(@pagination.count, "result") %></h6>
 <% end %>
-  <div class="mt-16"><%= link_to content_tag(:i,'',class: "icon icon-back"), videos_path, class: "btn btn-primary btn-action btn-sm tooltip tooltip-right", data: { turbo: false, tooltip: "Go Back" } %></div>
   </div>
-<button class="btn btn-primary btn-action btn-lg s-circle" id="up" onclick="window.scrollTo({top:0,left:0,behavior:'smooth'});"><i class="icon icon-upward"></i></button>
+<button class="btn btn-primary btn-action btn-lg s-circle" id="up"><i class="icon icon-upward"></i></button>
 </div>
 <template data-controller="upward"></template>

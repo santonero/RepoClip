@@ -7,6 +7,7 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "modal", async: true %>
     <%= yield(:head) %>
     <link rel="icon" href="data:,">
   </head>
@@ -20,9 +21,13 @@
     <% end %>
     <%= render "videos/navbar" %>
     <%= yield %>
-      <footer class="docs-footer">
-      <p><%= link_to "GitHub","https://github.com/Santonero/repoclip", class: "br-2", target: "_blank" %> · Version 1.1</p>
-      <p>Designed and built by Santonero.</p>
+    <% if action_name == "show" %>
+    <footer class="docs-footer hidden">
+    <% else %>
+    <footer class="docs-footer">
+    <% end %>
+      <p><%= link_to "GitHub","https://github.com/santonero/repoclip", class: "br-2", target: "_blank" %> · Version 2.1</p>
+      <p>Designed and built by santonero.</p>
     </footer>
     <script>function rmflash(o){document.body.removeChild(o)}</script>
   </body>

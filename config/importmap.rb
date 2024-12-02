@@ -1,8 +1,8 @@
-pin "application", preload: true
-pin "@hotwired/turbo-rails", to: "turbo.min.js", preload: true
-pin "@hotwired/stimulus", to: "stimulus.min.js", preload: true
-pin "@hotwired/stimulus-loading", to: "stimulus-loading.js", preload: true
-pin_all_from "app/javascript/controllers", under: "controllers", preload: false
-pin "vjs"
-pin "video.js", to: "https://unpkg.com/video.js@8.12.0/dist/video.min.js"
-pin "emoji-mart", to: "https://unpkg.com/emoji-mart@5.6.0/dist/browser.js"
+pin "application"
+pin "@hotwired/turbo-rails", to: "turbo.min.js"
+pin "@hotwired/stimulus", to: "stimulus.min.js"
+pin "@hotwired/stimulus-loading", to: "stimulus-loading.js"
+pin_all_from "app/javascript/controllers", under: "controllers"
+pin "vs"
+pin "vstack", to: "https://cdn.vidstack.io/player"
+pin "emoji-mart", to: "https://unpkg.com/emoji-mart@5.6.0/dist/browser.js", preload: false

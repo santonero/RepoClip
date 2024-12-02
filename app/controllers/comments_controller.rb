@@ -14,8 +14,8 @@ class CommentsController < ApplicationController
   def create
     @comment = @video.comments.new(comment_params)
     respond_to do |format|
-      if !@comment.username_taken?(current_user) && @comment.save
-        format.turbo_stream
+      if @comment.save
+        format.turbo_stream { render turbo_stream: turbo_stream.action(:fcomreload, "") }
         format.html { redirect_to video_url(@video), notice: "Comment was successfully added." }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
     @comment = @video.comments.find(params[:id])
     @comment.destroy
     respond_to do |format|
-      format.turbo_stream
+      format.turbo_stream { render turbo_stream: turbo_stream.action(:comreload, "") }
       format.html { redirect_to video_url(@video), status: :see_other }
     end
   end
@@ -40,9 +40,9 @@ class CommentsController < ApplicationController
 
   def comment_params
     if logged_in?
-      params.require(:comment).permit(:body).with_defaults(commenter: current_user.username)
+      params.expect(comment: [:body]).with_defaults(commenter: current_user.username)
     else
-      params.require(:comment).permit(:commenter, :body)
+      params.expect(comment: [:commenter, :body])
     end
   end
 

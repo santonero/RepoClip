@@ -1,1 +1,0 @@
-import{Controller}from"@hotwired/stimulus";export default class extends Controller{toggle(e){const t=document.getElementById("login");t.classList.contains("active")?(t.firstElementChild.remove(),t.classList.remove("active"),e.preventDefault()):t.classList.add("active")}}

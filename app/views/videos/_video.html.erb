@@ -1,24 +1,17 @@
 <div class="container grid-xl p-centered">
-<video
-  id="my-video"
-  class="video-js vjs-fluid vjs-big-play-centered vjs-show-big-play-button-on-pause"
-  controls
-  preload="metadata"
-  width="640" height="264"
-  data-setup='{"fluid": true,"controlBar":{"skipButtons":{"forward": 5}},"playbackRates": [0.25,0.5,0.75,1,1.25,1.5,1.75,2]}'
-  >
-  <source src=<%= rails_blob_path(video.clip, anchor: "t=0.1") %> type="video/mp4" />
-  <source src=<%= rails_blob_path(video.clip, anchor: "t=0.1") %> type="video/webm" />
-</video>
-<div id="vidfoot">
-  <div class="vidtitle my-2 text-bold text-break placeholder "><%= video.title %></div>
-  <div class="vidate mb-2 placeholder">Published on <%= video.created_at.strftime("%b %d, %Y") %></div>
-  <div><p class="videscr text-break placeholder"><%= video.description %></p></div>
+<media-player autoplay title="<%= video.title %>" src="<%= rails_blob_path(video.clip) %>">
+  <media-provider></media-provider>
+  <media-video-layout></media-video-layout>
+</media-player>
+<div id="vidfoot" class="hidden">
+  <div id="td" class="d-flex"><div class="vidtitle my-2 text-bold text-break"><%= video.title %></div>
+  <div class="vidate my-2 text-right">Published on <%= video.created_at.strftime("%b %d, %Y") %></div></div>
+  <div class="videscr text-break"><%= video.description %></div>
+  <%= render "modal", path: edit_video_path, title: "Edit", f: "vidform", sb: "Update Video" %>
   <div id="vidact">
-    <%= button_tag content_tag(:i,'',class: "pen"),onclick:"const e=document.getElementById('mod'),media=document.querySelector('video');media.pause(),e.classList.add('active');", class: "btn btn-primary btn-action btn-lg s-circle mx-1 tooltip tooltip-left", style: "background-image:linear-gradient(to right,#7e2df3,#5755d9);", "data-tooltip": "Edit" %>
+    <%= button_tag content_tag(:i,'',class: "pen"),onclick:"show(this)", class: "btn btn-primary btn-action btn-lg s-circle mx-1 tooltip tooltip-left", style: "background-image:linear-gradient(to right,#7e2df3,#5755d9);", "data-tooltip": "Edit" %>
     <%= button_tag content_tag(:i,'',class: "icon icon-share"),onclick:"const sh=document.getElementById('share');navigator.clipboard.writeText('#{video_url(video)}');sh.dataset.tooltip='Link copied to clipboard!';sh.classList.add('clicked');",onmouseleave:"const sh=document.getElementById('share');function blurIt(){sh.blur(),setTimeout((()=>{sh.dataset.tooltip='Share'}),200)}sh.classList.contains('clicked')&&(setTimeout(blurIt,4e3),sh.classList.remove('clicked'));", class: "btn btn-primary btn-action btn-lg s-circle tooltip tooltip-left", id: "share", "data-tooltip": "Share" %>
     <%= button_to content_tag(:i,'',class: "icon icon-cross"), video_path(video), method: :delete, "data-turbo-confirm": "Are you sure you want to delete this video?", class: "btn btn-primary btn-action btn-lg s-circle mx-1 tooltip tooltip-left", "data-tooltip": "Delete Video" %>
   </div>
 </div>
-<%= render "modal", path: edit_video_path, title: "Edit <i class='pen penh'></i>", sb: "Update" %>
 </div>

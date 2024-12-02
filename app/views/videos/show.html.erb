@@ -1,19 +1,14 @@
 <% content_for :head do %>
-  <meta name="turbo-visit-control" content="reload">
-  <%= stylesheet_link_tag "https://unpkg.com/video.js@8.10.0/dist/video-js.min.css" %>
-  <%= javascript_import_module_tag "vjs" %>
-  <%= javascript_include_tag "loading", defer: true %>
-  <%= javascript_include_tag "play", defer: true %>
-  <%= javascript_include_tag "cj", defer: true %>
-  <%= javascript_include_tag "modal", async: true %>
+  <meta name="turbo-cache-control" content="no-cache">
+  <link rel="stylesheet" href="https://cdn.vidstack.io/player/theme.css" />
+  <link rel="stylesheet" href="https://cdn.vidstack.io/player/video.css" />
+  <%= javascript_import_module_tag "vs" %>
 <% end %>
-<div class="container grid-xl" id="loadcont">
-  <div class="loading loading-lg"></div>
-</div>
 <%= render @video %>
-<div id ="comcont" class="container grid-xl p-centered">
+<div id ="comcont" class="container grid-xl p-centered hidden">
   <%= turbo_frame_tag "comframe", src: video_comments_path(@video) %>
-  <div class="column col-9 col-xs-12 col-sm-12 col-md-11 col-lg-9 p-2" style="margin-left:0.5em;">
+  <div class="column col-9 col-xs-12 col-sm-12 col-md-11 col-lg-9">
     <%= turbo_frame_tag "new_comment", src: new_video_comment_path(@video) %>
   </div>
 </div>
+<script>document.querySelector("media-player").addEventListener("media-player-connect",(()=>{document.getElementById("vidfoot").classList.remove("hidden"),document.getElementById("comcont").classList.remove("hidden"),document.querySelector(".docs-footer").classList.remove("hidden")}));</script>

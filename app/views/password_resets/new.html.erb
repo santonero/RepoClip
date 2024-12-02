@@ -7,6 +7,7 @@
         <%= form.email_field :email, class: "form-input", placeholder: "Email" %>
       </div>
       <div class="form-group">
+        <%= link_to content_tag(:i,'',class: "icon icon-back"), videos_path, class: "btn btn-action tooltip tooltip-bottom", "data-tooltip": "Go Back" %>
         <%= form.submit "Send email", class: "btn btn-primary input-group-btn" %>
       </div>
     <% end %>

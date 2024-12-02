@@ -1,25 +1,28 @@
 <header class="navbar p-2">
   <section class="navbar-section">
-    <a href="/videos" class="navbar-brand mr-2" data-turbo="false"><b>REPOCLIP</b></a>
-    <a href="https://github.com/Santonero/repoclip" target="_blank" class="btn btn-link">GitHub</a>
+    <a href="/videos" class="navbar-brand mr-2"><b>REPOCLIP</b></a>
+    <a href="https://github.com/santonero/repoclip" target="_blank" id="gh" class="btn btn-link">GitHub</a>
   </section>
   <section class="navbar-center m-1">
     <%= form_with url: "/search", method: :get, class: "fullw" do |form| %>
       <div class="input-group input-inline fullw">
-        <%= form.text_field :query, class: "form-input searchboxl", placeholder: "search" %>
-        <%= button_tag class: "btn searchboxr" do %><i class="icon icon-search"></i><% end %>
+        <%= form.text_field :query, class: "form-input searchbox", placeholder: "search" %>
+        <%= button_tag class: "searchbtn" do %><i class="icon icon-search"></i><% end %>
       </div>
     <% end %>
   </section>
+  <%= render "videos/modal", path: new_session_path, title: "Sign in", f: "login", sb: "Log In" %>
   <section class="navbar-section" id="navlogo">
     <% if logged_in? %>
       <%= link_to current_user.username, edit_password_path, class: "ml-2 mr-2 br-2" %>
       <%= button_to content_tag(:i,"",class: "icon icon-shutdown"), session_path, method: :delete, class: "btn btn-sm btn-action s-circle mr-2 tooltip tooltip-bottom", form: { data: { controller: "login-redir", action: "turbo:submit-end->login-redir#next" } }, "data-tooltip": "Log Out" %>
     <% else %>
-      <%= link_to "Sign Up", new_registration_path, class: "mr-2 br-2", "data-turbo": false %>
-      <%= link_to "Log In", new_session_path, class: "mr-2 br-2", data: { "turbo-frame": "login", controller: "toggle-login", action: "click->toggle-login#toggle" } %>
+      <%= link_to "Sign Up", new_registration_path, class: "m-2 br-2" %>
+      <%= link_to "Log In", "", class: "mr-2 br-2", onclick:"show(this);return false" %>
     <% end %>
-    <%= image_tag("clipico.svg") %>
+    <svg id="clipico" width="32" height="26.581" clip-rule="evenodd" fill-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" version="1.1" viewBox="0 0 32 26.581" xmlns="http://www.w3.org/2000/svg">
+    <path id="play" d="m16 12.25c3.9569 0 7.1656 3.2081 7.1656 7.1656s-3.2087 7.165-7.1656 7.165c-3.9575 0-7.1656-3.2075-7.1656-7.165s3.2081-7.1656 7.1656-7.1656zm2.6631 7.6968c.52875-.34125.5275-.72187 0-1.0244l-3.64-2.57c-.43125-.27062-.88062-.11125-.86875.45125l.01688 5.1744c.03688.61062.38562.7775.89875.49562z" fill="#5755d9" stroke-width=".0625"/>
+    <path d="m22.487 7.7938c-.19562.096875-.39375.20312-.58875.31562-.58562.34312-1.1644.76312-1.755 1.245l-1.2606-1.4431c.435-.40312.90625-.77062 1.4062-1.0956.39812-.26062.815-.4925 1.245-.69062.17187-.08625.34375-.16687.52062-.24187-.83062-1.4719-2.0262-2.5262-3.3806-3.1769-2.6912-1.2887-6.0425-1.0087-8.4131.8325-1.3619 1.055-2.3956 2.6331-2.7944 4.7244l-.125.65312-.65125.115c-.63812.11187-1.2075.26562-1.7081.46062-.48437.18812-.91625.42-1.2937.69312-.3025.21875-.56312.46375-.78375.72875-.68562.82062-1.0031 1.8487-.99562 2.8912.00812 1.0562.35187 2.1244.9875 3.0019.23687.32562.51.62562.8225.88562.31812.2625.67437.48125 1.0756.64625.39812.16375.83875.28062 1.3256.34875h.70875c-.019375.24-.02875.48312-.02875.7275 0 .40312.025625.8.07625 1.1887h-.7875l-.12-.01c-.695-.08875-1.3256-.25312-1.8981-.48937-.59125-.24562-1.115-.56062-1.5756-.94562-.4375-.365-.82-.77875-1.1456-1.2294-.87-1.1975-1.3387-2.6612-1.3494-4.12-.01-1.4737.44812-2.9394 1.4381-4.1275.32-.385.69687-.73937 1.1294-1.0519.50312-.36437 1.0781-.67187 1.73-.92375.4475-.175.92625-.32125 1.4319-.43812.57312-2.2756 1.7944-4.0281 3.3644-5.245 2.9419-2.2794 7.0694-2.6431 10.409-1.0387 1.825.87812 3.4187 2.3387 4.4531 4.3931.41625-.065.83312-.09875 1.2469-.09375 4.3287.0325 6.8412 3.7206 6.7969 7.7525-.01813 1.6431-.46062 3.2787-1.3675 4.4819-.59062.78375-1.3487 1.4244-2.2575 1.9319-.87437.49-1.8956.8625-3.0412 1.1281l-.20875.025a9.3068 9.3068 0 00.04375-1.9544c.85562-.21812 1.6156-.50437 2.2662-.8675.685-.38312 1.245-.84937 1.6637-1.4087.65125-.8675.97187-2.0937.98437-3.3519.03562-2.9512-1.6556-5.805-4.8931-5.825-.89312-.00812-1.8225.20812-2.7025.59812z" fill="#5755d9" stroke-width=".0625"/>
+    </svg>
   </section>
 </header>
-<%= turbo_frame_tag "login" %>
