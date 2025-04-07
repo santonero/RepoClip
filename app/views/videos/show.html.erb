@@ -11,4 +11,6 @@
     <%= turbo_frame_tag "new_comment", src: new_video_comment_path(@video) %>
   </div>
 </div>
-<script>document.querySelector("media-player").addEventListener("media-player-connect",(()=>{document.getElementById("vidfoot").classList.remove("hidden"),document.getElementById("comcont").classList.remove("hidden"),document.querySelector(".docs-footer").classList.remove("hidden")}));</script>
+<script>
+document.querySelector("media-player").addEventListener("media-player-connect",(()=>{document.getElementById("vidfoot").classList.remove("hidden"),document.getElementById("comcont").classList.remove("hidden"),document.querySelector(".docs-footer").classList.remove("hidden");const e=document.querySelector("media-player");function t(){e.muted=!0,e.play()}e.addEventListener("can-play",(()=>{const d=e.play();void 0!==d&&d.catch(t)}))}));
+</script>
