@@ -1,74 +1,63 @@
 <%= form_with(model: video, data: { controller: "form-load", action: "turbo:submit-start->form-load#showload" }, id: "vidform") do |form| %>
-  <div class="form-group">
-    <% if video.errors[:title].any? %>
-      <div class="has-error">
-        <%= form.label :title, class: "form-label" %>
-        <%= form.text_field :title, class: "form-input", placeholder: "Title" %>
-        <p class="form-input-hint d-inline"><%= video.errors.full_messages_for(:title)[0] %></p>
-    <% elsif video.errors[:title].empty? && response.status == 422 %>
-      <div class="has-success">
-        <%= form.label :title, class: "form-label" %>
-        <%= form.text_field :title, class: "form-input", placeholder: "Title" %>
-        <p class="form-input-hint d-inline">The title is valid.</p>
-    <% else %>
-      <div>
-        <%= form.label :title, class: "form-label" %>
-        <%= form.text_field :title, class: "form-input", placeholder: "Title" %>
-    <% end %>
-      </div>
-  </div>
 
-  <div class="form-group">
-    <% if video.errors[:clip].any? %>
-      <div class="has-error">
-        <%= form.label :clip, class: "form-label d-inline-block" %>
-        <div class="d-inline-block tooltip tooltip-right" data-tooltip="We strive to provide the best experience for all&#10;&#13;users. Due to storage constraints, video uploads&#10;&#13;are limited to 150MB." data-tooltipm="File size limit: 150MB.">
-          <%= image_tag("help.svg", class:"fieldico") %>
-        </div>
-        <%= form.file_field :clip, class: "form-input", onchange:"validateSize(this,150)" %>
-        <p class="form-input-hint d-inline"><%= video.errors.full_messages_for(:clip)[0] %></p>
-    <% else %>
-      <div>
-        <%= form.label :clip, class: "form-label d-inline-block" %>
-        <div class="d-inline-block tooltip tooltip-right" data-tooltip="We strive to provide the best experience for all&#10;&#13;users. Due to storage constraints, video uploads&#10;&#13;are limited to 150MB." data-tooltipm="File size limit: 150MB.">
-          <%= image_tag("help.svg", class: "fieldico") %>
-        </div>
-        <%= form.file_field :clip, class: "form-input", onchange:"validateSize(this,150)" %>
-    <% end %>
-      </div>
-  </div>
+  <%= render "shared/form_field",
+             form: form,
+             field_name: :title,
+             placeholder: "Title",
+             success_message: "Title is valid",
+             object_for_errors: video
+  %>
 
-  <div class="form-group">
-    <% if video.errors[:thumbnail].any? %>
-      <div class="has-error">
-        <%= form.label :thumbnail, class: "form-label d-inline-block" %>
-        <div class="d-inline-block tooltip tooltip-right" data-tooltip="We recommend your custom thumbnails: &#10;&#13; • Have a resolution of 1280x720. &#10;&#13; • Be uploaded in JPG, PNG or WEBP formats. &#10;&#13; • Remain under the 2MB limit. &#10;&#13; • Try to use a 16:9 aspect ratio." data-tooltipm="Recommendations: &#10;&#13; • Have a resolution of &#10;&#13;   1280x720. &#10;&#13; • Be uploaded in JPG /&#10;&#13;   PNG or WEBP formats. &#10;&#13; • Remain under 2MB. &#10;&#13; • Try to use a 16:9 &#10;&#13;   aspect ratio.">
-          <%= image_tag("help.svg", class: "fieldico") %>
-        </div>
-        <%= form.file_field :thumbnail, class: "form-input", onchange:"validateSize(this,2)" %>
-        <p class="form-input-hint d-inline"><%= video.errors.full_messages_for(:thumbnail)[0] %></p>
-    <% else %>
-      <div>
-        <%= form.label :thumbnail, class: "form-label d-inline-block" %>
-        <div class="d-inline-block tooltip tooltip-right" data-tooltip="We recommend your custom thumbnails: &#10;&#13; • Have a resolution of 1280x720. &#10;&#13; • Be uploaded in JPG, PNG or WEBP formats. &#10;&#13; • Remain under the 2MB limit. &#10;&#13; • Try to use a 16:9 aspect ratio." data-tooltipm="Recommendations: &#10;&#13; • Have a resolution of &#10;&#13;   1280x720. &#10;&#13; • Be uploaded in JPG /&#10;&#13;   PNG or WEBP formats. &#10;&#13; • Remain under 2MB. &#10;&#13; • Try to use a 16:9 &#10;&#13;   aspect ratio.">
-          <%= image_tag("help.svg", class: "fieldico") %>
-        </div>
-        <%= form.file_field :thumbnail, class: "form-input", onchange:"validateSize(this,2)" %>
-    <% end %>
-      </div>
-  </div>
+  <%= render "shared/form_field_with_tooltip",
+             form: form,
+             field_name: :clip,
+             tooltip_text: "To ensure a great experience for everyone,
 
-  <div class="form-group">
-    <% if video.errors[:description].any? %>
-      <div class="has-error">
-        <%= form.label :description, class: "form-label" %>
-        <%= form.textarea :description, class: "form-input", placeholder: "Description about the video (optional)", rows: "3" %>
-        <p class="form-input-hint d-inline"><%= video.errors.full_messages_for(:description)[0] %></p>
-    <% else %>
-      <div>
-        <%= form.label :description, class: "form-label" %>
-        <%= form.textarea :description, class: "form-input", placeholder: "Description about the video (optional)", rows: "3" %>
-    <% end %>
-      </div>
-  </div>
+videos are limited to 150MB.
+
+Thanks for your understanding!",
+             tooltip_mobile_text: "File size limit: 150MB.",
+             field_options: { onchange: "validateSize(this,150)" },
+             object_for_errors: video
+  %>
+
+  <%= render "shared/form_field_with_tooltip",
+             form: form,
+             field_name: :thumbnail,
+             tooltip_text: "We recommend your custom thumbnails:
+
+ • Have a resolution of 1280x720.
+
+ • Be uploaded in JPG, PNG or WEBP formats.
+
+ • Remain under the 2MB limit.
+
+ • Try to use a 16:9 aspect ratio.",
+             tooltip_mobile_text: "Recommendations:
+
+ • Have a resolution of
+
+   1280x720.
+
+ • Be uploaded in JPG /
+
+   PNG or WEBP formats.
+
+ • Remain under 2MB.
+
+ • Try to use a 16:9
+
+   aspect ratio.",
+             field_options: { onchange: "validateSize(this,2)" },
+             object_for_errors: video
+  %>
+
+  <%= render "shared/form_field",
+             form: form,
+             field_name: :description,
+             field_type: :textarea,
+             placeholder: "Description about the video (optional)",
+             field_options: { rows: "3" },
+             object_for_errors: video
+  %>
 <% end %>

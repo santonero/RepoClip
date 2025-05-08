@@ -2,77 +2,46 @@
   <h1 class="text-center">Sign Up</h1>
   <div class="column col-6 col-xs-12 col-sm-12 col-md-9 col-lg-7 col-mx-auto max-52">
     <%= form_with model: @user, url: registration_path do |form| %>
-      <div class="form-group">
-        <% if @user.errors[:username].any? %>
-          <div class="has-error">
-            <%= form.label :username, class: "form-label" %>
-            <%= form.text_field :username, class: "form-input", placeholder: "Username" %>
-            <p class="form-input-hint d-inline"><%= @user.errors.full_messages_for(:username)[0] %></p>
-        <% elsif @user.errors[:username].empty? && response.status == 422 %>
-          <div class="has-success">
-            <%= form.label :username, class: "form-label" %>
-            <%= form.text_field :username, class: "form-input", placeholder: "Username" %>
-            <p class="form-input-hint d-inline">The username is valid.</p>
-        <% else %>
-          <div>
-            <%= form.label :username, class: "form-label" %>
-            <%= form.text_field :username, class: "form-input", placeholder: "Username" %>
-        <% end %>
-          </div>
-      </div>
+      <%= render "shared/form_field",
+             form: form,
+             field_name: :username,
+             placeholder: "Username",
+             success_message: "Username is valid",
+             object_for_errors: @user
+      %>
 
-      <div class="form-group">
-        <% if @user.errors[:email].any? %>
-          <div class="has-error">
-            <%= form.label :email, class: "form-label" %>
-            <%= form.email_field :email, class: "form-input", placeholder: "Email" %>
-            <p class="form-input-hint d-inline"><%= @user.errors.full_messages_for(:email)[0] %></p>
-        <% elsif @user.errors[:email].empty? && response.status == 422 %>
-          <div class="has-success">
-            <%= form.label :email, class: "form-label" %>
-            <%= form.email_field :email, class: "form-input", placeholder: "Email" %>
-            <p class="form-input-hint d-inline">The email is valid.</p>
-        <% else %>
-          <div>
-            <%= form.label :email, class: "form-label" %>
-            <%= form.email_field :email, class: "form-input", placeholder: "Email" %>
-        <% end %>
-          </div>
-      </div>
+      <%= render "shared/form_field",
+                form: form,
+                field_name: :email,
+                field_type: :email_field,
+                placeholder: "Email",
+                success_message: "Email is valid",
+                object_for_errors: @user
+      %>
 
-      <div class="form-group">
-        <% if @user.errors[:password].any? %>
-          <div class="has-error">
-            <%= form.label :password, class: "form-label" %>
-            <%= form.password_field :password, class: "form-input", placeholder: "Password" %>
-            <p class="form-input-hint d-inline"><%= @user.errors.full_messages_for(:password)[0] %></p>
-        <% else %>
-          <div>
-            <%= form.label :password, class: "form-label" %>
-            <%= form.password_field :password, class: "form-input", placeholder: "Password" %>
-        <% end %>
-          </div>
-      </div>
+      <%= render "shared/form_field",
+                form: form,
+                field_name: :password,
+                field_type: :password_field,
+                placeholder: "Password",
+                object_for_errors: @user
+      %>
 
-      <div class="form-group">
-        <% if @user.errors[:password_confirmation].any? %>
-          <div class="has-error">
-            <%= form.label :password_confirmation, class: "form-label" %>
-            <%= form.password_field :password_confirmation, class: "form-input", placeholder: "Confirmation" %>
-            <p class="form-input-hint d-inline"><%= @user.errors.full_messages_for(:password_confirmation)[0] %></p>
-        <% else %>
-          <div>
-            <%= form.label :password_confirmation, class: "form-label" %>
-            <%= form.password_field :password_confirmation, class: "form-input", placeholder: "Confirmation" %>
-        <% end %>
-          </div>
-      </div>
+      <%= render "shared/form_field",
+                form: form,
+                field_name: :password_confirmation,
+                field_type: :password_field,
+                placeholder: "Confirmation",
+                object_for_errors: @user
+      %>
+
       <div class="form-group">
         <label class="form-switch">
           <input type="checkbox" name="news"/>
           <i class="form-icon"></i> Send me emails with news and tips
         </label>
       </div>
+
       <div class="form-group">
         <%= form.submit "Sign Up", class: "btn fullw lbtn input-group-btn" %>
       </div>

@@ -1,0 +1,20 @@
+<%# locals: (form:, field_name:, field_type: :file_field, field_options: {}, tooltip_text:, tooltip_mobile_text: "Default mobile tooltip", object_for_errors: nil) %>
+<% field_options ||= {} %>
+<% object_for_errors ||= form.object %>
+<% has_errors = object_for_errors.errors[field_name].any? %>
+
+<div class="form-group <%= 'has-error' if has_errors %>">
+  <div>
+    <%= form.label field_name, class: "form-label d-inline-block" %>
+
+    <div class="d-inline-block tooltip tooltip-right" data-tooltip="<%= tooltip_text %>" data-tooltipm="<%= tooltip_mobile_text %>">
+      <%= image_tag("help.svg", class: "fieldico") %>
+    </div>
+
+    <%= form.send(field_type, field_name, { class: "form-input" }.merge(field_options)) %>
+
+    <% if has_errors %>
+      <p class="form-input-hint d-inline"><%= object_for_errors.errors.full_messages_for(field_name).first %></p>
+    <% end %>
+  </div>
+</div>

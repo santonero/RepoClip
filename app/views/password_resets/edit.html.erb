@@ -2,37 +2,25 @@
   <h1 class="text-center">Reset Password</h1>
   <div class="column col-6 col-xs-12 col-sm-12 col-md-9 col-lg-7 col-mx-auto max-52">
     <%= form_with model: @user, url: password_reset_path(token: params[:token]) do |form| %>
-      <div class="form-group">
-        <% if form.object.errors[:password].any? %>
-          <div class="has-error">
-            <%= form.label :password, class: "form-label" %>
-            <%= form.password_field :password, class: "form-input", placeholder: "Password" %>
-            <p class="form-input-hint d-inline"><%= form.object.errors.full_messages_for(:password)[0] %></p>
-        <% else %>
-          <div>
-            <%= form.label :password, "Password", class: "form-label" %>
-            <%= form.password_field :password, class: "form-input", placeholder: "Password" %>
-        <% end %>
-          </div>
-      </div>
+      <%= render "shared/form_field",
+             form: form,
+             field_name: :password,
+             field_type: :password_field,
+             placeholder: "Password",
+             object_for_errors: @user
+      %>
 
-      <div class="form-group">
-        <% if form.object.errors[:password_confirmation].any? %>
-          <div class="has-error">
-            <%= form.label :password_confirmation, class: "form-label" %>
-            <%= form.password_field :password_confirmation, class: "form-input", placeholder: "Confirmation" %>
-            <p class="form-input-hint d-inline"><%= form.object.errors.full_messages_for(:password_confirmation)[0] %></p>
-        <% else %>
-          <div>
-            <%= form.label :password_confirmation, "Password Confirmation", class: "form-label" %>
-            <%= form.password_field :password_confirmation, class: "form-input", placeholder: "Confirmation" %>
-        <% end %>
-          </div>
-      </div>
+      <%= render "shared/form_field",
+                form: form,
+                field_name: :password_confirmation,
+                field_type: :password_field,
+                placeholder: "Confirmation",
+                object_for_errors: @user
+      %>
 
-      <div class="form-group">
-        <%= form.submit "Reset Password", class: "btn btn-primary input-group-btn" %>
-      </div>
-  <% end %>
+    <div class="form-group">
+      <%= form.submit "Reset Password", class: "btn btn-primary input-group-btn" %>
+    </div>
+    <% end %>
   </div>
 </div>

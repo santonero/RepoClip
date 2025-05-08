@@ -9,11 +9,7 @@
         <%= form.label :account, "Username or email", class: "form-label" %>
         <%= form.text_field :account, class: "form-input", data: { controller: "clear-login", action: "input->clear-login#clear" } %>
       </div>
-    <% if response.status == 422 %>
-      <div class="form-group has-error">
-    <% else %>
-      <div class="form-group">
-    <% end %>
+      <div class="form-group <%= 'has-error' if response.status == 422 %>">
         <%= form.label :password, class: "form-label" %>
         <%= form.password_field :password, class: "form-input", data: { controller: "clear-login", action: "input->clear-login#clear" } %>
       </div>
