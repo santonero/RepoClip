@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   include Pagination
   before_action :set_video
+  invisible_captcha only: [:create], honeypot: :reply_to_author_email
   COMS_PER_PAGE = 6
 
   def index

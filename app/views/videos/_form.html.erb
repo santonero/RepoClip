@@ -13,11 +13,11 @@
              field_name: :clip,
              tooltip_text: "To ensure a great experience for everyone,
 
-videos are limited to 150MB.
+videos are limited to 75MB.
 
 Thanks for your understanding!",
-             tooltip_mobile_text: "File size limit: 150MB.",
-             field_options: { onchange: "validateSize(this,150)" },
+             tooltip_mobile_text: "File size limit: 75MB.",
+             field_options: { onchange: "validateSize(this,75)" },
              object_for_errors: video
   %>
 
@@ -60,4 +60,5 @@ Thanks for your understanding!",
              field_options: { rows: "3" },
              object_for_errors: video
   %>
+  <%= form.invisible_captcha :video_tags %>
 <% end %>

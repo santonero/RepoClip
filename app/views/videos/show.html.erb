@@ -8,9 +8,9 @@
 <div id ="comcont" class="container grid-xl p-centered hidden">
   <%= turbo_frame_tag "comframe", src: video_comments_path(@video) %>
   <div class="column col-9 col-xs-12 col-sm-12 col-md-11 col-lg-9">
-    <%= turbo_frame_tag "new_comment", src: new_video_comment_path(@video) %>
+    <%= turbo_frame_tag "new_comment", class: "hidden", src: new_video_comment_path(@video) %>
   </div>
 </div>
 <script>
-document.querySelector("media-player").addEventListener("media-player-connect",(()=>{document.getElementById("vidfoot").classList.remove("hidden"),document.getElementById("comcont").classList.remove("hidden"),document.querySelector(".docs-footer").classList.remove("hidden");const e=document.querySelector("media-player");function t(){e.muted=!0,e.play()}e.addEventListener("can-play",(()=>{const d=e.play();void 0!==d&&d.catch(t)}))}));
+document.querySelector("media-player").addEventListener("media-player-connect",(()=>{document.getElementById("vidfoot").classList.remove("hidden"),document.getElementById("comcont").classList.remove("hidden"),document.getElementById("comframe").addEventListener("turbo:frame-render",(()=>{document.getElementById("new_comment").classList.remove("hidden"),document.querySelector(".docs-footer").classList.remove("hidden")}));const e=document.querySelector("media-player");function t(){e.muted=!0,e.play()}e.addEventListener("can-play",(()=>{const d=e.play();void 0!==d&&d.catch(t)}))}));
 </script>

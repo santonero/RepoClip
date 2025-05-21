@@ -1,6 +1,7 @@
 class VideosController < ApplicationController
   include Pagination
   before_action :set_video, only: %i[show edit update destroy]
+  invisible_captcha only: [:create, :update], honeypot: :video_tags
   VIDS_PER_PAGE = 17
 
   def index

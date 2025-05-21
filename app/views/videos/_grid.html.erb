@@ -17,21 +17,22 @@
   </div>
 <% end %>
 <% @videos.each do |video| %>
-<% a = link_to "", video, class: "full d-block no-shadow" %>
-  <div class="card" data-turbo-prefetch="false">
+  <div class="card">
     <div class="card-image placeholder">
-      <div class="parallax fullh">
-        <div class="parallax-top-left" tabindex="1"><%= a %></div>
-        <div class="parallax-top-right" tabindex="2"><%= a %></div>
-        <div class="parallax-bottom-left" tabindex="3"><%= a %></div>
-        <div class="parallax-bottom-right" tabindex="4"><%= a %></div>
-        <div class="parallax-content text-break ">
-          <div class="parallax-front"></div>
-          <div class="parallax-back fullh">
-            <div class="hidden full"><%= image_tag(video.thumbnail, class: "img-responsive mb-1") %></div>
+      <%= link_to video do %>
+        <div class="parallax fullh">
+          <div class="parallax-top-left" tabindex="1"></div>
+          <div class="parallax-top-right" tabindex="2"></div>
+          <div class="parallax-bottom-left" tabindex="3"></div>
+          <div class="parallax-bottom-right" tabindex="4"></div>
+          <div class="parallax-content text-break ">
+            <div class="parallax-front"></div>
+            <div class="parallax-back fullh">
+              <div class="hidden full"><%= image_tag(video.thumbnail, class: "img-responsive mb-1") %></div>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
     <div class="mt-2"><%= link_to content_tag(:span,video.title,class: "placeholder boxbreak"), video, class: "card-footer no-shadow"%></div>
     <%= link_to(time_ago_in_words(video.created_at)+" ago", video, class: "card-footer-last no-shadow placeholder") %>
