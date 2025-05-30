@@ -17,10 +17,12 @@ RSpec.describe "Comments", type: :request do
       assert_select "turbo-frame#comframe" do
         assert_select "div#comments" do
           assert_select "div#comment_#{comment1.id}" do
-            expect(response.body).to include(comment1.body)
+            assert_select "p span", comment1.commenter
+            assert_select "p span", comment1.body
           end
           assert_select "div#comment_#{comment2.id}" do
-            expect(response.body).to include(comment2.body)
+            assert_select "p span", comment2.commenter
+            assert_select "p span", comment2.body
           end
         end
       end
@@ -78,8 +80,8 @@ RSpec.describe "Comments", type: :request do
             assert_select "input[name=?][value=?]", "comment[commenter]", invalid_comment_params[:comment][:commenter]
             assert_select "textarea[name=?]", "comment[body]", text: invalid_comment_params[:comment][:body]
             assert_select "div.has-error"
-            expect(response.body).to include("Author can&#39;t be blank")
-            expect(response.body).to include("Comment is too short (minimum is 2 characters)")
+            assert_select "p.form-input-hint", "Author can't be blank"
+            assert_select "p.form-input-hint", "Comment is too short (minimum is 2 characters)"
           end
         end
       end

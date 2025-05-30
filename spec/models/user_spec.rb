@@ -10,8 +10,11 @@ RSpec.describe User, type: :model do
     it { should validate_uniqueness_of(:username).allow_blank }
     it { should validate_length_of(:username).is_at_most(18) }
 
-    it { should validate_presence_of(:password) }
-    it { should validate_presence_of(:password_confirmation) }
+    it { should validate_presence_of(:password).on(:password_update) }
+    it { should validate_presence_of(:password_confirmation).on(:password_update) }
+    it { should validate_length_of(:password).is_at_least(8) }
+    it { should allow_value("Password123!").for(:password) }
+    it { should_not allow_value("password", "PASSWORD", "12345678", "Password123", "password!1", "PASSWORD!1", "PasswordABC!").for(:password).with_message("must include at least one lowercase letter, one uppercase letter, one digit, and one special character") }
 
     it { should validate_presence_of(:email) }
     it { should validate_uniqueness_of(:email).allow_blank.ignoring_case_sensitivity }

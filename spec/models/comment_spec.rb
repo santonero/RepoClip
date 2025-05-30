@@ -37,7 +37,7 @@ RSpec.describe Comment, type: :model do
     context "when Current.user is present (logged-in commenter)" do
       let(:current_user) { create(:user, username: "LoggedInUser", email: "current@user.com") }
 
-      around { |example| Current.set(user: :current_user) { example.run } }
+      around { |example| Current.set(user: current_user) { example.run } }
 
       it "is valid when commenter is set to Current.user.username and name_availability does not run" do
         comment = build(:comment, video: video, commenter: current_user.username)

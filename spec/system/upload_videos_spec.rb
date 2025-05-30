@@ -12,7 +12,7 @@ RSpec.describe "Uploading a new video", type: :system, js: true do
       attach_file "video_thumbnail", Rails.root.join("spec/fixtures/files/sample_thumbnail.png")
     end
 
-    find("#svidform").click
+    click_button "svidform"
     expect(page).to have_content("My Awesome System Test Video")
     expect(page).to have_current_path(video_path(Video.last), ignore_query: true)
     expect(page).to have_content("This video was uploaded via a system test!")
@@ -28,9 +28,9 @@ RSpec.describe "Uploading a new video", type: :system, js: true do
     end
 
     expect do
-      find("#svidform").click
+      click_button "svidform"
       expect(page).to have_content("Title can't be blank")
-    end.to_not change(Video, :count)
+    end.not_to change(Video, :count)
 
     within "turbo-frame#add" do
       expect(page).to have_content("Video has an invalid content type")

@@ -22,7 +22,7 @@ RSpec.describe "Videos", type: :request do
   end
 
   describe "GET /videos/:id (show)" do
-    context "when the video exist" do
+    context "when the video exists" do
       before { get video_path(video1) }
 
       it "returns a successful response" do
@@ -162,7 +162,7 @@ RSpec.describe "Videos", type: :request do
               assert_select "input[name=?][value=?]", "video[title]", invalid_video_params[:video][:title]
               assert_select "textarea[name=?]", "video[description]", text: invalid_video_params[:video][:description]
               assert_select "div.has-error"
-              expect(response.body).to include("Title can&#39;t be blank")
+              assert_select "p.form-input-hint", "Title can't be blank"
             end
           end
         end
@@ -175,7 +175,7 @@ RSpec.describe "Videos", type: :request do
     end
   end
 
-  describe "GET /videos/:id (edit)" do
+  describe "GET /videos/:id/edit (edit)" do
     before { get edit_video_path(video1) }
 
     it "returns a successful response" do
@@ -264,7 +264,7 @@ RSpec.describe "Videos", type: :request do
           assert_select "form[action=?][method=?]", video_path(video1), "post" do
             assert_select "input[name=?][value=?]", "video[title]", ""
             assert_select "div.has-error"
-            expect(response.body).to include("Title can&#39;t be blank")
+            assert_select "p.form-input-hint", "Title can't be blank"
           end
         end
       end
