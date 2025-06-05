@@ -6,6 +6,7 @@ RSpec.describe "Videos", type: :request do
 
   describe "GET /videos (index)" do
     before { get videos_path }
+
     it "returns a successful response" do
       expect(response).to be_successful
       expect(response).to have_http_status(:ok)
@@ -109,7 +110,7 @@ RSpec.describe "Videos", type: :request do
       context "response when TURBO_STREAM is requested" do
         before { post videos_path, params: valid_video_params, as: :turbo_stream }
 
-        it "returns a turbo_stream with a custom 'redir' action" do
+        it "returns a turbo_stream response with a custom 'redir' action" do
           created_video = Video.find_by!(title: valid_video_params[:video][:title])
           expect(response).to have_http_status(:ok)
           expect(response.content_type).to eq("text/vnd.turbo-stream.html; charset=utf-8")
@@ -146,7 +147,7 @@ RSpec.describe "Videos", type: :request do
       it "does not create a new Video" do
         expect {
           post videos_path, params: invalid_video_params, as: :turbo_stream
-        }.to_not change(Video, :count)
+        }.not_to change(Video, :count)
       end
 
       context "response for failed creation" do
@@ -160,6 +161,8 @@ RSpec.describe "Videos", type: :request do
           assert_select "turbo-frame#add" do
             assert_select "form[action=?][method=?]", videos_path, "post" do
               assert_select "input[name=?][value=?]", "video[title]", invalid_video_params[:video][:title]
+              assert_select "input[type=?][name=?]", "file", "video[clip]"
+              assert_select "input[type=?][name=?]", "file", "video[thumbnail]"
               assert_select "textarea[name=?]", "video[description]", text: invalid_video_params[:video][:description]
               assert_select "div.has-error"
               assert_select "p.form-input-hint", "Title can't be blank"
@@ -188,9 +191,9 @@ RSpec.describe "Videos", type: :request do
         assert_select "form[action=?][method=?]", video_path(video1), "post" do
           assert_select "input[type=?][name=?][value=?]", "hidden", "_method", "patch", count: 1
           assert_select "input[name=?][value=?]", "video[title]", video1.title
-          assert_select "textarea[name=?]", "video[description]", text: video1.description
           assert_select "input[type=?][name=?]", "file", "video[clip]"
           assert_select "input[type=?][name=?]", "file", "video[thumbnail]"
+          assert_select "textarea[name=?]", "video[description]", video1.description
         end
       end
     end
@@ -262,7 +265,11 @@ RSpec.describe "Videos", type: :request do
       it "re-renders the form within the 'add' turbo_frame with errors" do
         assert_select "turbo-frame#add" do
           assert_select "form[action=?][method=?]", video_path(video1), "post" do
+            assert_select "input[type=?][name=?][value=?]", "hidden", "_method", "patch", count: 1
             assert_select "input[name=?][value=?]", "video[title]", ""
+            assert_select "input[type=?][name=?]", "file", "video[clip]"
+            assert_select "input[type=?][name=?]", "file", "video[thumbnail]"
+            assert_select "textarea[name=?]", "video[description]"
             assert_select "div.has-error"
             assert_select "p.form-input-hint", "Title can't be blank"
           end
@@ -273,17 +280,14 @@ RSpec.describe "Videos", type: :request do
 
   describe "DELETE /videos/:id (destroy)" do
 
-    it "destroy the targeted video" do
-      expect { delete video_path(video1) }.to change(Video, :count).by(-1)
+    it "destroys the targeted video" do
+      expect { delete video_path(video1), as: :turbo_stream }.to change(Video, :count).by(-1)
     end
 
-    it "redirects to the video's list" do
-      delete video_path(video1)
-      expect(response).to redirect_to(root_url(format: :html))
-    end
-
-    it "sets a success flash message" do
-      delete video_path(video1)
+    it "returns a turbo_stream response with a custom 'redir' action and sets a success flash message" do
+      delete video_path(video1), as: :turbo_stream
+      expect(response.content_type).to eq("text/vnd.turbo-stream.html; charset=utf-8")
+      assert_select "turbo-stream[action='redir'][target='#{root_url}']", count: 1
       expect(flash[:notice]).to eq("Video was successfully destroyed.")
     end
 

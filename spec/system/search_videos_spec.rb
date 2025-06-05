@@ -4,10 +4,15 @@ RSpec.describe "Searching a video by title", type: :system, js: true do
   let!(:video1) { create(:video) }
   let!(:video2) { create(:video) }
   before { visit videos_path }
+
   scenario "displays links of corresponding videos when results are found" do
     within "form[action='/search'][method='get']" do
       fill_in "query", with: video1.title
       find("button.searchbtn").click
+    end
+
+    within "div.hero" do
+      expect(page).to have_selector("div.hero-body h1", text: "1 result found")
     end
     expect(page).to have_selector("div.card div.card-image a[href='/videos/#{video1.id}']")
     expect(page).not_to have_selector("div.card div.card-image a[href='/videos/#{video2.id}']")
@@ -20,6 +25,7 @@ RSpec.describe "Searching a video by title", type: :system, js: true do
       fill_in "query", with: "Not An Existing Video"
       find("button.searchbtn").click
     end
+
     within "div.container div.empty" do
       within "div.empty-icon" do
         expect(page).to have_selector("svg#smily")

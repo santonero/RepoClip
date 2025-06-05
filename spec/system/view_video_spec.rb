@@ -35,6 +35,8 @@ RSpec.describe "Viewing a video", type: :system, js: true do
     within "turbo-frame#new_comment" do
       expect(page).to have_field("comment_commenter")
       expect(page).to have_field("comment_body")
+      expect(page).to have_button("emojib")
+      expect(page).to have_button("Create Comment")
     end
   end
 end

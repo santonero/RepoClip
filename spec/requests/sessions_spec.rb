@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "Sessions", type: :request do
   describe "GET /session/new (new)" do
     before { get new_session_path }
+
     it "returns a successful response" do
       expect(response).to be_successful
       expect(response).to have_http_status(:ok)
@@ -26,7 +27,7 @@ RSpec.describe "Sessions", type: :request do
       before { post session_path, params: valid_credentials, as: :turbo_stream }
 
       it "logs in the user" do
-        expect(Current.user).to eq(User.find_by(username: valid_credentials[:username]))
+        expect(User.find_by!(id: session[:user_id])).to eq(User.find_by!(username: valid_credentials[:account]))
       end
 
       it "returns a turbo_stream response with a 'refresh' action" do

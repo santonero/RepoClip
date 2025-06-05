@@ -15,6 +15,7 @@ RSpec.describe "Registrations", type: :request do
         assert_select "input[type=?][name=?]", "email", "user[email]"
         assert_select "input[type=?][name=?]", "password", "user[password]"
         assert_select "input[type=?][name=?]", "password", "user[password_confirmation]"
+        assert_select "input[type=?][name=?][value=?]", "submit", "commit", "Sign Up"
       end
     end
   end
@@ -32,18 +33,15 @@ RSpec.describe "Registrations", type: :request do
         }
       end
 
-      it "registers a new account" do
+      it "registers a new account and logs in the new user" do
         expect { post registration_path, params: valid_parameters, as: :turbo_stream }.to change(User, :count).by(1)
+        expect(User.find_by!(id: session[:user_id])).to eq(User.find_by!(username: valid_parameters[:user][:username]))
       end
 
       it "redirects to root url in HTML and sets a success flash message" do
         post registration_path, params: valid_parameters, as: :turbo_stream
         expect(response).to redirect_to(root_url(format: :html))
         expect(flash[:notice]).to eq("<i class='icon icon-check mx-1'></i> Account successfully created.")
-      end
-
-      it "logs in the new user" do
-        expect(Current.user).to eq(User.find_by(email: valid_parameters[:user][:email]))
       end
     end
 
@@ -76,6 +74,7 @@ RSpec.describe "Registrations", type: :request do
             assert_select "input[type=?][name=?][value=?]", "email", "user[email]", invalid_parameters[:user][:email]
             assert_select "input[type=?][name=?]", "password", "user[password]"
             assert_select "input[type=?][name=?]", "password", "user[password_confirmation]"
+            assert_select "input[type=?][name=?][value=?]", "submit", "commit", "Sign Up"
             assert_select "div.has-error"
             assert_select "p.form-input-hint", "Username can't be blank"
             assert_select "p.form-input-hint", "Password is too short (minimum is 8 characters)"

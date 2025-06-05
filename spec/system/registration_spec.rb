@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Registering", type: :system, js: true do
   before { visit new_registration_path }
+
   scenario "successfully with valid data" do
     within "form[action='#{registration_path}'][method='post']" do
       fill_in "user[username]", with: "Username123"

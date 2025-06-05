@@ -13,10 +13,10 @@ RSpec.describe "Uploading a new video", type: :system, js: true do
     end
 
     click_button "svidform"
-    expect(page).to have_content("My Awesome System Test Video")
-    expect(page).to have_current_path(video_path(Video.last), ignore_query: true)
-    expect(page).to have_content("This video was uploaded via a system test!")
     expect(page).to have_content("Video was successfully created.")
+    expect(page).to have_current_path(video_path(Video.last), ignore_query: true)
+    expect(page).to have_content("My Awesome System Test Video")
+    expect(page).to have_content("This video was uploaded via a system test!")
   end
 
   scenario "fails with invalid data and files" do

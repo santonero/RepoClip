@@ -39,9 +39,11 @@ RSpec.describe "Comments", type: :request do
 
     it "renders the new comment form within a turbo_frame identified as 'new_comment'" do
       assert_select "turbo-frame#new_comment" do
-        assert_select "form[action=?][method=?]", video_comments_path(video), "post" do
+        assert_select "form#comform[action=?][method=?]", video_comments_path(video), "post" do
           assert_select "input[name=?]", "comment[commenter]"
           assert_select "textarea[name=?]", "comment[body]"
+          assert_select "button#emojib"
+          assert_select "input[type=?][name=?][value=?]", "submit", "commit", "Create Comment"
         end
       end
     end
@@ -49,9 +51,9 @@ RSpec.describe "Comments", type: :request do
 
   describe "POST /videos/:video_id/comments (create)" do
     context "with valid parameters" do
-      let(:valid_comment_params) { { comment: { commenter: "An Author", body: "A nice comment."} } }
+      let(:valid_comment_params) { { comment: { commenter: "An Author", body: "A nice comment." } } }
 
-      it "creates a new comment with the correct attributes when TURBO_STREAM is requested" do
+      it "creates a new Comment with the correct attributes when TURBO_STREAM is requested" do
         expect { post video_comments_path(video), params: valid_comment_params, as: :turbo_stream }.to change(Comment, :count).by(1)
         created_comment = Comment.find_by!(commenter: valid_comment_params[:comment][:commenter])
         expect(created_comment.body).to eq(valid_comment_params[:comment][:body])
@@ -68,26 +70,30 @@ RSpec.describe "Comments", type: :request do
     context "with invalid parameters" do
       let(:invalid_comment_params) { { comment: { commenter: "", body: "z"} } }
 
-      it "does not create a new comment" do
-        expect { post video_comments_path(video), params: invalid_comment_params, as: :turbo_stream }.to_not change(Comment, :count)
+      it "does not create a new Comment" do
+        expect { post video_comments_path(video), params: invalid_comment_params, as: :turbo_stream }.not_to change(Comment, :count)
       end
 
-      before { post video_comments_path(video), params: invalid_comment_params, as: :turbo_stream }
+      context "response for failed creation" do
+        before { post video_comments_path(video), params: invalid_comment_params, as: :turbo_stream }
 
-      it "re-renders form within the 'new_comment' turbo_frame with errors" do
-        assert_select "turbo-frame#new_comment" do
-          assert_select "form[action=?][method=?]", video_comments_path(video), "post" do
-            assert_select "input[name=?][value=?]", "comment[commenter]", invalid_comment_params[:comment][:commenter]
-            assert_select "textarea[name=?]", "comment[body]", text: invalid_comment_params[:comment][:body]
-            assert_select "div.has-error"
-            assert_select "p.form-input-hint", "Author can't be blank"
-            assert_select "p.form-input-hint", "Comment is too short (minimum is 2 characters)"
+        it "re-renders form within the 'new_comment' turbo_frame with errors" do
+          assert_select "turbo-frame#new_comment" do
+            assert_select "form#comform[action=?][method=?]", video_comments_path(video), "post" do
+              assert_select "input[name=?][value=?]", "comment[commenter]", invalid_comment_params[:comment][:commenter]
+              assert_select "textarea[name=?]", "comment[body]", text: invalid_comment_params[:comment][:body]
+              assert_select "button#emojib"
+              assert_select "div.has-error", count: 2
+              assert_select "p.form-input-hint", "Author can't be blank"
+              assert_select "p.form-input-hint", "Comment is too short (minimum is 2 characters)"
+              assert_select "input[type=?][name=?][value=?]", "submit", "commit", "Create Comment"
+            end
           end
         end
-      end
 
-      it "returns an unprocessable_entity status" do
-        expect(response).to have_http_status(:unprocessable_entity)
+        it "returns an unprocessable_entity status" do
+          expect(response).to have_http_status(:unprocessable_entity)
+        end
       end
     end
   end

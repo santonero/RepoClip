@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Sessions management", type: :system, js: true do
   let!(:user) { create(:user) }
+
   describe "Creating a new session" do
     scenario "successfully with valid credentials and stay on same page" do
       login_as(user)
