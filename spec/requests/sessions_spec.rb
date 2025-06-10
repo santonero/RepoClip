@@ -68,11 +68,13 @@ RSpec.describe "Sessions", type: :request do
 
   describe "DELETE /session (destroy)" do
     let!(:current_user) { create(:user) }
-    around { |example| Current.set(user: current_user) { example.run } }
-    before { delete session_path, as: :turbo_stream }
+    before do
+      login_as(current_user)
+      delete session_path, as: :turbo_stream
+    end
 
     it "logs out the user" do
-      expect(Current.user).to be_nil
+      expect(session[:user_id]).to be_nil
     end
 
     it "returns a turbo_stream response with a 'refresh' action" do
