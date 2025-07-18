@@ -51,7 +51,7 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
-    active_storage_validations (3.0.0)
+    active_storage_validations (3.0.1)
       activejob (>= 6.1.4)
       activemodel (>= 6.1.4)
       activestorage (>= 6.1.4)
@@ -112,10 +112,10 @@ GEM
       irb (~> 1.10)
       reline (>= 0.3.8)
     diff-lcs (1.6.2)
-    dockerfile-rails (1.7.9)
+    dockerfile-rails (1.7.10)
       rails (>= 3.0.0)
     drb (2.2.3)
-    erb (5.0.1)
+    erb (5.0.2)
     erubi (1.13.1)
     factory_bot (6.5.4)
       activesupport (>= 6.1.0)
@@ -132,7 +132,7 @@ GEM
       railties (>= 6.0.0)
     invisible_captcha (2.3.0)
       rails (>= 5.2)
-    io-console (0.8.0)
+    io-console (0.8.1)
     irb (1.15.2)
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
@@ -214,14 +214,14 @@ GEM
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
     rake (13.3.0)
-    rdoc (6.14.1)
+    rdoc (6.14.2)
       erb
       psych (>= 4.0.0)
     regexp_parser (2.10.0)
     reline (0.6.1)
       io-console (~> 0.5)
     rexml (3.4.1)
-    rspec-core (3.13.4)
+    rspec-core (3.13.5)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.5)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -244,10 +244,10 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    sentry-rails (5.25.0)
+    sentry-rails (5.26.0)
       railties (>= 5.0)
-      sentry-ruby (~> 5.25.0)
-    sentry-ruby (5.25.0)
+      sentry-ruby (~> 5.26.0)
+    sentry-ruby (5.26.0)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
     shoulda-matchers (6.5.0)
@@ -321,7 +321,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 3.4.4p34
+   ruby 3.4.5p51
 
 BUNDLED WITH
-   2.6.9
+   2.7.0
