@@ -26,7 +26,7 @@ RSpec.describe Video, type: :model do
     it {
       should validate_content_type_of(:thumbnail)
         .allowing("image/png", "image/jpeg", "image/webp")
-        .rejecting("video.mp4", "application.pdf")
+        .rejecting("video/mp4", "application/pdf")
     }
     it { should validate_size_of(:thumbnail).less_than_or_equal_to(2.megabytes) }
   end
