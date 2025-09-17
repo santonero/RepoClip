@@ -49,8 +49,6 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem "active_storage_validations"
-gem "marcel", github: "alexandergitter/marcel", branch: "fix-av1-webm"
-
 gem "invisible_captcha"
 
 group :development, :test do
